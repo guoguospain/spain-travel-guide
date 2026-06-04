@@ -1,0 +1,1824 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="Content-Security-Policy" content="frame-src https://processon.com https://*.processon.com; child-src https://processon.com https://*.processon.com; object-src 'none'">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西班牙历史旅行手册 | Spain Travel Handbook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&amp;family=Noto+Serif+SC:wght@400;500&amp;family=Playfair+Display:ital@1&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #FAFAF8;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B6B6B;
+            --accent: #C4923A;
+            --border: #E8E4DC;
+            --card-bg: #FFFFFF;
+            --dark: #1C1C1E;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 400;
+            line-height: 1.9;
+            color: var(--text-primary);
+            background: var(--bg);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease-out;
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(250, 250, 248, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 0.1em;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease-out;
+        }
+
+        .nav.scrolled .nav-logo {
+            color: var(--text-primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-item {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease-out;
+            position: relative;
+        }
+
+        .nav.scrolled .nav-item {
+            color: var(--text-secondary);
+        }
+
+        .nav-item:hover {
+            color: var(--accent);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-top: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-out;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-dropdown-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 8px 0;
+            min-width: 120px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-dropdown-item {
+            display: block;
+            padding: 8px 20px;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease-out;
+        }
+
+        .nav-dropdown-item:hover {
+            color: var(--accent);
+            background: var(--bg);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .hero-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: clamp(36px, 8vw, 72px);
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 32px;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
+            margin-bottom: 32px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.1em;
+        }
+
+        .hero-arrow {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .hero-arrow svg {
+            width: 24px;
+            height: 24px;
+            stroke: rgba(255,255,255,0.5);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Section */
+        .section {
+            padding: 120px 0;
+        }
+
+        .section:first-of-type {
+            padding-top: 100px;
+        }
+
+        .section-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: clamp(28px, 5vw, 42px);
+            color: var(--text-primary);
+            margin-bottom: 48px;
+        }
+
+        /* Tips Grid */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .tip-item {
+            padding: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: all 0.3s ease-out;
+        }
+
+        .tip-item:hover {
+            border-color: var(--accent);
+        }
+
+        .tip-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .tip-content {
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        /* Map Section */
+        .map-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .map-image {
+            width: 100%;
+            display: block;
+        }
+
+        .map-legend {
+            padding: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 32px;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* Transport Table */
+        .transport-intro {
+            margin-bottom: 48px;
+        }
+
+        .transport-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 64px;
+        }
+
+        .transport-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease-out;
+        }
+
+        .transport-card:hover {
+            border-color: var(--accent);
+        }
+
+        .transport-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 16px;
+            fill: var(--accent);
+        }
+
+        .transport-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.1em;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .transport-price {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .transport-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .routes-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .routes-table th,
+        .routes-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .routes-table th {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: normal;
+        }
+
+        .routes-table tr:hover td {
+            background: rgba(196, 146, 58, 0.05);
+        }
+
+        .route-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(196, 146, 58, 0.1);
+            color: var(--accent);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            border-radius: 2px;
+        }
+
+        /* City Section */
+        .city-section {
+            margin-bottom: 80px;
+        }
+
+        .city-header {
+            position: relative;
+            margin-bottom: 48px;
+            padding-left: 80px;
+        }
+
+        .city-number {
+            position: absolute;
+            left: 0;
+            top: -20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: 80px;
+            color: var(--border);
+            line-height: 1;
+        }
+
+        .city-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 28px;
+            letter-spacing: 0.15em;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .city-name-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .city-line {
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* Attraction Card */
+        .attraction-card {
+            display: flex;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin-bottom: 32px;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+        }
+
+        .attraction-card:hover {
+            border-color: var(--accent);
+        }
+
+        .attraction-card:hover .attraction-number {
+            width: 8px;
+        }
+
+        .attraction-number {
+            width: 4px;
+            background: var(--accent);
+            flex-shrink: 0;
+            transition: width 0.3s ease-out;
+        }
+
+        .attraction-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .attraction-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .attraction-body {
+            padding: 24px;
+            flex: 1;
+        }
+
+        .attraction-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .attraction-title-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 13px;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .attraction-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .attraction-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .info-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            white-space: nowrap;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .info-value {
+            font-size: 13px;
+            color: var(--text-primary);
+            word-break: break-word;
+        }
+
+        .copy-btn {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            padding: 3px 8px;
+            cursor: pointer;
+            margin-left: 6px;
+            transition: all 0.3s ease-out;
+            vertical-align: middle;
+        }
+
+        .copy-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .copy-btn.copied {
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+
+        .attraction-tips {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .tips-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .tips-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Price Display */
+        .price-display {
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+        }
+
+        .price-symbol {
+            font-size: 12px;
+            color: var(--text-primary);
+        }
+
+        .price-value {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-disclaimer {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .footer-copyright {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 20px;
+            }
+
+            .nav-menu {
+                gap: 16px;
+            }
+
+            .nav-item span {
+                display: none;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .transport-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .routes-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .city-header {
+                padding-left: 0;
+                text-align: center;
+            }
+
+            .city-number {
+                position: static;
+                font-size: 60px;
+                margin-bottom: -20px;
+            }
+
+            .city-line {
+                margin: 0 auto;
+            }
+
+            .attraction-card {
+                flex-direction: column;
+            }
+
+            .attraction-number {
+                width: 100%;
+                height: 4px;
+            }
+
+            .attraction-card:hover .attraction-number {
+                width: 100%;
+            }
+
+            .attraction-info {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 0 16px;
+            }
+
+            .nav-logo {
+                font-size: 14px;
+            }
+
+            .nav-menu {
+                gap: 12px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">SPAIN TRAVEL</a>
+        <div class="nav-menu">
+            <a href="#tips" class="nav-item">旅行贴士</a>
+            <a href="#map" class="nav-item">分布地图</a>
+            <a href="#transport" class="nav-item">城市交通</a>
+            <a href="#madrid" class="nav-item">马德里</a>
+            <a href="#barcelona" class="nav-item">巴塞罗那</a>
+            <a href="#granada" class="nav-item">格拉纳达</a>
+            <a href="#sevilla" class="nav-item">塞维利亚</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-item">其他城市</a>
+                <div class="nav-dropdown-menu">
+                    <div class="nav-dropdown-content">
+                        <a href="#cordoba" class="nav-dropdown-item">科尔多瓦</a>
+                        <a href="#toledo" class="nav-dropdown-item">托莱多</a>
+                        <a href="#segovia" class="nav-dropdown-item">塞哥维亚</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-label">Spain Travel Handbook</div>
+        <h1 class="hero-title">西班牙历史旅行手册</h1>
+        <div class="hero-divider"></div>
+        <p class="hero-subtitle">穿越千年文明的旅行指南</p>
+        <div class="hero-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 5v14M5 12l7 7 7-7"></path>
+            </svg>
+        </div>
+    </section>
+
+    <main class="main">
+        <!-- Travel Tips -->
+        <section class="section" id="tips">
+            <div class="section-label">Essential Tips</div>
+            <h2 class="section-title">旅行贴士</h2>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <div class="tip-label">最佳旅行季节</div>
+                    <div class="tip-content">4-6月和9-10月，气候宜人，游客较少</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">货币</div>
+                    <div class="tip-content">欧元(EUR)，建议携带少量现金，很多小店不接受信用卡</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">语言</div>
+                    <div class="tip-content">西班牙语，旅游区英语可用但不要期望太高</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">紧急电话</div>
+                    <div class="tip-content">112（全欧通用）</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">防盗</div>
+                    <div class="tip-content">马德里和巴塞罗那小偷猖獗，背包前背，手机不要放在桌上</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">用餐时间</div>
+                    <div class="tip-content">午餐14:00起，晚餐21:00起，提前去可能没开门</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">午休</div>
+                    <div class="tip-content">许多小店13:00-17:00关门，大商场和连锁店不休息</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">着装</div>
+                    <div class="tip-content">教堂需遮盖肩膀和膝盖，圣家堂等严格执行</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">省钱</div>
+                    <div class="tip-content">很多景点有免费时段，提前查好可省不少</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">交通</div>
+                    <div class="tip-content">城市内坐地铁最方便，城际高铁提前买票更便宜</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">小费</div>
+                    <div class="tip-content">西班牙不强制小费，满意可留1-2欧</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-label">防晒</div>
+                    <div class="tip-content">夏季安达卢西亚40C+，防晒霜帽子必备</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="section" id="map">
+            <div class="section-label">City Distribution</div>
+            <h2 class="section-title">西班牙城市分布地图</h2>
+            <div class="map-container">
+                <img src="https://s.coze.cn/image/rz7p0RfTS2c/" alt="西班牙城市地图" class="map-image">
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background:#E53935;"></span>
+                        马德里 Madrid
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background:#1E88E5;"></span>
+                        巴塞罗那 Barcelona
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background:#8E24AA;"></span>
+                        格拉纳达 Granada
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background:#FB8C00;"></span>
+                        塞维利亚 Sevilla
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background:#43A047;"></span>
+                        科尔多瓦 Córdoba
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background:#6D4C41;"></span>
+                        托莱多 Toledo
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background:#C4923A;"></span>
+                        塞哥维亚 Segovia
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transport Section -->
+        <section class="section" id="transport">
+            <div class="section-label">Getting Around</div>
+            <h2 class="section-title">城际交通指南</h2>
+            
+            <div class="transport-intro">
+                <p>西班牙城际交通选择丰富，高铁网络发达，城市间往来便捷。提前规划可以节省不少费用。</p>
+            </div>
+
+            <div class="transport-cards">
+                <div class="transport-card">
+                    <svg class="transport-icon" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5L19 8l-7 3.5L5 8l7-3.5zM4 9.5l7 3.5v7l-7-3.5v-7zm16 0v7l-7 3.5v-7l7-3.5z"></path>
+                    </svg>
+                    <div class="transport-name">高铁 AVE</div>
+                    <div class="transport-price">提前买票 EUR 20-60</div>
+                    <div class="transport-desc">快速舒适，适合长距离</div>
+                </div>
+                <div class="transport-card">
+                    <svg class="transport-icon" viewBox="0 0 24 24">
+                        <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-3.5-1c-.83 0-1.5-.67-1.5-1.5S12.67 13 13.5 13s1.5.67 1.5 1.5S14.33 16 13.5 16z"></path>
+                    </svg>
+                    <div class="transport-name">大巴 ALSA</div>
+                    <div class="transport-price">EUR 10-30</div>
+                    <div class="transport-desc">便宜班次多，适合预算有限</div>
+                </div>
+                <div class="transport-card">
+                    <svg class="transport-icon" viewBox="0 0 24 24">
+                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"></path>
+                    </svg>
+                    <div class="transport-name">飞机</div>
+                    <div class="transport-price">EUR 30-80</div>
+                    <div class="transport-desc">适合远距离，含往返机场时间</div>
+                </div>
+            </div>
+
+            <table class="routes-table">
+                <thead>
+                    <tr>
+                        <th>路线</th>
+                        <th>高铁</th>
+                        <th>大巴/飞机</th>
+                        <th>推荐</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>马德里 - 巴塞罗那</td>
+                        <td>2.5h / EUR 40-90</td>
+                        <td>飞机 1.5h / EUR 30-80</td>
+                        <td><span class="route-tag">高铁</span></td>
+                    </tr>
+                    <tr>
+                        <td>马德里 - 塞维利亚</td>
+                        <td>2.5h / EUR 35-80</td>
+                        <td>大巴 6h / EUR 20-30</td>
+                        <td><span class="route-tag">高铁</span></td>
+                    </tr>
+                    <tr>
+                        <td>马德里 - 格拉纳达</td>
+                        <td>4h / EUR 40-70</td>
+                        <td>大巴 5h / EUR 20-30</td>
+                        <td><span class="route-tag">高铁</span></td>
+                    </tr>
+                    <tr>
+                        <td>马德里 - 科尔多瓦</td>
+                        <td>1.8h / EUR 30-60</td>
+                        <td>大巴 4.5h / EUR 18-25</td>
+                        <td><span class="route-tag">高铁</span></td>
+                    </tr>
+                    <tr>
+                        <td>马德里 - 托莱多</td>
+                        <td>0.5h / EUR 12-15</td>
+                        <td>大巴 1h / EUR 6-10</td>
+                        <td><span class="route-tag">高铁</span></td>
+                    </tr>
+                    <tr>
+                        <td>马德里 - 塞哥维亚</td>
+                        <td>0.5h / EUR 12-15</td>
+                        <td>大巴 1.5h / EUR 8-10</td>
+                        <td><span class="route-tag">高铁</span></td>
+                    </tr>
+                    <tr>
+                        <td>巴塞罗那 - 塞维利亚</td>
+                        <td>5.5h / EUR 50-90</td>
+                        <td>飞机 1.5h / EUR 30-70</td>
+                        <td><span class="route-tag">飞机</span></td>
+                    </tr>
+                    <tr>
+                        <td>塞维利亚 - 格拉纳达</td>
+                        <td>4.5h (需转)</td>
+                        <td>大巴 3h / EUR 15-25</td>
+                        <td><span class="route-tag">大巴</span></td>
+                    </tr>
+                    <tr>
+                        <td>塞维利亚 - 科尔多瓦</td>
+                        <td>0.8h / EUR 15-30</td>
+                        <td>大巴 2h / EUR 10-15</td>
+                        <td><span class="route-tag">高铁</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Madrid -->
+        <section class="city-section" id="madrid">
+            <div class="city-header">
+                <span class="city-number">01</span>
+                <h3 class="city-name">马德里 Madrid</h3>
+                <p class="city-name-en">The Heart of Spain</p>
+                <div class="city-line"></div>
+            </div>
+
+            <!-- Attraction 1 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/m4KOVSWa37E/" alt="马德里皇宫" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">马德里皇宫</h4>
+                        <p class="attraction-title-en">Palacio Real de Madrid</p>
+                        <p class="attraction-desc">欧洲最大皇宫之一，拥有2800个房间的18世纪巴洛克杰作。由波旁王朝腓力五世于1738年启动修建，取代了被焚毁的旧阿尔卡萨尔城堡。宫殿内部金碧辉煌，王座厅、皇家军械库和皇家药房各具特色。建筑外立面的多利克柱式与爱奥尼亚柱式层叠而上，尽显皇权威严。如今虽已非王室居所，但仍是国事活动的举办地。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Calle de Bailen, s/n, 28071 Madrid<button class="copy-btn" data-copy="Calle de Bailén, s/n, 28071 Madrid">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">10:00-18:00（10月-3月），10:00-19:00（4月-9月）</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value"><span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">14</span></span> 成人；EU公民免费时段：周一至周四闭馆前1小时</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://www.patrimonionacional.es" target="_blank">patrimonionacional.es</a><button class="copy-btn" data-copy="https://www.patrimonionacional.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">官网提前购票，国事活动期间关闭，建议上午前往避开人流</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 2 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/kN6YOFl0EtM/" alt="普拉多博物馆" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">普拉多国家博物馆</h4>
+                        <p class="attraction-title-en">Museo Nacional del Prado</p>
+                        <p class="attraction-desc">世界三大博物馆之一，西班牙艺术殿堂的绝对核心。馆藏逾35000件，以委拉斯开兹《宫娥》、戈雅《1808年5月3日》、鲁本斯《三美神》等旷世名作闻名于世。博物馆建筑本身就是新古典主义杰作，由建筑师维拉努埃瓦于1785年设计。在这里可以完整追溯西班牙绘画从文艺复兴到戈雅的辉煌脉络，是理解西班牙灵魂的必经之路。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Calle de Ruiz de Alarcon, 23, 28014 Madrid<button class="copy-btn" data-copy="Calle de Ruiz de Alarcón, 23, 28014 Madrid">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">周一至周六10:00-20:00，周日10:00-19:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value"><span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">15</span></span> 成人；免费时段：周一至周六18:00-20:00，周日17:00-19:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://www.museodelprado.es" target="_blank">museodelprado.es</a><button class="copy-btn" data-copy="https://www.museodelprado.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">官网提前购票，免费时段需排队但人流可控，至少留3小时</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 3 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/Od_5R3dY2Bo/" alt="索菲亚王后艺术中心" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">索菲亚王后艺术中心</h4>
+                        <p class="attraction-title-en">Museo Reina Sofia</p>
+                        <p class="attraction-desc">西班牙现代艺术圣地，毕加索传世巨作《格尔尼卡》的永久居所。这幅3.5x7.8米的壁画以1937年格尔尼卡小镇遭轰炸为题，是20世纪最强烈的反战宣言。博物馆还收藏了达利、米罗等超现实主义大师的代表作，以及战后西班牙前卫艺术的完整谱系。2005年让·努维尔设计的扩建翼为古典建筑注入了当代灵魂。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Calle de Santa Isabel, 52, 28012 Madrid<button class="copy-btn" data-copy="Calle de Santa Isabel, 52, 28012 Madrid">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">周一、周三至周六10:00-21:00，周日10:00-14:30；周二闭馆</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value"><span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">12</span></span> 成人；免费时段：周一/周三至周六19:00-21:00，周日13:30-14:30</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://www.museoreinasofia.es" target="_blank">museoreinasofia.es</a><button class="copy-btn" data-copy="https://www.museoreinasofia.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">免费时段人多，建议下午2-4点购票参观最舒适</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 4 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/ZUSNzStayDs/" alt="丽池公园" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">丽池公园</h4>
+                        <p class="attraction-title-en">Parque del Retiro</p>
+                        <p class="attraction-desc">马德里的绿色心脏，占地118公顷的皇家花园于1868年向公众开放。公园内有近15000棵树木、两个人工湖和无数雕塑，是马德里市民最珍爱的休闲空间。水晶宫以伦敦海德公园为灵感建造，通体玻璃在阳光下如梦似幻；玫瑰园中四千株玫瑰在五六月盛放；阿方索十二世纪念碑巍峨矗立于大湖之畔。租一艘小船荡漾湖上，看黑天鹅与野鸭悠然游过，是最经典的马德里体验。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Plaza de la Independencia, 7, 28001 Madrid<button class="copy-btn" data-copy="Plaza de la Independencia, 7, 28001 Madrid">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">4月-9月 6:00-24:00，10月-3月 6:00-22:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">免费（公园）；水晶宫展览免费</span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">清晨最安静适合拍照，可租脚踏船游湖，水晶宫可能因展览闭馆需注意</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Barcelona -->
+        <section class="city-section" id="barcelona">
+            <div class="city-header">
+                <span class="city-number">02</span>
+                <h3 class="city-name">巴塞罗那 Barcelona</h3>
+                <p class="city-name-en">Gaudi's Masterpiece</p>
+                <div class="city-line"></div>
+            </div>
+
+            <!-- Attraction 5 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/85KnsGgOvgU/" alt="圣家堂" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">圣家堂</h4>
+                        <p class="attraction-title-en">Sagrada Familia</p>
+                        <p class="attraction-desc">高迪毕生心血的未竟之作，一座仍在建造中的UNESCO世界遗产。自1882年奠基，历经140余年仍在续写传奇，预计2026年完成主体结构。教堂内部如同一座石头森林，树状立柱向上伸展再分叉支撑穹顶，彩色玻璃将阳光化为金红与蓝绿的梦幻光影。诞生立面繁复如天然雕琢，受难立面则由苏比拉克斯以冷峻线条诠释苦难。这座"上帝的建筑"是人类信仰与想象力最壮丽的纪念碑。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Carrer de Mallorca, 401, 08013 Barcelona<button class="copy-btn" data-copy="Carrer de Mallorca, 401, 08013 Barcelona">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">4月-9月 09:00-20:00，10月-3月 09:00-18:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value"><span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">30</span></span> 基础票成人；含导览 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">41</span></span></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://sagradafamilia.org" target="_blank">sagradafamilia.org</a><button class="copy-btn" data-copy="https://sagradafamilia.org">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">至少提前2-4周官网购票，旺季提前2个月！门票指定时段入场</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 6 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/H0lPIe2tzxE/" alt="古埃尔公园" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">古埃尔公园</h4>
+                        <p class="attraction-title-en">Park Guell</p>
+                        <p class="attraction-desc">高迪为富商古埃尔设计的梦幻花园城市，如今是世界最著名的公园之一。彩色马赛克长椅蜿蜒于大平台之上，俯瞰巴塞罗那全景与地中海；入口处的蜥蜴雕塑已成为城市标志。柱厅的86根多利克柱支撑着上方广场，回响着天然混响的奇妙声学效果。高迪将建筑、自然与色彩完美融合，每一寸马赛克都是对地中海欢愉精神的礼赞。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Carrer d'Olot, 5, 08024 Barcelona<button class="copy-btn" data-copy="Carrer d'Olot, 5, 08024 Barcelona">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">08:00-21:30（旺季），09:30-17:30（淡季）</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value"><span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">10</span></span> 收费区域成人</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://parkguell.barcelona" target="_blank">parkguell.barcelona</a><button class="copy-btn" data-copy="https://parkguell.barcelona">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">官网提前购买，指定时段入场，每天限额</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 7 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/IfwtxeIKNgI/" alt="巴特罗之家" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">巴特罗之家</h4>
+                        <p class="attraction-title-en">Casa Batllo</p>
+                        <p class="attraction-desc">高迪改造的骨头宫殿，外墙如龙鳞般闪烁，是欧洲最美建筑之一。建筑外观以圣乔治屠龙为叙事：鳞片般彩色陶瓷覆满外墙，骨骼状阳台如龙之骨骸，屋顶十字架即圣乔治之剑。室内每一个细节都打破直线：门框如人体曲线，天花板如漩涡，天井从底到顶渐变蓝色模拟深海。高迪用自然法则重新定义了建筑，让这座公寓成为永恒的童话。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Passeig de Gràcia, 43, 08007 Barcelona<button class="copy-btn" data-copy="Passeig de Gràcia, 43, 08007 Barcelona">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">09:00-21:00（全年）</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value"><span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">35</span></span> 基础票成人；魔法之夜体验约 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">49</span></span></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://www.casabatllo.es" target="_blank">casabatllo.es</a><button class="copy-btn" data-copy="https://www.casabatllo.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">官网提前购买避免排队，夜间体验需提前预订</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 8 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/K6xKMbv_q1Q/" alt="毕加索博物馆" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">毕加索博物馆</h4>
+                        <p class="attraction-title-en">Museu Picasso</p>
+                        <p class="attraction-desc">世界上最完整的毕加索早期作品收藏地，藏有超过4251件作品。博物馆坐落于哥特区五座相连的中世纪宫殿内，哥特式庭院与石砌回廊本身就是穿越时空的艺术品。展品按时间线完整呈现毕加索从少年天才到蓝色时期、玫瑰时期、立体主义的艺术蜕变，其中对委拉斯开兹《宫娥》的系列解构重构最为震撼。这里是理解这位20世纪最伟大画家起点的钥匙。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Carrer de Montcada, 15-23, 08003 Barcelona<button class="copy-btn" data-copy="Carrer de Montcada, 15-23, 08003 Barcelona">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">3月-9月 周二/三/日09:00-20:00，周四至周六09:00-21:00；周一闭馆</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">线上 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">12</span></span>；每月第一个周日免费（需预约）</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://museupicassobcn.cat" target="_blank">museupicassobcn.cat</a><button class="copy-btn" data-copy="https://museupicassobcn.cat">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">线上购票比窗口便宜EUR1，免费时段需提前4天预约</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 9 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/xbEoNzwVDqk/" alt="巴塞罗那主教座堂" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">巴塞罗那主教座堂</h4>
+                        <p class="attraction-title-en">Catedral de la Santa Creu i Santa Eulalia</p>
+                        <p class="attraction-desc">巴塞罗那哥特区的精神心脏，加泰罗尼亚哥特建筑的巅峰之作。大教堂始建于1298年，历时两百余年完工，中央尖塔于1913年最终落成。教堂内最令人惊喜的角落是回廊——13只白鹅悠然踱步于棕榈与喷泉之间，象征守护圣人圣欧拉利亚殉道时的13岁芳龄。登上电梯可达屋顶露台，360度俯瞰哥特区红瓦屋顶与远处的圣家堂。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Pla de la Seu, s/n, 08002 Barcelona<button class="copy-btn" data-copy="Pla de la Seu, s/n, 08002 Barcelona">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">文化参观 周一至周五09:30-18:30，周六09:30-17:15，周日14:00-17:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">文化参观成人 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">11</span></span>；礼拜时段免费</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://catedralbcn.org" target="_blank">catedralbcn.org</a><button class="copy-btn" data-copy="https://catedralbcn.org">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">周日早礼拜时段免费但仅限中殿回廊，着装需遮盖肩膝，回廊白鹅上午最活跃</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Granada -->
+        <section class="city-section" id="granada">
+            <div class="city-header">
+                <span class="city-number">03</span>
+                <h3 class="city-name">格拉纳达 Granada</h3>
+                <p class="city-name-en">Where East Meets West</p>
+                <div class="city-line"></div>
+            </div>
+
+            <!-- Attraction 10 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/TXr89UpR4QI/" alt="阿尔罕布拉宫" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">阿尔罕布拉宫</h4>
+                        <p class="attraction-title-en">La Alhambra y el Generalife</p>
+                        <p class="attraction-desc">摩尔王朝最后的宫殿，伊斯兰建筑在西欧最辉煌的遗产。纳斯里德宫以蜂巢状钟乳石穹顶、精妙阿拉伯铭文和庭院水景编织出人间天堂；桃金娘中庭的静池如镜映照着科马雷斯宫的完美倒影，狮子中庭12头石狮托起喷泉环列124根大理石柱。阿尔卡萨巴城堡俯瞰全城，赫内拉利费花园层层叠水伴着玫瑰与柑橘。这是一座用光影和水写诗的宫殿，让每一个到访者都心甘情愿迷失其中。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Calle Real de la Alhambra, s/n, 18009 Granada<button class="copy-btn" data-copy="Calle Real de la Alhambra, s/n, 18009 Granada">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">4月-10月 08:30-20:00，11月-3月 08:30-18:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">全宫殿通票成人 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">22.27</span></span>；花园票 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">12.73</span></span></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://tickets.alhambra-patronato.es" target="_blank">tickets.alhambra-patronato.es</a><button class="copy-btn" data-copy="https://tickets.alhambra-patronato.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">旺季(4-10月)提前1-2个月购票！纳斯里德宫严格按票面时间30分钟内入场，迟到无法进入</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 11 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/vqfxDOYfUBM/" alt="格拉纳达主教座堂" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">格拉纳达主教座堂</h4>
+                        <p class="attraction-title-en">Catedral de la Encarnacion</p>
+                        <p class="attraction-desc">西班牙文艺复兴建筑的杰作，矗立于原大清真寺遗址之上。1501年天主教双王下令兴建，历时近两百年建成。大教堂最独特之处在于其圆形祭坛——在西班牙教堂中极为罕见，灵感可能源自意大利"完美建筑"的理想。阿隆索·卡诺设计的主立面恢弘壮丽，内部白色大理石柱如林，穹顶彩光倾泻。珍宝室的卡诺《无染原罪》被专家评为该主题最佳版本。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Calle Gran Via de Colon, 5, 18001 Granada<button class="copy-btn" data-copy="Calle Gran Vía de Colón, 5, 18001 Granada">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">周一至周六10:00-18:15，周日及节假日15:00-18:15</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">普通票 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">7</span></span>（含语音导览）</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://catedraldegranada.com" target="_blank">catedraldegranada.com</a><button class="copy-btn" data-copy="https://catedraldegranada.com">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">建议与相邻的皇家礼拜堂(Capilla Real)联票参观，教堂内禁止大件背包</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 12 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/AoRPd4j_V4M/" alt="圣胡安迪奥斯大教堂" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">圣胡安迪奥斯大教堂</h4>
+                        <p class="attraction-title-en">Basilica de San Juan de Dios</p>
+                        <p class="attraction-desc">格拉纳达最奢华的巴洛克宝藏，一座用黄金覆盖的信仰殿堂。教堂建于1737-1759年，为安放医院骑士团创始人圣胡安·迪奥斯的遗骸而建。走进殿内，金箔覆盖几乎每一寸表面——从穹顶到祭坛、从管风琴到圣物匣，极致的华丽令人目眩。主祭坛形如一支燃烧的蜡烛，象征基督为世界之光。祭坛后的秘密圣室(Camarín)以玛瑙、碧玉和镜面装饰，安放着圣人的银质灵柩。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Calle San Juan de Dios, 17, 18001 Granada<button class="copy-btn" data-copy="Calle San Juan de Dios, 17, 18001 Granada">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">周一至周六09:30-18:45，周日09:30-11:50及13:30-18:45</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">成人 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">10</span></span>（含语音导览+VR体验）</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://basilicasanjuandedios.es" target="_blank">basilicasanjuandedios.es</a><button class="copy-btn" data-copy="https://basilicasanjuandedios.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">建议预留40-60分钟，别忘了上楼参观Camarín圣室，周末建议线上预约</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 13 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/h_YU5W1I1lM/" alt="圣尼古拉斯观景台" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">圣尼古拉斯观景台</h4>
+                        <p class="attraction-title-en">Mirador de San Nicolas</p>
+                        <p class="attraction-desc">格拉纳达最经典的观景点，阿尔拜辛区的灵魂地标。站在这座白色小巷尽头的广场上，阿尔罕布拉宫的全貌在眼前铺展——红色城墙、纳斯里德宫的方塔、远处的内华达山脉雪峰尽收眼底。日落时分，夕阳将宫殿染成金红色，街头吉他手的弗拉门戈旋律随风飘来，这一刻被无数旅人誉为"世界上最美的日落"。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Plaza Mirador de San Nicolas, 2, Albaicin, 18010 Granada<button class="copy-btn" data-copy="Plaza Mirador de San Nicolás, 2, Albaicín, 18010 Granada">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">全天开放</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">免费</span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">日落前1小时占位，温差大注意保暖，可步行或打车上山（坡陡）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sevilla -->
+        <section class="city-section" id="sevilla">
+            <div class="city-header">
+                <span class="city-number">04</span>
+                <h3 class="city-name">塞维利亚 Sevilla</h3>
+                <p class="city-name-en">Flamenco's Soul</p>
+                <div class="city-line"></div>
+            </div>
+
+            <!-- Attraction 14 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/Pc3t-5J0i0w/" alt="塞维利亚大教堂" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">塞维利亚大教堂与希拉尔达塔</h4>
+                        <p class="attraction-title-en">Catedral de Sevilla &amp; Giralda</p>
+                        <p class="attraction-desc">世界最大哥特式教堂，哥伦布长眠之地。这座宏伟建筑原为阿尔摩哈德清真寺，15世纪被改建为基督教堂，保留了98米高的希拉尔达钟楼（原清真寺宣礼塔）。主祭坛画是哥特木雕的登峰造极之作，36个场景以金箔覆盖，肉眼细读远胜拍照。哥伦布墓由四位国王雕像抬棺，象征卡斯蒂利亚、莱昂、阿拉贡和纳瓦拉四大王国。希拉尔达塔以35条坡道代替楼梯，中世纪宣礼员曾骑马登顶。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Avenida de la Constitucion, s/n, 41001 Sevilla<button class="copy-btn" data-copy="Avenida de la Constitución, s/n, 41001 Sevilla">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">周一至周六11:00-18:00，周日14:30-19:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">线上成人 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">13</span></span>；周日16:30-18:00免费（需预约）</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://www.catedraldesevilla.es" target="_blank">catedraldesevilla.es</a><button class="copy-btn" data-copy="https://www.catedraldesevilla.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">线上购票比窗口便宜EUR1且可跳过售票长队，建议入场后先登希拉尔达塔，周日下午人最少</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 15 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/3DyUSBPLrMU/" alt="塞维利亚皇家城堡" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">塞维利亚皇家城堡</h4>
+                        <p class="attraction-title-en">Real Alcázar de Sevilla</p>
+                        <p class="attraction-desc">欧洲最古老的仍在使用的王室宫殿，千年文明层叠的活化石。最初为10世纪摩尔堡垒，后经穆德哈尔、哥特、文艺复兴各朝扩建，堪称安达卢西亚建筑演变的微缩史。处女中庭的细长水池倒映着蕾丝般灰泥雕花，大使厅的鎏金穹顶令人屏息。花园中橙树、喷泉与孔雀构成世外桃源，玛丽亚·德·帕迪利亚浴场幽暗迷人。《权力的游戏》在此取景多恩水上花园。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Patio de Banderas, s/n, 41004 Sevilla<button class="copy-btn" data-copy="Patio de Banderas, s/n, 41004 Sevilla">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">4月-9月 09:30-21:00，10月-3月 09:30-19:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">成人 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">15.50</span></span>；联票(宫殿+上层) <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">21</span></span></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://www.alcazarsevilla.org" target="_blank">alcazarsevilla.org</a><button class="copy-btn" data-copy="https://www.alcazarsevilla.org">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">提前1个月线上购票，旺季极易售罄！周一最后1小时免费时段名额极少需抢</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Córdoba -->
+        <section class="city-section" id="cordoba">
+            <div class="city-header">
+                <span class="city-number">05</span>
+                <h3 class="city-name">科尔多瓦 Córdoba</h3>
+                <p class="city-name-en">Bridge of Civilizations</p>
+                <div class="city-line"></div>
+            </div>
+
+            <!-- Attraction 16 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/Wo2xZRsnFj8/" alt="科尔多瓦大清真寺" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">科尔多瓦大清真寺-主教座堂</h4>
+                        <p class="attraction-title-en">Mezquita-Catedral de Córdoba</p>
+                        <p class="attraction-desc">人类文明交汇最震撼的奇景——一座天主教大教堂嵌在856根红白相间马蹄拱之中。8世纪末，阿卜杜勒·拉赫曼一世在此兴建西欧最大清真寺；16世纪，查理五世批准在中央嵌入一座哥特-文艺复兴式教堂。856根柱子如椰枣林般延伸至视线尽头，红白双层马蹄拱创造出无限纵深的光影迷宫。米哈拉布方向龛的拜占庭金镶嵌闪耀千年光芒，而中央教堂的穹顶则将视线引向天国。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Calle del Cardenal Herrero, 1, 14003 Córdoba<button class="copy-btn" data-copy="Calle del Cardenal Herrero, 1, 14003 Córdoba">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">周一至周六10:00-19:00，周日08:30-11:30/15:00-19:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">成人 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">13</span></span>；周一至周六08:30-09:30免费入场</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://mezquita-catedraldecordoba.es" target="_blank">mezquita-catedraldecordoba.es</a><button class="copy-btn" data-copy="https://mezquita-catedraldecordoba.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">早晨08:30免费时段人少最推荐，官网购票可跳过排队</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toledo -->
+        <section class="city-section" id="toledo">
+            <div class="city-header">
+                <span class="city-number">06</span>
+                <h3 class="city-name">托莱多 Toledo</h3>
+                <p class="city-name-en">Three Cultures in Stone</p>
+                <div class="city-line"></div>
+            </div>
+
+            <!-- Attraction 17 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/D7TGHyg--Ow/" alt="托莱多大教堂" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">托莱多大教堂</h4>
+                        <p class="attraction-title-en">Catedral Primada de Toledo</p>
+                        <p class="attraction-desc">西班牙最重要的哥特式大教堂，天主教会总部所在。大教堂始建于1226年，融合了哥特、穆德哈尔和文艺复兴风格，堪称西班牙教堂建筑集大成者。主祭坛画以彩色木雕讲述基督生平，透明祭坛以巴洛克风格穿透穹顶引入天光，圣器室收藏格列柯《脱去基督外衣》等名作。唱诗班座椅的核桃木雕刻精美绝伦，下层刻有征服格拉纳达的战争场景，上层则是旧约人物。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Calle Cardenal Cisneros, 1, 45002 Toledo<button class="copy-btn" data-copy="Calle Cardenal Cisneros, 1, 45002 Toledo">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">周一至周六10:00-18:30，周日14:00-18:30</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">成人 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">10</span></span>；含导览 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">12.50</span></span></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://www.catedralprimada.es" target="_blank">catedralprimada.es</a><button class="copy-btn" data-copy="https://www.catedralprimada.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">现场或官网购票均可，建议上午前往人少</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 18 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/bdGNN8eSysI/" alt="托莱多古城" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">托莱多古城全景</h4>
+                        <p class="attraction-title-en">Plaza de Zocodover &amp; Panoramica</p>
+                        <p class="attraction-desc">UNESCO世界遗产古城核心广场，三大宗教文明（基督、伊斯兰、犹太）千年共存的活化石。索科多佛广场自古就是城市的心脏，集市、节庆和斗牛都曾在此上演。登上观景台，整座古城尽收眼底——塔霍河三面环绕，石墙与教堂尖塔勾勒出中世纪天际线，对岸山丘上的圣塞尔万多城堡与古城隔河相望。漫步于犹太区狭窄巷弄，造访保存完好的白色犹太教堂。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Plaza de Zocodover, 45001 Toledo<button class="copy-btn" data-copy="Plaza de Zocodover, 45001 Toledo">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">全天开放</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">免费</span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">步行游览最佳，从马德里乘高铁仅30分钟可达，建议安排一整天</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Segovia -->
+        <section class="city-section" id="segovia">
+            <div class="city-header">
+                <span class="city-number">07</span>
+                <h3 class="city-name">塞哥维亚 Segovia</h3>
+                <p class="city-name-en">Roman Legacy</p>
+                <div class="city-line"></div>
+            </div>
+
+            <!-- Attraction 19 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/ivS_8d1YB2g/" alt="古罗马渡槽" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">塞哥维亚古罗马渡槽</h4>
+                        <p class="attraction-title-en">Acueducto de Segovia</p>
+                        <p class="attraction-desc">两千年不倒的罗马工程奇迹，UNESCO世界遗产。渡槽建于公元1世纪，由20400块花岗岩堆砌而成——没有使用任何砂浆或粘合剂，纯靠石块之间的重力与精密切割咬合。双层拱廊最高处达28米，167道拱门横跨阿索格霍广场，从城市中心直入山间，全长约15公里。它见证了罗马帝国在伊比利亚半岛的辉煌，至今仍是塞哥维亚最骄傲的标志。黄昏时分花岗岩被夕阳染成金色。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Plaza del Azoguejo, 1, 40001 Segovia<button class="copy-btn" data-copy="Plaza del Azoguejo, 1, 40001 Segovia">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">全天开放</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">免费（户外公共纪念碑）</span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">日出和日落时分光线最美，从台阶高处俯拍最佳角度</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 20 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/vZKHpYdv118/" alt="塞哥维亚城堡" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">塞哥维亚城堡</h4>
+                        <p class="attraction-title-en">Alcazar de Segovia</p>
+                        <p class="attraction-desc">迪士尼白雪公主城堡的原型，悬崖之上的童话宫殿。城堡始建于12世纪，临崖而建，最初为军事要塞，后经特拉斯塔马拉王朝改建为王族行宫。蓝色板岩屋顶在阳光下闪烁金属光泽，是城堡最独特的标志。内部松果厅、国王起居室和御座厅各具特色，军械库展示中世纪武器。登顶152级台阶的塔楼，可以360度俯瞰埃雷斯马河谷、韦拉克鲁斯教堂和远处连绵的卡斯蒂利亚平原。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Plaza Reina Victoria Eugenia, s/n, 40003 Segovia<button class="copy-btn" data-copy="Plaza Reina Victoria Eugenia, s/n, 40003 Segovia">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">4月-10月 10:00-19:30，11月-3月 10:00-18:00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">宫殿+博物馆成人 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">7</span></span>；含塔楼 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">10</span></span></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://www.alcazardesegovia.es" target="_blank">alcazardesegovia.es</a><button class="copy-btn" data-copy="https://www.alcazardesegovia.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">含塔楼票每日限量，建议线上提前购买；塔楼楼梯较窄需一定体力</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction 21 -->
+            <div class="attraction-card">
+                <div class="attraction-number"></div>
+                <div class="attraction-content">
+                    <img src="https://s.coze.cn/image/Xpdt0bxkkn8/" alt="塞哥维亚大教堂" class="attraction-image">
+                    <div class="attraction-body">
+                        <h4 class="attraction-title">塞哥维亚大教堂</h4>
+                        <p class="attraction-title-en">Catedral de Segovia</p>
+                        <p class="attraction-desc">西班牙最后一座哥特式大教堂，被誉为"哥特教堂中的女王"。始建于1525年，历时近两百年完工，伊莎贝拉一世曾在此加冕为卡斯蒂利亚女王。88米高的钟楼是城市天际线的核心，登上可饱览古城全景与远处的瓜达拉马山脉。教堂内部彩窗精美，博物馆藏有珍贵的宗教艺术品。主广场对面即是著名的烤乳猪百年老店Mesón de Cándido，厨师用瓷盘切乳猪的仪式是塞哥维亚不可错过的体验。</p>
+                        <div class="attraction-info">
+                            <div class="info-item">
+                                <span class="info-label">ADDRESS</span>
+                                <span class="info-value">Calle Marques del Arco, 1, 40001 Segovia<button class="copy-btn" data-copy="Calle Marqués del Arco, 1, 40001 Segovia">复制</button></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">HOURS</span>
+                                <span class="info-value">周一至周日09:30-21:30</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">TICKETS</span>
+                                <span class="info-value">成人约 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">3-5</span></span>（仅教堂）；含博物馆和塔楼约 <span class="price-display"><span class="price-symbol">EUR</span><span class="price-value">8-10</span></span></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value"><a href="https://www.catedraldesegovia.es" target="_blank">catedraldesegovia.es</a><button class="copy-btn" data-copy="https://www.catedraldesegovia.es">复制</button></span>
+                            </div>
+                        </div>
+                        <div class="attraction-tips">
+                            <div class="tips-label">TIPS</div>
+                            <p class="tips-text">与城堡和渡槽构成完美步行路线，参观后可在主广场品尝烤乳猪</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-disclaimer">以上数据仅供参考，出行前请以各景点官方网站为准。</p>
+            <p class="footer-copyright">2026 西班牙历史旅行手册</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        let lastScrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            lastScrollY = scrollY;
+        });
+
+        // Copy functionality
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const textToCopy = this.getAttribute('data-copy');
+                
+                const copyToClipboard = (text) => {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        return navigator.clipboard.writeText(text);
+                    } else {
+                        const textarea = document.createElement('textarea');
+                        textarea.value = text;
+                        textarea.style.position = 'fixed';
+                        textarea.style.opacity = '0';
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        const result = document.execCommand('copy');
+                        document.body.removeChild(textarea);
+                        return Promise.resolve(result);
+                    }
+                };
+
+                copyToClipboard(textToCopy).then(() => {
+                    const originalText = this.textContent;
+                    this.textContent = '已复制';
+                    this.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.classList.remove('copied');
+                    }, 1500);
+                });
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body></html>
