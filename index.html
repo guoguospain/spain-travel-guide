@@ -1558,8 +1558,9 @@
 
         .mobile-menu-link-icon { font-size: 16px; flex-shrink: 0; width: 22px; text-align: center; }
 
-        /* City quick-nav bar */
+        /* City quick-nav bar — desktop hidden, mobile only */
         .city-quick-nav {
+            display: none;
             background: var(--deep);
             position: sticky;
             top: 70px;
@@ -1735,10 +1736,11 @@
             .transport-desc { margin-bottom: 6px; }
         }
 
-        /* Mobile: show hamburger, hide desktop menu */
+        /* Mobile: show hamburger, hide desktop menu, show city quick-nav */
         @media (max-width: 768px) {
             .nav-hamburger { display: flex; }
             .nav-menu { display: none; }
+            .city-quick-nav { display: block; }
         }
 
         /* Print styles */
