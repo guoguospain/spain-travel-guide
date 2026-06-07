@@ -1087,104 +1087,10 @@
             color: var(--text-secondary);
         }
 
-        .reminder-btn {
-            margin-top: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--accent);
-            background: var(--accent);
-            color: #fff;
-            border-radius: 2px;
-            padding: 7px 12px;
-            cursor: pointer;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 12px;
-            transition: all 0.3s ease-out;
-        }
-
-        .reminder-btn:hover {
-            background: #a97826;
-            border-color: #a97826;
-        }
-
-        .reminder-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            background: rgba(0,0,0,0.45);
-        }
-
-        .reminder-modal.active {
-            display: flex;
-        }
-
-        .reminder-dialog {
-            width: min(440px, 100%);
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.22);
-        }
-
-        .reminder-dialog h3 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 22px;
-            font-weight: 400;
-            margin-bottom: 8px;
-        }
-
-        .reminder-dialog p {
+        .ticket-info {
+            margin-top: 8px;
             font-size: 13px;
             color: var(--text-secondary);
-            margin-bottom: 16px;
-            line-height: 1.7;
-        }
-
-        .reminder-dialog label {
-            display: block;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 12px;
-            color: var(--text-primary);
-            margin-bottom: 6px;
-        }
-
-        .reminder-dialog input {
-            width: 100%;
-            border: 1px solid var(--border);
-            border-radius: 3px;
-            padding: 10px 12px;
-            font-size: 14px;
-            margin-bottom: 16px;
-            background: var(--card-bg);
-            color: var(--text-primary);
-        }
-
-        .reminder-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
-        .modal-btn {
-            border: 1px solid var(--border);
-            background: var(--card-bg);
-            color: var(--text-primary);
-            border-radius: 2px;
-            padding: 8px 14px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .modal-btn.primary {
-            border-color: var(--accent);
-            background: var(--accent);
-            color: #fff;
         }
 
         /* Price Display */
@@ -1771,7 +1677,7 @@
 
         /* Print styles */
         @media print {
-            .nav, .hero-search-wrap, .reminder-btn, .copy-btn,
+            .nav, .hero-search-wrap, .copy-btn,
             .routes-toggle, #back-to-top, .city-quick-nav,
             #progress-bar, .mobile-menu, .mobile-menu-overlay,
             .hero-arrow, .nav-hamburger, .toast-msg { display: none !important; }
@@ -2459,7 +2365,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">国事活动期间临时关闭，出发前官网确认；内部多处不可拍照；强烈建议租借含中文的官方语音导览器</p>
-                        <button type="button" class="reminder-btn" data-title="马德里皇宫" data-days="7" data-booking="提前一周">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2493,7 +2399,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">大包须寄存入口处；馆内全程禁止拍照；免费时段排队时间较长；强烈建议租中文语音导览器</p>
-                        <button type="button" class="reminder-btn" data-title="普拉多国家博物馆" data-days="7" data-booking="提前一周">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2527,7 +2433,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">《格尔尼卡》禁止拍照；与普拉多步行约5分钟，可安排同日参观；建议留2小时以上</p>
-                        <button type="button" class="reminder-btn" data-title="索菲亚王后艺术中心" data-days="7" data-booking="提前一周">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2561,7 +2467,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">水晶宫免费入内，可查询展期；清晨和傍晚光线最美；避免正午阳光暴晒</p>
-                        <button type="button" class="reminder-btn" data-title="丽池公园" data-days="0" data-booking="不需要预约">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2611,7 +2517,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">旺季至少提前2周购票，含塔楼票更早售罄；内部为宗教场所请保持肃静；导览器支持中文</p>
-                        <button type="button" class="reminder-btn" data-title="圣家堂" data-days="60" data-booking="提前2个月以上">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2645,7 +2551,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">必须提前官网分时购票，现场常售罄；建议开园后第一场人少；需步行上坡，穿舒适的鞋</p>
-                        <button type="button" class="reminder-btn" data-title="桂尔公园" data-days="30" data-booking="提前1个月">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2679,7 +2585,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">AR导览体验生动，强烈推荐；夜间版灯光效果震撼；与米拉之家同在感恩大道，可串联参观</p>
-                        <button type="button" class="reminder-btn" data-title="巴特罗之家" data-days="30" data-booking="提前1个月">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2713,7 +2619,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">屋顶露台是最大亮点，雨天可能关闭；语音导览支持中文；与巴特罗之家步行约5分钟</p>
-                        <button type="button" class="reminder-btn" data-title="米拉之家" data-days="7" data-booking="提前一周">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2747,7 +2653,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">每月第一个周日免费需提前线上预约；周四17:00-20:00优惠场；位于哥特区，步行可达</p>
-                        <button type="button" class="reminder-btn" data-title="毕加索博物馆" data-days="7" data-booking="提前一周">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2781,7 +2687,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">官网分时购票；Visita Catedral含屋顶和音频导览体验；夜游限额需提前预订；弥撒期间不开放游览（周日上午）</p>
-                        <button type="button" class="reminder-btn" data-title="巴塞罗那主教座堂" data-days="0" data-booking="可现场买票">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2829,7 +2735,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">纳斯里德宫分时入场，错过预定时段不得入内；门票类型较多，全宫殿参观买 Alhambra General；夜间场另需单独购票</p>
-                        <button type="button" class="reminder-btn" data-title="阿尔罕布拉宫" data-days="60" data-booking="提前2个月以上">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2863,7 +2769,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">票多可现场购票；与王室礼拜堂联票；内部禁止拍照；步行可达阿尔拜辛老城</p>
-                        <button type="button" class="reminder-btn" data-title="格拉纳达主教座堂" data-days="0" data-booking="可现场买票">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2897,7 +2803,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">日落前1小时到达占位；上山有两条路，建议从阿尔拜辛区步行穿越白色老街上山；小心扒手</p>
-                        <button type="button" class="reminder-btn" data-title="圣尼古拉斯观景台" data-days="0" data-booking="不需要预约">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2932,7 +2838,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">有官网语音讲解；注意午休关门时段（约14:00-16:00）；教堂不大，参观约30分钟</p>
-                        <button type="button" class="reminder-btn" data-title="圣胡安迪奥斯大教堂" data-days="0" data-booking="可现场买票">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2980,7 +2886,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">线上购票省€1且可跳过长队；周日免费场限额极少需排队；登塔后可继续参观教堂本身</p>
-                        <button type="button" class="reminder-btn" data-title="塞维利亚大教堂与希拉尔达塔" data-days="30" data-booking="提前1个月">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3014,7 +2920,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">旺季提前至少1周线上购票；官方App有免费中文语音导览；《权力的游戏》拍摄地，建议告知同行者</p>
-                        <button type="button" class="reminder-btn" data-title="塞维利亚王宫" data-days="30" data-booking="提前1个月">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3093,7 +2999,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">官方语音导览内容详尽，强烈推荐；早上开门第一场光线透过彩窗照入柱廊最美；弥撒免费时段仅可进入约60%区域</p>
-                        <button type="button" class="reminder-btn" data-title="科尔多瓦大清真寺-主教座堂" data-days="7" data-booking="提前一周">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3143,7 +3049,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">中午光线透过"透明祭坛"穹顶约11:00-12:00最为壮观；内部禁止拍照；语音导览含中文推荐购买</p>
-                        <button type="button" class="reminder-btn" data-title="托莱多大教堂" data-days="0" data-booking="可现场买票">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3193,7 +3099,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">日出和日落时分光线最美，从台阶高处俯拍最佳角度</p>
-                        <button type="button" class="reminder-btn" data-title="塞哥维亚古罗马渡槽" data-days="0" data-booking="不需要预约">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3232,7 +3138,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">含塔楼票每日限量，建议线上提前购买；塔楼152级台阶较窄；语音导览暂不含中文</p>
-                        <button type="button" class="reminder-btn" data-title="塞哥维亚城堡" data-days="7" data-booking="提前一周">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3271,7 +3177,7 @@
                         <div class="attraction-tips">
                             <div class="tips-label">提示</div>
                             <p class="tips-text">与城堡和渡槽构成完美步行路线，建议连同参观；参观后可在主广场品尝百年老店Mesón de Cándido的烤乳猪</p>
-                        <button type="button" class="reminder-btn" data-title="塞哥维亚大教堂" data-days="0" data-booking="可现场买票">添加门票预约提醒</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3290,42 +3196,29 @@
         </div>
     </footer>
 
-    <div class="reminder-modal" id="reminderModal" aria-hidden="true">
-        <div class="reminder-dialog" role="dialog" aria-modal="true" aria-labelledby="reminderTitle">
-            <h3 id="reminderTitle">添加门票预约提醒</h3>
-            <p id="reminderCopy">选择旅行日期后，系统将直接打开日历 App 添加提醒。</p>
-            <label for="travelDateInput">我要旅行的日期</label>
-            <input type="date" id="travelDateInput">
-            <div class="reminder-actions">
-                <button type="button" class="modal-btn" id="closeReminder">取消</button>
-                <button type="button" class="modal-btn primary" id="createReminder">添加到日历</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         const attractionDetails = {
-            '马德里皇宫': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前一周', days: 7 },
-            '普拉多国家博物馆': { duration: '2.5-4小时', audio: '有官方语音讲解', booking: '提前一周', days: 7 },
-            '索菲亚王后艺术中心': { duration: '1.5-2.5小时', audio: '有官方语音讲解', booking: '提前一周', days: 7 },
-            '丽池公园': { duration: '1-2小时', audio: '无官方语音讲解', booking: '不需要预约', days: 0 },
-            '圣家堂': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前2个月以上', days: 60 },
-            '桂尔公园': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前1个月', days: 30 },
-            '巴特罗之家': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '提前1个月', days: 30 },
-            '米拉之家': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '提前一周', days: 7 },
-            '毕加索博物馆': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前一周', days: 7 },
-            '巴塞罗那主教座堂': { duration: '45-75分钟', audio: '部分票型含导览', booking: '可现场买票', days: 0 },
-            '阿尔罕布拉宫': { duration: '3-4小时', audio: '无官方语音讲解', booking: '提前2个月以上', days: 60 },
-            '格拉纳达主教座堂': { duration: '45-60分钟', audio: '有官方语音讲解', booking: '可现场买票', days: 0 },
-            '圣胡安迪奥斯大教堂': { duration: '40-60分钟', audio: '部分时段有导览', booking: '可现场买票', days: 0 },
-            '圣尼古拉斯观景台': { duration: '30-60分钟', audio: '无官方语音讲解', booking: '不需要预约', days: 0 },
-            '塞维利亚大教堂与希拉尔达塔': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前1个月', days: 30 },
-            '塞维利亚王宫': { duration: '2-3小时', audio: '有官方语音讲解', booking: '提前1个月', days: 30 },
-            '科尔多瓦大清真寺-主教座堂': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '提前一周', days: 7 },
-            '托莱多大教堂': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '可现场买票', days: 0 },
-            '塞哥维亚古罗马渡槽': { duration: '30-45分钟', audio: '无官方语音讲解', booking: '不需要预约', days: 0 },
-            '塞哥维亚城堡': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '提前一周', days: 7 },
-            '塞哥维亚大教堂': { duration: '45-75分钟', audio: '有官方语音讲解', booking: '可现场买票', days: 0 }
+            '马德里皇宫': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前一周', ticket: '电子票二维码入场，无需携带护照' },
+            '普拉多国家博物馆': { duration: '2.5-4小时', audio: '有官方语音讲解', booking: '提前一周', ticket: '电子票二维码入场，无需携带护照' },
+            '索菲亚王后艺术中心': { duration: '1.5-2.5小时', audio: '有官方语音讲解', booking: '提前一周', ticket: '电子票二维码入场，无需携带护照' },
+            '丽池公园': { duration: '1-2小时', audio: '无官方语音讲解', booking: '不需要预约', ticket: '免费入园，无需门票' },
+            '圣家堂': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前2个月以上', ticket: '电子票二维码入场，无需携带护照' },
+            '桂尔公园': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前1个月', ticket: '电子票二维码入场，无需携带护照' },
+            '巴特罗之家': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '提前1个月', ticket: '电子票二维码入场，无需携带护照' },
+            '米拉之家': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '提前一周', ticket: '电子票二维码入场，无需携带护照' },
+            '毕加索博物馆': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前一周', ticket: '电子票二维码入场，无需携带护照' },
+            '巴塞罗那主教座堂': { duration: '45-75分钟', audio: '部分票型含导览', booking: '可现场买票', ticket: '现场购票或电子票均可，无需护照' },
+            '阿尔罕布拉宫': { duration: '3-4小时', audio: '无官方语音讲解', booking: '提前2个月以上', ticket: '必须携带护照：票面实名制，入场须核验身份证件' },
+            '格拉纳达主教座堂': { duration: '45-60分钟', audio: '有官方语音讲解', booking: '可现场买票', ticket: '现场购票或电子票均可，无需护照' },
+            '圣胡安迪奥斯大教堂': { duration: '40-60分钟', audio: '部分时段有导览', booking: '可现场买票', ticket: '现场购票，无需护照' },
+            '圣尼古拉斯观景台': { duration: '30-60分钟', audio: '无官方语音讲解', booking: '不需要预约', ticket: '免费参观，无需门票' },
+            '塞维利亚大教堂与希拉尔达塔': { duration: '1.5-2小时', audio: '有官方语音讲解', booking: '提前1个月', ticket: '电子票二维码入场，无需携带护照' },
+            '塞维利亚王宫': { duration: '2-3小时', audio: '有官方语音讲解', booking: '提前1个月', ticket: '电子票二维码入场，无需携带护照' },
+            '科尔多瓦大清真寺-主教座堂': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '提前一周', ticket: '电子票二维码入场，无需携带护照' },
+            '托莱多大教堂': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '可现场买票', ticket: '现场购票或电子票均可，无需护照' },
+            '塞哥维亚古罗马渡槽': { duration: '30-45分钟', audio: '无官方语音讲解', booking: '不需要预约', ticket: '免费参观，无需门票' },
+            '塞哥维亚城堡': { duration: '1-1.5小时', audio: '有官方语音讲解', booking: '提前一周', ticket: '电子票二维码入场，无需携带护照' },
+            '塞哥维亚大教堂': { duration: '45-75分钟', audio: '有官方语音讲解', booking: '可现场买票', ticket: '现场购票或电子票均可，无需护照' }
         };
 
         const attractionImageSets = {
@@ -3438,118 +3331,13 @@ document.querySelectorAll('.attraction-card').forEach((card, index) => {
                 titleEn.insertAdjacentElement('afterend', meta);
 
                 const tips = card.querySelector('.attraction-tips');
-                if (tips && !tips.querySelector('.reminder-btn')) {
-                    const btn = document.createElement('button');
-                    btn.type = 'button';
-                    btn.className = 'reminder-btn';
-                    btn.textContent = '添加门票预约提醒';
-                    btn.dataset.title = title;
-                    btn.dataset.days = String(detail.days);
-                    btn.dataset.booking = detail.booking;
-                    tips.appendChild(btn);
+                if (tips && detail.ticket && !tips.querySelector('.ticket-info')) {
+                    const ticketInfo = document.createElement('p');
+                    ticketInfo.className = 'ticket-info';
+                    ticketInfo.textContent = '入场方式：' + detail.ticket;
+                    tips.appendChild(ticketInfo);
                 }
             }
-        });
-
-        const reminderModal = document.getElementById('reminderModal');
-        const reminderTitle = document.getElementById('reminderTitle');
-        const reminderCopy = document.getElementById('reminderCopy');
-        const travelDateInput = document.getElementById('travelDateInput');
-        const closeReminder = document.getElementById('closeReminder');
-        const createReminder = document.getElementById('createReminder');
-        let activeReminder = null;
-
-        const formatDateForICS = (date) => {
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            return `${year}${month}${day}`;
-        };
-
-        const escapeICS = (value) => value.replace(/\\/g, '\\\\').replace(/,/g, '\\,').replace(/;/g, '\\;').replace(/\n/g, '\\n');
-
-        const openReminderModal = (data) => {
-            activeReminder = data;
-            reminderTitle.textContent = `添加 ${data.title} 门票提醒`;
-            reminderCopy.textContent = data.days > 0
-                ? `建议${data.booking}预约。选择旅行日期后，会自动生成购票提醒日。`
-                : '该景点通常不需要预约。选择旅行日期后，会生成出行当天确认开放时间的提醒。';
-            travelDateInput.value = '';
-            reminderModal.classList.add('active');
-            reminderModal.setAttribute('aria-hidden', 'false');
-            travelDateInput.focus();
-        };
-
-        const closeReminderModal = () => {
-            reminderModal.classList.remove('active');
-            reminderModal.setAttribute('aria-hidden', 'true');
-            activeReminder = null;
-        };
-
-        document.querySelectorAll('.reminder-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                openReminderModal({
-                    title: btn.dataset.title,
-                    days: Number(btn.dataset.days || 0),
-                    booking: btn.dataset.booking || '提前预约'
-                });
-            });
-        });
-
-        closeReminder.addEventListener('click', closeReminderModal);
-        reminderModal.addEventListener('click', (event) => {
-            if (event.target === reminderModal) closeReminderModal();
-        });
-
-        createReminder.addEventListener('click', () => {
-            if (!activeReminder || !travelDateInput.value) {
-                travelDateInput.focus();
-                return;
-            }
-
-            const travelDate = new Date(`${travelDateInput.value}T12:00:00`);
-            const reminderDate = new Date(travelDate);
-            reminderDate.setDate(reminderDate.getDate() - activeReminder.days);
-
-            const today = new Date();
-            today.setHours(12, 0, 0, 0);
-            const finalDate = reminderDate < today ? today : reminderDate;
-            const summary = activeReminder.days > 0
-                ? `预约${activeReminder.title}门票`
-                : `确认${activeReminder.title}开放时间`;
-            const description = activeReminder.days > 0
-                ? `${activeReminder.title}建议${activeReminder.booking}买票。旅行日期：${travelDateInput.value}`
-                : `${activeReminder.title}通常不需要预约，出发前确认开放时间和临时闭馆信息。旅行日期：${travelDateInput.value}`;
-
-            const ics = [
-                'BEGIN:VCALENDAR',
-                'VERSION:2.0',
-                'PRODID:-//Spain Travel Handbook//Ticket Reminder//ZH',
-                'CALSCALE:GREGORIAN',
-                'BEGIN:VEVENT',
-                `UID:${Date.now()}-${Math.random().toString(16).slice(2)}@spain-travel-handbook`,
-                `DTSTAMP:${formatDateForICS(new Date())}T090000`,
-                `DTSTART;VALUE=DATE:${formatDateForICS(finalDate)}`,
-                `SUMMARY:${escapeICS(summary)}`,
-                `DESCRIPTION:${escapeICS(description)}`,
-                'BEGIN:VALARM',
-                'TRIGGER:-PT9H',
-                'ACTION:DISPLAY',
-                `DESCRIPTION:${escapeICS(summary)}`,
-                'END:VALARM',
-                'END:VEVENT',
-                'END:VCALENDAR'
-            ].join('\r\n');
-
-            const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            setTimeout(() => URL.revokeObjectURL(url), 1000);
-            closeReminderModal();
         });
 
         // Routes table expand/collapse
