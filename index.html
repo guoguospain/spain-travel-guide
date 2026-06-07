@@ -1440,10 +1440,376 @@
                 font-size: 15px;
             }
         }
+
+        /* ================================================
+           ENHANCEMENTS: PROGRESS BAR · MOBILE NAV ·
+           CITY QUICK-NAV · ANIMATIONS · BACK-TO-TOP
+           ================================================ */
+
+        /* Reading progress bar */
+        #progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            z-index: 2001;
+            border-radius: 0 2px 2px 0;
+            pointer-events: none;
+            transition: width 0.08s linear;
+        }
+
+        /* Hamburger button */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 38px;
+            height: 38px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 1100;
+            flex-shrink: 0;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: rgba(255,255,255,0.92);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled .nav-hamburger span {
+            background: var(--text-primary);
+        }
+
+        .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* Mobile menu overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.48);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .mobile-menu-overlay.open { opacity: 1; visibility: visible; }
+
+        /* Mobile menu drawer */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(300px, 82vw);
+            height: 100%;
+            background: var(--card-bg);
+            z-index: 1050;
+            transition: right 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 40px rgba(43,41,38,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open { right: 0; }
+
+        .mobile-menu-header {
+            padding: 24px 24px 16px;
+            border-bottom: 1px solid var(--border);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            letter-spacing: 0.12em;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 22px;
+            line-height: 1;
+            padding: 4px;
+            transition: color 0.2s;
+        }
+
+        .mobile-menu-close:hover { color: var(--accent); }
+
+        .mobile-menu-group {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu-group-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 9.5px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 15px;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(222,214,200,0.5);
+            transition: color 0.2s, padding-left 0.2s;
+        }
+
+        .mobile-menu-link:last-child { border-bottom: none; }
+        .mobile-menu-link:hover { color: var(--accent); padding-left: 4px; }
+
+        .mobile-menu-link-icon { font-size: 16px; flex-shrink: 0; width: 22px; text-align: center; }
+
+        /* City quick-nav bar */
+        .city-quick-nav {
+            background: var(--deep);
+            position: sticky;
+            top: 70px;
+            z-index: 89;
+            border-bottom: 1px solid rgba(181,149,91,0.15);
+        }
+
+        .city-quick-nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .city-quick-nav-inner::-webkit-scrollbar { display: none; }
+
+        .city-quick-link {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.42);
+            text-decoration: none;
+            padding: 13px 13px;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.22s ease;
+            flex-shrink: 0;
+        }
+
+        .city-quick-link:hover { color: rgba(255,255,255,0.82); }
+        .city-quick-link.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+        /* Scroll-reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-d1 { transition-delay: 0.08s; }
+        .reveal-d2 { transition-delay: 0.16s; }
+        .reveal-d3 { transition-delay: 0.24s; }
+
+        /* Back to top */
+        #back-to-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 900;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: all 0.35s ease;
+            box-shadow: 0 4px 18px rgba(181,149,91,0.45);
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        #back-to-top:hover {
+            background: #a97826;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 26px rgba(181,149,91,0.55);
+        }
+
+        #back-to-top svg { width: 20px; height: 20px; stroke: #fff; fill: none; }
+
+        /* Toast notification */
+        .toast-msg {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(16px);
+            background: var(--deep);
+            color: rgba(255,255,255,0.9);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 13px;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.28s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+        }
+
+        .toast-msg.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        /* Tip emoji icon */
+        .tip-emoji {
+            font-size: 22px;
+            display: block;
+            margin-bottom: 7px;
+            line-height: 1;
+        }
+
+        /* Improved tip card hover */
+        .tip-item {
+            transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .tip-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(43,41,38,0.08);
+        }
+
+        /* City section separator */
+        .city-separator {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border) 25%, var(--border) 75%, transparent 100%);
+            margin: 4px 0 40px;
+            position: relative;
+        }
+
+        .city-separator::after {
+            content: '✦';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg);
+            padding: 0 14px;
+            color: var(--accent);
+            font-size: 10px;
+            opacity: 0.55;
+        }
+
+        /* Taller attraction images */
+        .attraction-image { height: 240px !important; }
+
+        /* Nicer links inside attraction info */
+        .attraction-info a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(181,149,91,0.3);
+            transition: border-color 0.2s;
+        }
+
+        .attraction-info a:hover { border-bottom-color: var(--accent); }
+
+        /* Mobile: horizontal transport cards */
+        @media (max-width: 620px) {
+            .transport-card {
+                display: flex;
+                align-items: flex-start;
+                gap: 14px;
+                text-align: left;
+                padding: 16px 18px;
+            }
+
+            .transport-icon { margin: 0; flex-shrink: 0; }
+
+            .transport-name { font-size: 15px; margin-bottom: 2px; }
+            .transport-price { margin-bottom: 2px; }
+            .transport-desc { margin-bottom: 6px; }
+        }
+
+        /* Mobile: show hamburger, hide desktop menu */
+        @media (max-width: 768px) {
+            .nav-hamburger { display: flex; }
+            .nav-menu { display: none; }
+        }
+
+        /* Print styles */
+        @media print {
+            .nav, .hero-search-wrap, .reminder-btn, .copy-btn,
+            .routes-toggle, #back-to-top, .city-quick-nav,
+            #progress-bar, .mobile-menu, .mobile-menu-overlay,
+            .hero-arrow, .nav-hamburger, .toast-msg { display: none !important; }
+
+            .hero { height: auto; min-height: 28vh; padding: 56px 24px; }
+            .attraction-card { break-inside: avoid; }
+            .city-section:not(:first-child) { page-break-before: always; }
+        }
     </style>
     <script src="./assets/js/lucide.min.js"></script>
 </head>
 <body>
+    <div id="progress-bar"></div>
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu-header">
+            SPAIN TRAVEL
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="关闭菜单">×</button>
+        </div>
+        <div class="mobile-menu-group">
+            <div class="mobile-menu-group-label">指南</div>
+            <a href="#tips" class="mobile-menu-link"><span class="mobile-menu-link-icon">💡</span>旅行贴士</a>
+            <a href="#map" class="mobile-menu-link"><span class="mobile-menu-link-icon">🗺️</span>分布地图</a>
+            <a href="#festivals" class="mobile-menu-link"><span class="mobile-menu-link-icon">🎉</span>节日月历</a>
+            <a href="#transport" class="mobile-menu-link"><span class="mobile-menu-link-icon">🚄</span>城市交通</a>
+        </div>
+        <div class="mobile-menu-group">
+            <div class="mobile-menu-group-label">城市</div>
+            <a href="#madrid" class="mobile-menu-link"><span class="mobile-menu-link-icon">👑</span>马德里</a>
+            <a href="#barcelona" class="mobile-menu-link"><span class="mobile-menu-link-icon">🏛️</span>巴塞罗那</a>
+            <a href="#granada" class="mobile-menu-link"><span class="mobile-menu-link-icon">🏰</span>格拉纳达</a>
+            <a href="#sevilla" class="mobile-menu-link"><span class="mobile-menu-link-icon">💃</span>塞维利亚</a>
+            <a href="#cordoba" class="mobile-menu-link"><span class="mobile-menu-link-icon">🕌</span>科尔多瓦</a>
+            <a href="#toledo" class="mobile-menu-link"><span class="mobile-menu-link-icon">⚔️</span>托莱多</a>
+            <a href="#segovia" class="mobile-menu-link"><span class="mobile-menu-link-icon">🏟️</span>塞哥维亚</a>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <a href="#" class="nav-logo">SPAIN TRAVEL</a>
@@ -1467,6 +1833,11 @@
                 </div>
             </div>
         </div>
+        <button class="nav-hamburger" id="navHamburger" aria-label="展开菜单" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <!-- Hero -->
@@ -1504,6 +1875,23 @@
             </svg>
         </div>
     </section>
+
+    <!-- Sticky City Quick-Nav -->
+    <nav class="city-quick-nav" id="cityQuickNav" aria-label="快速导航">
+        <div class="city-quick-nav-inner">
+            <a href="#tips"      class="city-quick-link">贴士</a>
+            <a href="#map"       class="city-quick-link">地图</a>
+            <a href="#festivals" class="city-quick-link">节日</a>
+            <a href="#transport" class="city-quick-link">交通</a>
+            <a href="#madrid"    class="city-quick-link">马德里</a>
+            <a href="#barcelona" class="city-quick-link">巴塞罗那</a>
+            <a href="#granada"   class="city-quick-link">格拉纳达</a>
+            <a href="#sevilla"   class="city-quick-link">塞维利亚</a>
+            <a href="#cordoba"   class="city-quick-link">科尔多瓦</a>
+            <a href="#toledo"    class="city-quick-link">托莱多</a>
+            <a href="#segovia"   class="city-quick-link">塞哥维亚</a>
+        </div>
+    </nav>
 
     <main class="main">
         <!-- Travel Tips -->
@@ -2178,6 +2566,8 @@
             
         </section>
 
+        <div class="city-separator" aria-hidden="true"></div>
+
         <!-- Barcelona -->
         <section class="city-section" id="barcelona">
             <div class="city-header">
@@ -2394,6 +2784,8 @@
             </div>
         </section>
 
+        <div class="city-separator" aria-hidden="true"></div>
+
         <!-- Granada -->
         <section class="city-section" id="granada">
             <div class="city-header">
@@ -2543,6 +2935,8 @@
             </div>
         </section>
 
+        <div class="city-separator" aria-hidden="true"></div>
+
         <!-- Sevilla -->
         <section class="city-section" id="sevilla">
             <div class="city-header">
@@ -2654,6 +3048,8 @@
             
         </section>
 
+        <div class="city-separator" aria-hidden="true"></div>
+
         <!-- Cordoba -->
         <section class="city-section" id="cordoba">
             <div class="city-header">
@@ -2702,6 +3098,8 @@
             
         </section>
 
+        <div class="city-separator" aria-hidden="true"></div>
+
         <!-- Toledo -->
         <section class="city-section" id="toledo">
             <div class="city-header">
@@ -2749,6 +3147,8 @@
             
             
         </section>
+
+        <div class="city-separator" aria-hidden="true"></div>
 
         <!-- Segovia -->
         <section class="city-section" id="segovia">
@@ -3370,7 +3770,13 @@
             });
         });
 
-        // Smooth scroll for navigation links
+        // Smooth scroll for navigation links — accounts for nav + city quick-nav offset
+        const getScrollOffset = () => {
+            const navEl = document.getElementById('nav');
+            const qNav = document.getElementById('cityQuickNav');
+            return (navEl ? navEl.offsetHeight : 70) + (qNav ? qNav.offsetHeight : 0) + 10;
+        };
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
@@ -3378,15 +3784,174 @@
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
-                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 16;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - getScrollOffset();
                     window.scrollTo({ top: targetPosition, behavior: 'smooth' });
                 }
             });
+        });
+
+        // ── Reading progress bar ──────────────────────────────
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            const updateProgress = () => {
+                const scrollTop = document.documentElement.scrollTop;
+                const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                progressBar.style.width = docH > 0 ? Math.min((scrollTop / docH) * 100, 100) + '%' : '0%';
+            };
+            window.addEventListener('scroll', updateProgress, { passive: true });
+        }
+
+        // ── Hamburger / mobile drawer ─────────────────────────
+        const hamburger   = document.getElementById('navHamburger');
+        const mobileMenu  = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileClose = document.getElementById('mobileMenuClose');
+
+        const setMobileMenu = (open) => {
+            hamburger?.classList.toggle('open', open);
+            mobileMenu?.classList.toggle('open', open);
+            mobileOverlay?.classList.toggle('open', open);
+            hamburger?.setAttribute('aria-expanded', String(open));
+            mobileMenu?.setAttribute('aria-hidden', String(!open));
+            document.body.style.overflow = open ? 'hidden' : '';
+        };
+
+        hamburger?.addEventListener('click', () => setMobileMenu(!mobileMenu.classList.contains('open')));
+        mobileOverlay?.addEventListener('click', () => setMobileMenu(false));
+        mobileClose?.addEventListener('click', () => setMobileMenu(false));
+        mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMobileMenu(false)));
+
+        // ── City quick-nav active highlight ──────────────────
+        const quickLinks = document.querySelectorAll('.city-quick-link');
+        const sectionAnchors = ['tips','map','festivals','transport','madrid','barcelona','granada','sevilla','cordoba','toledo','segovia'];
+
+        const updateQuickNav = () => {
+            const offset = getScrollOffset() + 40;
+            let current = '';
+            sectionAnchors.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.getBoundingClientRect().top + window.scrollY <= window.scrollY + offset) current = id;
+            });
+            quickLinks.forEach(link => {
+                const id = link.getAttribute('href')?.slice(1);
+                link.classList.toggle('active', id === current);
+            });
+            // Auto-scroll active link into view in the quick-nav
+            const activeLink = document.querySelector('.city-quick-link.active');
+            if (activeLink) {
+                const inner = document.querySelector('.city-quick-nav-inner');
+                const linkLeft = activeLink.offsetLeft;
+                const linkRight = linkLeft + activeLink.offsetWidth;
+                const innerLeft = inner.scrollLeft;
+                const innerRight = innerLeft + inner.offsetWidth;
+                if (linkLeft < innerLeft) inner.scrollLeft = linkLeft - 16;
+                else if (linkRight > innerRight) inner.scrollLeft = linkRight - inner.offsetWidth + 16;
+            }
+        };
+
+        window.addEventListener('scroll', updateQuickNav, { passive: true });
+        updateQuickNav();
+
+        // ── Back to top ───────────────────────────────────────
+        const backToTop = document.getElementById('back-to-top');
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                backToTop.classList.toggle('visible', window.scrollY > 500);
+            }, { passive: true });
+            backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        }
+
+        // ── Toast utility ─────────────────────────────────────
+        let toastTimer;
+        const showToast = (msg, ms = 2200) => {
+            const el = document.getElementById('toastMsg');
+            if (!el) return;
+            clearTimeout(toastTimer);
+            el.textContent = msg;
+            el.classList.add('show');
+            toastTimer = setTimeout(() => el.classList.remove('show'), ms);
+        };
+
+        // Override copy buttons to use toast instead of inline text change
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            const clone = btn.cloneNode(true);
+            btn.replaceWith(clone);
+            clone.addEventListener('click', function() {
+                const text = this.getAttribute('data-copy');
+                const copy = t => navigator.clipboard?.writeText(t) ?? Promise.resolve(
+                    (() => { const ta = document.createElement('textarea'); ta.value = t;
+                        ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta);
+                        ta.select(); document.execCommand('copy'); document.body.removeChild(ta); })()
+                );
+                copy(text).then(() => showToast('✓ 已复制到剪贴板'));
+            });
+        });
+
+        // ── Scroll-reveal animation ───────────────────────────
+        const revealEls = () => {
+            // Apply reveal class to key elements
+            document.querySelectorAll('.attraction-card').forEach((el, i) => {
+                el.classList.add('reveal');
+                if (i % 2 === 1) el.classList.add('reveal-d1');
+            });
+            document.querySelectorAll('.transport-card').forEach((el, i) => {
+                el.classList.add('reveal');
+                el.classList.add(`reveal-d${Math.min(i, 2)}`);
+            });
+            document.querySelectorAll('.section-title, .section-label').forEach(el => {
+                el.classList.add('reveal');
+            });
+
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+
+                document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+            } else {
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+            }
+        };
+
+        revealEls();
+
+        // ── Tip card emojis ───────────────────────────────────
+        const tipEmojiMap = {
+            '最佳旅行季节': '☀️', '货币': '💶', '语言': '🗣️', '紧急电话': '🚨',
+            '防盗': '🎒', '用餐时间': '🍽️', '午休': '😴', '着装': '👗',
+            '省钱': '💰', '交通': '🚄', '小费': '💳', '防晒': '🌞',
+            '门票': '🎫', '饮水': '💧', '购物': '🛍️', '网络': '📶',
+            '插座': '🔌', '住宿': '🏨', '节假日': '📅', '退税': '🧾'
+        };
+
+        document.querySelectorAll('.tip-label').forEach(label => {
+            const emoji = tipEmojiMap[label.textContent.trim()];
+            if (emoji) {
+                const span = document.createElement('span');
+                span.className = 'tip-emoji';
+                span.textContent = emoji;
+                label.parentElement.insertBefore(span, label);
+            }
         });
     </script>
 
     <script>
         if (typeof lucide !== 'undefined') lucide.createIcons();
     </script>
+
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="回到顶部" title="回到顶部">
+        <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <!-- Toast notification -->
+    <div class="toast-msg" id="toastMsg" aria-live="polite"></div>
 
 </body></html>
