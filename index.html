@@ -1481,6 +1481,8 @@
                 height: 52px;
             }
 
+            .city-quick-nav { top: 52px; }
+
             .nav-logo {
                 font-size: 14px;
             }
@@ -1958,25 +1960,25 @@
             .tip-label { font-size: 13px; }
             .tip-content { font-size: 12px; line-height: 1.6; }
 
-            /* Festival slider: show 3 cards at once, content drives height */
-            .festival-grid { gap: 8px; }
-            .festival-card { flex: 0 0 calc(32vw - 10px); height: auto; min-height: 0; }
-            .festival-card-content { padding: 10px 8px; }
-            .festival-month-num { font-size: 22px; }
-            .festival-month { font-size: 11px; margin-bottom: 6px; padding-bottom: 6px; }
-            .festival-list { gap: 4px; }
-            .festival-list li { font-size: 10px; line-height: 1.4; padding-left: 8px; }
+            /* Festival slider: show 2 cards at once */
+            .festival-grid { gap: 10px; }
+            .festival-card { flex: 0 0 calc(50vw - 22px); height: auto; min-height: 0; }
+            .festival-card-content { padding: 12px 10px; }
+            .festival-month-num { font-size: 26px; }
+            .festival-month { font-size: 12px; margin-bottom: 6px; padding-bottom: 6px; }
+            .festival-list { gap: 5px; }
+            .festival-list li { font-size: 11px; line-height: 1.5; padding-left: 8px; }
 
-            /* Transport: 3-column horizontal layout on mobile */
+            /* Transport: 3-column block layout on mobile */
             .transport-intro { font-size: 12.5px; }
-            .transport-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-            .transport-card { padding: 10px 6px; text-align: center; }
-            .transport-icon { width: 28px; height: 28px; margin-bottom: 8px; }
-            .transport-icon svg { width: 28px; height: 28px; }
-            .transport-name { font-size: 12px; margin-bottom: 3px; }
-            .transport-price { font-size: 10.5px; margin-bottom: 3px; }
-            .transport-desc { font-size: 10.5px; margin-bottom: 6px; }
-            .transport-link { font-size: 10px; padding: 3px 6px; }
+            .transport-cards { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+            .transport-card { display: block; padding: 10px 6px; text-align: center; }
+            .transport-icon { width: 26px; height: 26px; margin: 0 auto 6px; }
+            .transport-icon svg { width: 26px; height: 26px; }
+            .transport-name { font-size: 11px; margin-bottom: 3px; letter-spacing: 0; }
+            .transport-price { font-size: 10px; margin-bottom: 3px; }
+            .transport-desc { font-size: 10px; margin-bottom: 5px; line-height: 1.4; }
+            .transport-link { font-size: 9.5px; padding: 3px 5px; }
 
             /* Routes table */
             .routes-table th,
@@ -1988,7 +1990,7 @@
             .hero-title { font-size: 24px; }
             .main { padding: 0 12px; }
             .tip-item { flex: 0 0 170px; padding: 12px 14px; }
-            .festival-card { flex: 0 0 calc(32vw - 8px); height: auto; min-height: 0; }
+            .festival-card { flex: 0 0 calc(50vw - 20px); height: auto; min-height: 0; }
             .attraction-body { padding: 11px 12px; }
             .section { padding: 24px 0; }
             .city-number { font-size: 30px; }
