@@ -1478,6 +1478,7 @@
         @media (max-width: 480px) {
             .nav {
                 padding: 0 16px;
+                height: 52px;
             }
 
             .nav-logo {
@@ -1957,20 +1958,25 @@
             .tip-label { font-size: 13px; }
             .tip-content { font-size: 12px; line-height: 1.6; }
 
-            /* Festival slider: show 3 cards at once on small phones */
+            /* Festival slider: show 3 cards at once, content drives height */
             .festival-grid { gap: 8px; }
-            .festival-card { flex: 0 0 calc(32vw - 10px); height: 200px; min-height: 0; }
+            .festival-card { flex: 0 0 calc(32vw - 10px); height: auto; min-height: 0; }
             .festival-card-content { padding: 10px 8px; }
             .festival-month-num { font-size: 22px; }
             .festival-month { font-size: 11px; margin-bottom: 6px; padding-bottom: 6px; }
             .festival-list { gap: 4px; }
             .festival-list li { font-size: 10px; line-height: 1.4; padding-left: 8px; }
 
-            /* Transport */
-            .transport-card { padding: 13px 14px; }
-            .transport-name { font-size: 14px; }
-            .transport-price { font-size: 12px; }
-            .transport-desc { font-size: 12px; margin-bottom: 8px; }
+            /* Transport: 3-column horizontal layout on mobile */
+            .transport-intro { font-size: 12.5px; }
+            .transport-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .transport-card { padding: 10px 6px; text-align: center; }
+            .transport-icon { width: 28px; height: 28px; margin-bottom: 8px; }
+            .transport-icon svg { width: 28px; height: 28px; }
+            .transport-name { font-size: 12px; margin-bottom: 3px; }
+            .transport-price { font-size: 10.5px; margin-bottom: 3px; }
+            .transport-desc { font-size: 10.5px; margin-bottom: 6px; }
+            .transport-link { font-size: 10px; padding: 3px 6px; }
 
             /* Routes table */
             .routes-table th,
@@ -1978,11 +1984,11 @@
         }
 
         @media (max-width: 380px) {
-            .hero { height: auto; padding-top: 68px; padding-bottom: 52px; min-height: 0; }
+            .hero { height: auto; padding-top: 54px; padding-bottom: 52px; min-height: 0; }
             .hero-title { font-size: 24px; }
             .main { padding: 0 12px; }
             .tip-item { flex: 0 0 170px; padding: 12px 14px; }
-            .festival-card { flex: 0 0 calc(32vw - 8px); height: 185px; min-height: 0; }
+            .festival-card { flex: 0 0 calc(32vw - 8px); height: auto; min-height: 0; }
             .attraction-body { padding: 11px 12px; }
             .section { padding: 24px 0; }
             .city-number { font-size: 30px; }
