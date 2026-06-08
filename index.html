@@ -830,13 +830,17 @@
 
         /* Routes table collapse */
         .routes-extra {
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            display: none;
         }
 
         .routes-extra.expanded {
-            max-height: 600px;
+            display: table-row-group;
+            animation: routesFadeIn 0.3s ease;
+        }
+
+        @keyframes routesFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .routes-toggle {
@@ -1364,13 +1368,17 @@
 
             /* Routes table collapse */
         .routes-extra {
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            display: none;
         }
 
         .routes-extra.expanded {
-            max-height: 600px;
+            display: table-row-group;
+            animation: routesFadeIn 0.3s ease;
+        }
+
+        @keyframes routesFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .routes-toggle {
@@ -2008,9 +2016,24 @@
             .transport-desc { font-size: 10px; margin-bottom: 5px; line-height: 1.4; }
             .transport-link { font-size: 9.5px; padding: 3px 5px; margin-top: auto; }
 
-            /* Routes table */
+            /* Routes table: compact mobile layout, no horizontal scroll */
+            .routes-table { table-layout: fixed; overflow: hidden; }
             .routes-table th,
-            .routes-table td { font-size: 11px; padding: 9px 5px; }
+            .routes-table td { font-size: 9.5px; padding: 5px 3px; line-height: 1.3; vertical-align: middle; overflow: hidden; word-break: break-word; }
+            .routes-table th:nth-child(1),
+            .routes-table td:nth-child(1) { width: 28%; }
+            .routes-table th:nth-child(2),
+            .routes-table td:nth-child(2),
+            .routes-table th:nth-child(3),
+            .routes-table td:nth-child(3),
+            .routes-table th:nth-child(4),
+            .routes-table td:nth-child(4) { width: 21%; }
+            .routes-table th:nth-child(5),
+            .routes-table td:nth-child(5) { width: 9%; text-align: center; padding-left: 2px; padding-right: 2px; }
+            .route-tag { font-size: 8px; padding: 2px 2px; letter-spacing: 0; }
+            /* 手机端推荐列仅显示图标，隐藏文字 */
+            .rt-text { display: none; }
+            .rt-icon { font-size: 13px; }
         }
 
         @media (max-width: 380px) {
@@ -2022,6 +2045,9 @@
             .attraction-body { padding: 11px 12px; }
             .section { padding: 24px 0; }
             .city-number { font-size: 30px; }
+            .routes-table th,
+            .routes-table td { font-size: 9px; padding: 4px 2px; }
+            .route-tag { font-size: 7.5px; padding: 1px 2px; }
         }
 
         /* Print styles */
@@ -2625,80 +2651,74 @@
                 <thead>
                     <tr>
                         <th>路线</th>
-                        <th>火车时间/价格</th>
-                        <th>飞机时间/价格</th>
-                        <th>大巴时间/价格</th>
-                        <th>推荐方式</th>
+                        <th>🚄火车</th>
+                        <th>✈️飞机</th>
+                        <th>🚌大巴</th>
+                        <th>推荐</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 默认显示前3条 -->
                     <tr>
-                        <td>马德里 -<br>巴塞罗那</td>
-                        <td>2.5h<br>€40-90</td>
-                        <td>1.5h<br>€30-80</td>
-                        <td>7.5h<br>€30-45</td>
-                        <td><span class="route-tag">火车</span></td>
+                        <td>马德里→巴塞罗那</td>
+                        <td>2.5h·💶40-90</td>
+                        <td>1.5h·💶30-80</td>
+                        <td>7.5h·💶30-45</td>
+                        <td><span class="route-tag"><span class="rt-icon">🚄</span><span class="rt-text">火车</span></span></td>
                     </tr>
                     <tr>
-                        <td>马德里 -<br>塞维利亚</td>
-                        <td>2.5h<br>€35-80</td>
-                        <td>1h<br>€35-90</td>
-                        <td>6h<br>€20-30</td>
-                        <td><span class="route-tag">火车</span></td>
+                        <td>马德里→塞维利亚</td>
+                        <td>2.5h·💶35-80</td>
+                        <td>1h·💶35-90</td>
+                        <td>6h·💶20-30</td>
+                        <td><span class="route-tag"><span class="rt-icon">🚄</span><span class="rt-text">火车</span></span></td>
                     </tr>
                     <tr>
-                        <td>马德里 -<br>格拉纳达</td>
-                        <td>4h<br>€40-70</td>
-                        <td>1h<br>€35-100</td>
-                        <td>5h<br>€20-30</td>
-                        <td><span class="route-tag">火车</span></td>
+                        <td>马德里→格拉纳达</td>
+                        <td>4h·💶40-70</td>
+                        <td>1h·💶35-100</td>
+                        <td>5h·💶20-30</td>
+                        <td><span class="route-tag"><span class="rt-icon">🚄</span><span class="rt-text">火车</span></span></td>
+                    </tr>
+                </tbody>
+                <!-- 折叠区域：后5条，与上方共用同一 table 以保证列对齐 -->
+                <tbody class="routes-extra" id="routesExtra">
+                    <tr>
+                        <td>马德里→托莱多</td>
+                        <td>0.5h·💶12-15</td>
+                        <td>无直飞</td>
+                        <td>1h·💶6-10</td>
+                        <td><span class="route-tag"><span class="rt-icon">🚄</span><span class="rt-text">火车</span></span></td>
+                    </tr>
+                    <tr>
+                        <td>马德里→塞哥维亚</td>
+                        <td>0.5h·💶12-15</td>
+                        <td>无直飞</td>
+                        <td>1.5h·💶8-10</td>
+                        <td><span class="route-tag"><span class="rt-icon">🚄</span><span class="rt-text">火车</span></span></td>
+                    </tr>
+                    <tr>
+                        <td>巴塞罗那→塞维利亚</td>
+                        <td>5.5h·💶50-90</td>
+                        <td>1.5h·💶30-70</td>
+                        <td>14-16h·💶70-110</td>
+                        <td><span class="route-tag"><span class="rt-icon">✈️</span><span class="rt-text">飞机</span></span></td>
+                    </tr>
+                    <tr>
+                        <td>塞维利亚→格拉纳达</td>
+                        <td>4.5h(需转)</td>
+                        <td>无直飞</td>
+                        <td>3h·💶15-25</td>
+                        <td><span class="route-tag"><span class="rt-icon">🚌</span><span class="rt-text">大巴</span></span></td>
+                    </tr>
+                    <tr>
+                        <td>塞维利亚→科尔多瓦</td>
+                        <td>0.8h·💶15-30</td>
+                        <td>无直飞</td>
+                        <td>2h·💶10-15</td>
+                        <td><span class="route-tag"><span class="rt-icon">🚄</span><span class="rt-text">火车</span></span></td>
                     </tr>
                 </tbody>
             </table>
-
-            <!-- 折叠区域：后5条 -->
-            <div class="routes-extra" id="routesExtra">
-                <table class="routes-table">
-                    <tbody>
-                        <tr>
-                            <td>马德里 -<br>托莱多</td>
-                            <td>0.5h<br>€12-15</td>
-                            <td>无直飞</td>
-                            <td>1h<br>€6-10</td>
-                            <td><span class="route-tag">火车</span></td>
-                        </tr>
-                        <tr>
-                            <td>马德里 -<br>塞哥维亚</td>
-                            <td>0.5h<br>€12-15</td>
-                            <td>无直飞</td>
-                            <td>1.5h<br>€8-10</td>
-                            <td><span class="route-tag">火车</span></td>
-                        </tr>
-                        <tr>
-                            <td>巴塞罗那 -<br>塞维利亚</td>
-                            <td>5.5h<br>€50-90</td>
-                            <td>1.5h<br>€30-70</td>
-                            <td>14-16h<br>€70-110</td>
-                            <td><span class="route-tag">飞机</span></td>
-                        </tr>
-                        <tr>
-                            <td>塞维利亚 -<br>格拉纳达</td>
-                            <td>4.5h (需转)</td>
-                            <td>无直飞</td>
-                            <td>3h<br>€15-25</td>
-                            <td><span class="route-tag">大巴</span></td>
-                        </tr>
-                        <tr>
-                            <td>塞维利亚 -<br>科尔多瓦</td>
-                            <td>0.8h<br>€15-30</td>
-                            <td>无直飞</td>
-                            <td>2h<br>€10-15</td>
-                            <td><span class="route-tag">火车</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
 
             <button class="routes-toggle" id="routesToggle" aria-expanded="false">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
