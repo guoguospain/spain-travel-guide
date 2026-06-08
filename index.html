@@ -885,6 +885,7 @@
             text-align: left;
             border-bottom: 1px solid var(--border);
             font-size: 13px;
+            vertical-align: top;
         }
 
         .routes-table th {
@@ -907,6 +908,7 @@
             font-size: 10px;
             letter-spacing: 0.1em;
             border-radius: 2px;
+            white-space: nowrap;
         }
 
         .booking-tip {
@@ -1655,6 +1657,30 @@
             top: 70px;
             z-index: 89;
             border-bottom: 1px solid rgba(181,149,91,0.15);
+        }
+
+        .city-quick-nav::after {
+            content: '›';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            background: linear-gradient(to right, transparent, var(--deep) 55%);
+            color: rgba(181,149,91,0.85);
+            font-size: 18px;
+            pointer-events: none;
+            z-index: 1;
+            animation: nav-hint-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes nav-hint-pulse {
+            0%, 100% { opacity: 1; transform: translateX(0); }
+            50% { opacity: 0.5; transform: translateX(3px); }
         }
 
         .city-quick-nav-inner {
@@ -2608,21 +2634,21 @@
                 <tbody>
                     <!-- 默认显示前3条 -->
                     <tr>
-                        <td>马德里 - 巴塞罗那</td>
+                        <td>马德里 -<br>巴塞罗那</td>
                         <td>2.5h<br>€40-90</td>
                         <td>1.5h<br>€30-80</td>
                         <td>7.5h<br>€30-45</td>
                         <td><span class="route-tag">火车</span></td>
                     </tr>
                     <tr>
-                        <td>马德里 - 塞维利亚</td>
+                        <td>马德里 -<br>塞维利亚</td>
                         <td>2.5h<br>€35-80</td>
                         <td>1h<br>€35-90</td>
                         <td>6h<br>€20-30</td>
                         <td><span class="route-tag">火车</span></td>
                     </tr>
                     <tr>
-                        <td>马德里 - 格拉纳达</td>
+                        <td>马德里 -<br>格拉纳达</td>
                         <td>4h<br>€40-70</td>
                         <td>1h<br>€35-100</td>
                         <td>5h<br>€20-30</td>
@@ -2636,35 +2662,35 @@
                 <table class="routes-table">
                     <tbody>
                         <tr>
-                            <td>马德里 - 托莱多</td>
+                            <td>马德里 -<br>托莱多</td>
                             <td>0.5h<br>€12-15</td>
                             <td>无直飞</td>
                             <td>1h<br>€6-10</td>
                             <td><span class="route-tag">火车</span></td>
                         </tr>
                         <tr>
-                            <td>马德里 - 塞哥维亚</td>
+                            <td>马德里 -<br>塞哥维亚</td>
                             <td>0.5h<br>€12-15</td>
                             <td>无直飞</td>
                             <td>1.5h<br>€8-10</td>
                             <td><span class="route-tag">火车</span></td>
                         </tr>
                         <tr>
-                            <td>巴塞罗那 - 塞维利亚</td>
+                            <td>巴塞罗那 -<br>塞维利亚</td>
                             <td>5.5h<br>€50-90</td>
                             <td>1.5h<br>€30-70</td>
                             <td>14-16h<br>€70-110</td>
                             <td><span class="route-tag">飞机</span></td>
                         </tr>
                         <tr>
-                            <td>塞维利亚 - 格拉纳达</td>
+                            <td>塞维利亚 -<br>格拉纳达</td>
                             <td>4.5h (需转)</td>
                             <td>无直飞</td>
                             <td>3h<br>€15-25</td>
                             <td><span class="route-tag">大巴</span></td>
                         </tr>
                         <tr>
-                            <td>塞维利亚 - 科尔多瓦</td>
+                            <td>塞维利亚 -<br>科尔多瓦</td>
                             <td>0.8h<br>€15-30</td>
                             <td>无直飞</td>
                             <td>2h<br>€10-15</td>
