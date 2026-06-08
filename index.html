@@ -1886,6 +1886,28 @@
             .hero {
                 height: 62vh;
                 min-height: 400px;
+                justify-content: center;
+                padding-bottom: 24px;
+            }
+
+            /* Hero arrow: pull out of absolute positioning so it flows below
+               the author text instead of overlapping it */
+            .hero-arrow {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                animation: bounce-mobile 2s infinite;
+            }
+
+            @keyframes bounce-mobile {
+                0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                40% { transform: translateY(-10px); }
+                60% { transform: translateY(-5px); }
             }
 
             .hero-title { font-size: 26px; margin-bottom: 16px; }
@@ -1935,8 +1957,14 @@
             .tip-label { font-size: 13px; }
             .tip-content { font-size: 12px; line-height: 1.6; }
 
-            /* Festival slider */
-            .festival-card { flex: 0 0 200px; min-height: 190px; }
+            /* Festival slider: show 3 cards at once on small phones */
+            .festival-grid { gap: 8px; }
+            .festival-card { flex: 0 0 calc(32vw - 10px); height: 200px; min-height: 0; }
+            .festival-card-content { padding: 10px 8px; }
+            .festival-month-num { font-size: 22px; }
+            .festival-month { font-size: 11px; margin-bottom: 6px; padding-bottom: 6px; }
+            .festival-list { gap: 4px; }
+            .festival-list li { font-size: 10px; line-height: 1.4; padding-left: 8px; }
 
             /* Transport */
             .transport-card { padding: 13px 14px; }
@@ -1954,7 +1982,7 @@
             .hero-title { font-size: 24px; }
             .main { padding: 0 12px; }
             .tip-item { flex: 0 0 170px; padding: 12px 14px; }
-            .festival-card { flex: 0 0 185px; min-height: 175px; }
+            .festival-card { flex: 0 0 calc(32vw - 8px); height: 185px; min-height: 0; }
             .attraction-body { padding: 11px 12px; }
             .section { padding: 24px 0; }
             .city-number { font-size: 30px; }
