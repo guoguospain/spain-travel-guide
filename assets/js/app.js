@@ -2,17 +2,6 @@
    Spain Travel Guide – Shared App Logic
    ============================================================ */
 
-// ── Page entrance fade-in ──────────────────────────────────
-(function() {
-    document.documentElement.style.opacity = '0';
-    document.documentElement.style.transition = 'opacity 0.35s ease';
-    window.addEventListener('load', () => {
-        requestAnimationFrame(() => {
-            document.documentElement.style.opacity = '1';
-        });
-    });
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // ── Reading progress bar ──────────────────────────────

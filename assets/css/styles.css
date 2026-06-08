@@ -1,10 +1,8 @@
 
-        /* ── Reset & Tokens ───────────────────────────── */
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         :root {
@@ -13,7 +11,6 @@
             --text-secondary: #6A665F;
             --accent: #B5955B;
             --accent-light: #C9AE7A;
-            --accent-hover: #a07332;
             --border: #DED6C8;
             --card-bg: #FCFAF7;
             --dark: #1A1714;
@@ -22,38 +19,10 @@
             --gold: #B5955B;
             --gold-bg: rgba(181,149,91,0.08);
             --warm-white: #FCFAF7;
-            /* Shadows */
-            --shadow-sm: 0 1px 4px rgba(43,41,38,0.08);
-            --shadow-md: 0 4px 16px rgba(43,41,38,0.1);
-            --shadow-lg: 0 10px 40px rgba(43,41,38,0.15);
-            --shadow-gold: 0 4px 20px rgba(181,149,91,0.35);
-            /* Transitions */
-            --transition-fast: 0.18s ease;
-            --transition-normal: 0.3s ease;
-            --transition-slow: 0.5s ease;
-            /* Spacing */
-            --radius-sm: 3px;
-            --radius-md: 6px;
-            --radius-lg: 12px;
         }
 
         html {
             scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
-
-        /* Improved focus rings for accessibility */
-        :focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
-
-        /* Better image rendering */
-        img {
-            display: block;
-            max-width: 100%;
         }
 
         body {
@@ -832,13 +801,6 @@
         .transport-link:hover {
             border-color: var(--accent);
             background: rgba(196, 146, 58, 0.08);
-            color: var(--accent);
-        }
-
-        .transport-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
         }
 
         /* Routes table collapse */
@@ -1094,7 +1056,6 @@
             width: 100%;
             background: var(--mist);
             line-height: 0;
-            overflow: hidden;
         }
 
         .attraction-image {
@@ -1103,11 +1064,6 @@
             object-fit: cover;
             object-position: center center;
             display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .attraction-card:hover .attraction-image {
-            transform: scale(1.03);
         }
 
         .attraction-image:first-child,
@@ -2584,12 +2540,6 @@
         /* ================================================
            CIUDADES PAGE — LIGHT SEARCH BAR VARIANT
            ================================================ */
-
-        /* Full width on the light page */
-        .city-search-wrap.hero-search-wrap {
-            width: 100%;
-            max-width: 520px;
-        }
 
         .city-search-wrap .hero-search-input {
             background: rgba(43,41,38,0.05);
