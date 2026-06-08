@@ -1599,7 +1599,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 60px;
+            margin-top: 52px;
         }
 
         .mobile-menu-close {
@@ -1830,6 +1830,8 @@
             .nav-hamburger { display: flex; }
             .nav-menu { display: none; }
             .city-quick-nav { display: block; }
+            .nav { height: 52px; }
+            .city-quick-nav { top: 52px; }
         }
 
         /* ================================================
@@ -1972,13 +1974,13 @@
             /* Transport: 3-column block layout on mobile */
             .transport-intro { font-size: 12.5px; }
             .transport-cards { grid-template-columns: repeat(3, 1fr); gap: 6px; }
-            .transport-card { display: block; padding: 10px 6px; text-align: center; }
-            .transport-icon { width: 26px; height: 26px; margin: 0 auto 6px; }
+            .transport-card { display: flex; flex-direction: column; align-items: center; padding: 10px 6px; text-align: center; }
+            .transport-icon { width: 26px; height: 26px; margin: 0 auto 6px; flex-shrink: 0; }
             .transport-icon svg { width: 26px; height: 26px; }
             .transport-name { font-size: 11px; margin-bottom: 3px; letter-spacing: 0; }
             .transport-price { font-size: 10px; margin-bottom: 3px; }
             .transport-desc { font-size: 10px; margin-bottom: 5px; line-height: 1.4; }
-            .transport-link { font-size: 9.5px; padding: 3px 5px; }
+            .transport-link { font-size: 9.5px; padding: 3px 5px; margin-top: auto; }
 
             /* Routes table */
             .routes-table th,
@@ -2541,22 +2543,22 @@
                 <div class="transport-card">
                     <div class="transport-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="train-front" aria-hidden="true" class="lucide lucide-train-front"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1"></path><path d="m9 15-1-1"></path><path d="m15 15 1-1"></path><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"></path><path d="m8 19-2 3"></path><path d="m16 19 2 3"></path></svg></div>
                     <div class="transport-name">火车 AVE</div>
-                    <div class="transport-price">提前买票 €20-60</div>
-                    <div class="transport-desc">快速便捷，但经常延误</div>
+                    <div class="transport-price">€20-60</div>
+                    <div class="transport-desc">快速便捷，<br>但经常延误</div>
                     <a class="transport-link" href="https://www.omio.cn/?landing_referrer=https%3A%2F%2Fwww.google.com%2F&afsrc=1&clickid=2WBSyW3Q0xyZTaJRonUA-U3WUkuWZMQ8KRYPQc0&gad_source=1&iradname=OMIO_US_banner_generic_320x50&ircid=7385&irgwc=1&irmptype=mediapartner&subId1=&utm_campaign=363646&utm_id=476444_fashioncommute.com&utm_source=affiliate_ir_Involve+Asia+Technologies+Sdn+Bhd" target="_blank" rel="noopener noreferrer">omio官网</a>
                 </div>
                 <div class="transport-card">
                     <div class="transport-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bus" aria-hidden="true" class="lucide lucide-bus"><path d="M8 6v6"></path><path d="M15 6v6"></path><path d="M2 12h19.6"></path><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"></path><circle cx="7" cy="18" r="2"></circle><path d="M9 18h5"></path><circle cx="16" cy="18" r="2"></circle></svg></div>
                     <div class="transport-name">大巴 ALSA</div>
                     <div class="transport-price">€10-30</div>
-                    <div class="transport-desc">便宜班次多，时间略久</div>
+                    <div class="transport-desc">便宜班次多，<br>时间略久</div>
                     <a class="transport-link" href="https://www.alsa.com/" target="_blank" rel="noopener noreferrer">ALSA 官网</a>
                 </div>
                 <div class="transport-card">
                     <div class="transport-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plane" aria-hidden="true" class="lucide lucide-plane"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg></div>
                     <div class="transport-name">飞机</div>
                     <div class="transport-price">€30-80</div>
-                    <div class="transport-desc">远途适用，机场耗时</div>
+                    <div class="transport-desc">远途适用，<br>机场耗时</div>
                     <a class="transport-link" href="https://www.vueling.com/" target="_blank" rel="noopener noreferrer">Vueling 官网</a>
                 </div>
             </div>
@@ -2607,23 +2609,23 @@
                     <!-- 默认显示前3条 -->
                     <tr>
                         <td>马德里 - 巴塞罗那</td>
-                        <td>2.5h / €40-90</td>
-                        <td>1.5h / €30-80</td>
-                        <td>7.5h / €30-45</td>
+                        <td>2.5h<br>€40-90</td>
+                        <td>1.5h<br>€30-80</td>
+                        <td>7.5h<br>€30-45</td>
                         <td><span class="route-tag">火车</span></td>
                     </tr>
                     <tr>
                         <td>马德里 - 塞维利亚</td>
-                        <td>2.5h / €35-80</td>
-                        <td>1h / €35-90</td>
-                        <td>6h / €20-30</td>
+                        <td>2.5h<br>€35-80</td>
+                        <td>1h<br>€35-90</td>
+                        <td>6h<br>€20-30</td>
                         <td><span class="route-tag">火车</span></td>
                     </tr>
                     <tr>
                         <td>马德里 - 格拉纳达</td>
-                        <td>4h / €40-70</td>
-                        <td>1h / €35-100</td>
-                        <td>5h / €20-30</td>
+                        <td>4h<br>€40-70</td>
+                        <td>1h<br>€35-100</td>
+                        <td>5h<br>€20-30</td>
                         <td><span class="route-tag">火车</span></td>
                     </tr>
                 </tbody>
@@ -2635,37 +2637,37 @@
                     <tbody>
                         <tr>
                             <td>马德里 - 托莱多</td>
-                            <td>0.5h / €12-15</td>
+                            <td>0.5h<br>€12-15</td>
                             <td>无直飞</td>
-                            <td>1h / €6-10</td>
+                            <td>1h<br>€6-10</td>
                             <td><span class="route-tag">火车</span></td>
                         </tr>
                         <tr>
                             <td>马德里 - 塞哥维亚</td>
-                            <td>0.5h / €12-15</td>
+                            <td>0.5h<br>€12-15</td>
                             <td>无直飞</td>
-                            <td>1.5h / €8-10</td>
+                            <td>1.5h<br>€8-10</td>
                             <td><span class="route-tag">火车</span></td>
                         </tr>
                         <tr>
                             <td>巴塞罗那 - 塞维利亚</td>
-                            <td>5.5h / €50-90</td>
-                            <td>1.5h / €30-70</td>
-                            <td>14-16h / €70-110</td>
+                            <td>5.5h<br>€50-90</td>
+                            <td>1.5h<br>€30-70</td>
+                            <td>14-16h<br>€70-110</td>
                             <td><span class="route-tag">飞机</span></td>
                         </tr>
                         <tr>
                             <td>塞维利亚 - 格拉纳达</td>
                             <td>4.5h (需转)</td>
                             <td>无直飞</td>
-                            <td>3h / €15-25</td>
+                            <td>3h<br>€15-25</td>
                             <td><span class="route-tag">大巴</span></td>
                         </tr>
                         <tr>
                             <td>塞维利亚 - 科尔多瓦</td>
-                            <td>0.8h / €15-30</td>
+                            <td>0.8h<br>€15-30</td>
                             <td>无直飞</td>
-                            <td>2h / €10-15</td>
+                            <td>2h<br>€10-15</td>
                             <td><span class="route-tag">火车</span></td>
                         </tr>
                     </tbody>
