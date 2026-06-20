@@ -39,28 +39,53 @@
 
     .festival-card:hover {
       border-color: var(--accent);
-      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+      transform: translateY(-3px);
     }
 
-    /* Month header */
+    /* Image header wrapper */
+    .festival-card-img-wrap {
+      position: relative;
+      height: 130px;
+      overflow: hidden;
+    }
+
+    .festival-card-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.70) 100%);
+      z-index: 1;
+    }
+
+    /* Background photo — zooms on hover */
+    .festival-card-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .festival-card:hover .festival-card-img {
+      transform: scale(1.07);
+    }
+
+    /* Month name — overlaid on image */
     .festival-month {
-      background: var(--deep);
-      color: rgba(255,255,255,0.9);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      background: none;
+      color: #FFD98A;
       padding: 10px 14px;
-      font-family: "Cormorant Garamond", "PingFang SC", serif;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-    }
-
-    .festival-month-num {
-      font-size: 24px;
+      font-family: "Cormorant Garamond", "Noto Serif SC", "PingFang SC", serif;
+      font-size: 22px;
       font-weight: 700;
-      color: var(--accent-light);
+      letter-spacing: 0.08em;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.55);
       line-height: 1;
     }
 
@@ -156,16 +181,17 @@
     @media (max-width: 580px) {
       .festival-grid { gap: 10px; }
       .festival-card { border-radius: 8px; }
-      .festival-month { padding: 8px 12px; font-size: 14px; }
-      .festival-month-num { font-size: 20px; }
+      .festival-card-img-wrap { height: 108px; }
+      .festival-month { padding: 8px 12px; font-size: 18px; }
       .festival-list { padding: 10px 12px 12px; }
       .festival-list li { font-size: 12px; padding: 5px 0; }
       .festival-city { font-size: 9px; padding: 1px 5px; }
     }
 
     @media (max-width: 400px) {
+      .festival-card-img-wrap { height: 92px; }
+      .festival-month { font-size: 16px; }
       .festival-list li { font-size: 11.5px; line-height: 1.6; }
-      .festival-month-num { font-size: 18px; }
     }
 
     /* Wide screens: 3 columns */
@@ -216,8 +242,9 @@
 
         <!-- 1月 -->
         <div class="festival-card reveal">
-          <div class="festival-month">
-            <span class="festival-month-num">1</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/photo-1677055380601-393348dc342c.jpg')"></div>
+            <div class="festival-month">一月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">全国</span>元旦（1月1日）— 马德里太阳门广场午夜倒计时，钟声响起随声吃葡萄，每响一声吃一颗迎新年。</li>
@@ -228,8 +255,9 @@
 
         <!-- 2月 -->
         <div class="festival-card reveal reveal-d1">
-          <div class="festival-month">
-            <span class="festival-month-num">2</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/photo-1514525253161-7a46d19cd819.jpg')"></div>
+            <div class="festival-month">二月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">加的斯</span>狂欢节（2月中）— 西班牙最盛大的狂欢节，以讽刺歌谣和奢华服装著称。</li>
@@ -240,8 +268,9 @@
 
         <!-- 3月 -->
         <div class="festival-card reveal">
-          <div class="festival-month">
-            <span class="festival-month-num">3</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/KSEFTfoH-ag.jpg')"></div>
+            <div class="festival-month">三月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">瓦伦西亚</span>法亚火节（3月15–19日）— 巨型纸糊雕塑在震耳欲聋的烟火声中连夜付之一炬。联合国非遗。</li>
@@ -251,8 +280,9 @@
 
         <!-- 4月 -->
         <div class="festival-card reveal reveal-d1">
-          <div class="festival-month">
-            <span class="festival-month-num">4</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/QQqe0DK_-QI.jpg')"></div>
+            <div class="festival-month">四月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">全国</span>圣周（复活节前一周）— 宏大宗教游行；塞维利亚、马拉加和格拉纳达的仪式最为震撼。</li>
@@ -262,8 +292,9 @@
 
         <!-- 5月 -->
         <div class="festival-card reveal">
-          <div class="festival-month">
-            <span class="festival-month-num">5</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/photo-1532030418240-be9f3b52feee.jpg')"></div>
+            <div class="festival-month">五月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">科尔多瓦</span>庭院节（5月初）— 私家庭院竞相对外开放，摆满争奇斗艳的鲜花。联合国非遗。</li>
@@ -274,8 +305,9 @@
 
         <!-- 6月 -->
         <div class="festival-card reveal reveal-d1">
-          <div class="festival-month">
-            <span class="festival-month-num">6</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/photo-1660568248044-bd1c13be528e.jpg')"></div>
+            <div class="festival-month">六月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">格拉纳达</span>基督圣体节 — 盛大宗教游行，与夏季节庆季的拉开相呼应。</li>
@@ -286,8 +318,9 @@
 
         <!-- 7月 -->
         <div class="festival-card reveal">
-          <div class="festival-month">
-            <span class="festival-month-num">7</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/LJrszMj1RJc.jpg')"></div>
+            <div class="festival-month">七月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">潘普洛纳</span>奔牛节（7月6–14日）— 每日公牛奔跑穿越市区街道；身着红白服装是标志性装扮。</li>
@@ -297,8 +330,9 @@
 
         <!-- 8月 -->
         <div class="festival-card reveal reveal-d1">
-          <div class="festival-month">
-            <span class="festival-month-num">8</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/photo-1533551076173-667cf9b47059.jpg')"></div>
+            <div class="festival-month">八月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">布尼奥尔/瓦伦西亚</span>番茄节（8月最后一个周三）— 100吨熟透的番茄在全球最著名的食物大战中横飞。</li>
@@ -309,8 +343,9 @@
 
         <!-- 9月 -->
         <div class="festival-card reveal">
-          <div class="festival-month">
-            <span class="festival-month-num">9</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/photo-1552385430-53e6f2028760.jpg')"></div>
+            <div class="festival-month">九月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">赫雷斯</span>葡萄丰收节（9月初）— 安达卢西亚雪利酒产区的节庆，踩葡萄仪式与弗拉门戈表演。</li>
@@ -321,8 +356,9 @@
 
         <!-- 10月 -->
         <div class="festival-card reveal reveal-d1">
-          <div class="festival-month">
-            <span class="festival-month-num">10</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/photo-1597420723570-dad62b81431d.jpg')"></div>
+            <div class="festival-month">十月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">萨拉戈萨</span>皮拉尔圣母节（10月12日前后）— 百万朵鲜花献给圣母；游行、音乐与人塔同台登场。</li>
@@ -333,8 +369,9 @@
 
         <!-- 11月 -->
         <div class="festival-card reveal">
-          <div class="festival-month">
-            <span class="festival-month-num">11</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/photo-1565447162108-5a44f22d5364.jpg')"></div>
+            <div class="festival-month">十一月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">全国</span>诸圣节（11月1日）— 亡灵节；家人祭扫墓地，全国各地花市人头攒动。</li>
@@ -344,8 +381,9 @@
 
         <!-- 12月 -->
         <div class="festival-card reveal reveal-d1">
-          <div class="festival-month">
-            <span class="festival-month-num">12</span>月
+          <div class="festival-card-img-wrap">
+            <div class="festival-card-img" style="background-image:url('./assets/images/photo-1733926621159-cbfa83eb967b.jpg')"></div>
+            <div class="festival-month">十二月</div>
           </div>
           <ul class="festival-list">
             <li><span class="festival-city">全国</span>宪法日（12月6日）与圣母无染原罪节（12月8日）— 双连公共假日，节庆气氛在全国各地日渐浓厚。</li>
