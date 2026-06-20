@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="科尔多瓦旅行指南 — 大清真寺-主教座堂、犹太区、罗马桥，三大文明交汇之城精选景点、门票与开放时间">
+    <title>科尔多瓦 · 西班牙旅行手册</title>
+
+    <!-- Baidu Tongji — única analítica (GFW-safe) -->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b9d71470cd906e999f6cbb88f009fcd1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <style>
+        /* ── City hero (280 px fijo — evita 100vh en WeChat) ── */
+        .city-hero {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: var(--dark);
+        }
+        .city-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+            display: block;
+            filter: brightness(0.62);
+        }
+        .city-hero-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px 24px 24px;
+            background: linear-gradient(to top, rgba(26,23,20,0.80) 0%, transparent 55%);
+        }
+        .city-hero-tag {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 6px;
+        }
+        .city-hero-title {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 600;
+            font-size: clamp(30px, 7vw, 42px);
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: 0.06em;
+            margin-bottom: 6px;
+        }
+        .city-hero-subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.03em;
+        }
+
+        /* ── Attractions section ── */
+        .attractions-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 32px 20px 16px;
+        }
+        .section-eyebrow {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .section-heading {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 400;
+            font-size: clamp(20px, 4.5vw, 28px);
+            color: var(--text-primary);
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── How to get there ── */
+        .how-to-get {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .how-to-get-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .transport-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 16px 14px;
+            text-align: center;
+        }
+        .transport-item-icon {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+        .transport-item-name {
+            font-family: "PingFang SC", sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .transport-item-detail {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .transport-item-time {
+            display: inline-block;
+            margin-top: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            background: var(--gold-bg);
+            color: var(--accent);
+            border-radius: 10px;
+            padding: 2px 9px;
+        }
+
+        /* ── City tips ── */
+        .city-tips-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .city-tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .city-tip-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 14px 15px;
+        }
+        .city-tip-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        .city-tip-text {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── Nearby cities ── */
+        .nearby-cities {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px 36px;
+            border-top: 1px solid var(--border);
+        }
+        .nearby-cities-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .nearby-city-link {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 12px 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: "PingFang SC", sans-serif;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            flex: 1;
+            min-width: 140px;
+        }
+        .nearby-city-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+        }
+        .nearby-city-link-en {
+            font-size: 11px;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+        }
+        .nearby-city-arrow {
+            margin-left: auto;
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .city-hero { height: 230px; }
+            .city-hero-overlay { padding: 20px 18px 18px; }
+            .attractions-section { padding: 24px 14px 12px; }
+            .how-to-get { padding: 22px 14px; }
+            .how-to-get-grid { grid-template-columns: 1fr; gap: 8px; }
+            .transport-item { display: flex; align-items: flex-start; gap: 12px; text-align: left; }
+            .transport-item-icon { font-size: 20px; flex-shrink: 0; margin-bottom: 0; margin-top: 1px; }
+            .city-tips-section { padding: 22px 14px; }
+            .city-tips-grid { grid-template-columns: 1fr; gap: 8px; }
+            .nearby-cities { padding: 22px 14px 36px; }
+            .nearby-cities-list { flex-direction: column; }
+            .nearby-city-link { min-width: auto; }
+        }
+        @media (max-width: 380px) {
+            .city-hero { height: 200px; }
+            .city-hero-title { font-size: 26px; }
+            .attractions-section { padding: 18px 12px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reading progress bar -->
+    <div id="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- ── Top bar ── -->
+    <header class="top-bar">
+        <a href="index.html" class="top-bar-back" aria-label="返回首页">
+            ← 首页
+        </a>
+        <span class="top-bar-title">科尔多瓦</span>
+        <div class="lang-toggle" role="group" aria-label="语言切换">
+            <button class="lang-btn active" id="langBtnZh" aria-pressed="true">中</button>
+            <button class="lang-btn" id="langBtnEn" aria-pressed="false">EN</button>
+        </div>
+    </header>
+
+    <!-- ── City hero ── -->
+    <div class="city-hero">
+        <img
+            src="./assets/images/photo-1623002866514-4ebad37868fd.jpg"
+            alt="科尔多瓦大清真寺-主教座堂"
+            loading="eager"
+            decoding="async"
+        >
+        <div class="city-hero-overlay">
+            <p class="city-hero-tag">Spain · 05</p>
+            <h1 class="city-hero-title">科尔多瓦</h1>
+            <p class="city-hero-subtitle">Bridge of Civilizations · 三大文明的交汇之地</p>
+        </div>
+    </div>
+
+    <!-- ── Attractions ── -->
+    <section class="attractions-section" id="attractions">
+        <p class="section-eyebrow">精选景点</p>
+        <h2 class="section-heading">必游之地</h2>
+
+        <!-- 1. 科尔多瓦大清真寺-主教座堂 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1623002866514-4ebad37868fd.jpg"
+                        alt="科尔多瓦大清真寺-主教座堂"
+                        class="attraction-image img-pos-center"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">科尔多瓦大清真寺-主教座堂</h3>
+                    <p class="attraction-title-en">Mezquita-Catedral de Córdoba</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1-1.5小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前一周</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">UNESCO世界遗产，人类建筑史上最震撼的宗教融合奇观。785年摩尔哈里发开始修建，历经四代扩建，856根双层红白拱柱在林间般的空间中绵延无尽。16世纪基督教君主强行在清真寺正中建起哥特式大教堂——两种截然不同的宗教美学就此永久共存于同一屋顶之下，形成全球唯一的建筑奇观。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Calle Cardenal Herrero, 1, 14003 Córdoba<button class="copy-btn" data-copy="Calle Cardenal Herrero, 1, 14003 Córdoba">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">3-10月：10:00-19:00（周日09:00-11:30弥撒，免费参观）　　11-2月：10:00-18:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">15</span></span> 普通入场；<span class="price-display"><span class="price-symbol">€</span><span class="price-value">20</span></span> 含官方语音导览（10语言）；夜游「El Alma de Córdoba」<span class="price-display"><span class="price-symbol">€</span><span class="price-value">25</span></span>；登钟楼 Torre Campanario<span class="price-display"><span class="price-symbol">€</span><span class="price-value">4</span></span></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://mezquita-catedraldecordoba.es/" target="_blank" rel="noopener">mezquita-catedraldecordoba.es</a><button class="copy-btn" data-copy="https://mezquita-catedraldecordoba.es">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">官方语音导览内容详尽，强烈推荐；早上开门第一场光线透过彩窗照入柱廊最美；弥撒免费时段仅可进入约60%区域</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 如何抵达科尔多瓦 ── -->
+    <section class="how-to-get" id="how-to-get">
+        <p class="section-eyebrow">交通指南</p>
+        <h2 class="section-heading">如何抵达科尔多瓦</h2>
+        <div class="how-to-get-grid">
+            <div class="transport-item">
+                <div class="transport-item-icon">🚄</div>
+                <div>
+                    <div class="transport-item-name">高铁 AVE</div>
+                    <p class="transport-item-detail">科尔多瓦是马德里-塞维利亚AVE线的中间站，地理位置极佳。马德里约1h45，塞维利亚仅45分钟，格拉纳达经安特克拉约2小时，是安排途经停靠的理想城市。</p>
+                    <span class="transport-item-time">马德里 ~1h45 · 塞维利亚 ~45分钟</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">🚌</div>
+                <div>
+                    <div class="transport-item-name">大巴 ALSA</div>
+                    <p class="transport-item-detail">科尔多瓦大巴站连接安达卢西亚各城市，塞维利亚约2小时，格拉纳达约2h30。高铁较少时的补充选择，班次较高铁少但价格更实惠。</p>
+                    <span class="transport-item-time">塞维利亚 ~2h · 格拉纳达 ~2h30</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">🚶</div>
+                <div>
+                    <div class="transport-item-name">市区步行</div>
+                    <p class="transport-item-detail">科尔多瓦旧城非常紧凑，从火车站到大清真寺步行约20分钟或乘出租车约€6。古城区全程步行参观即可，不需要乘坐任何交通工具。</p>
+                    <span class="transport-item-time">火车站→清真寺 ~20分钟步行</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 科尔多瓦旅行小贴士 ── -->
+    <section class="city-tips-section" id="cordoba-tips">
+        <p class="section-eyebrow">旅行贴士</p>
+        <h2 class="section-heading">科尔多瓦实用提示</h2>
+        <div class="city-tips-grid">
+            <div class="city-tip-item">
+                <div class="city-tip-label">清晨入场</div>
+                <p class="city-tip-text">开门第一场（10:00）光线透过高窗斜照入拱柱林，是全天最美的观赏时刻，人也最少。比下午进场体验截然不同。强烈建议购买含语音导览的票型。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">5月庭院节</div>
+                <p class="city-tip-text">Fiesta de los Patios Cordobeses（五月节）是UNESCO非遗，每年5月全城私家庭院竞相盛开鲜花，免费对外开放。这是科尔多瓦一年中最魔幻的时刻，提前1个月订好酒店。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">夜游体验</div>
+                <p class="city-tip-text">「El Alma de Córdoba」灯光夜游仅在夜间开放，声光效果将柱廊渲染得极具魔幻感，与白天截然不同。夜间场€25，需提前官网购票，旺季常售罄。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">犹太区漫步</div>
+                <p class="city-tip-text">大清真寺旁的犹太区（Judería）是欧洲保存最完好的中世纪犹太区之一。白色石板小巷里有科尔多瓦合唱团博物馆、13世纪犹太会堂，步行30分钟可全部游览。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">一日游绝佳</div>
+                <p class="city-tip-text">从马德里高铁仅1h45，从塞维利亚仅45分钟，是安排安达卢西亚行程中途停靠的理想城市。早晨到达参观清真寺，下午漫步犹太区，傍晚返程，完全不需要住宿。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">罗马桥夕阳</div>
+                <p class="city-tip-text">卡拉霍拉塔对面的罗马桥（Puente Romano）横跨瓜达尔基维尔河，日落时大清真寺在河面的倒影堪称绝景。傍晚在桥上吹风看日落是科尔多瓦最放松的时刻。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 附近城市 ── -->
+    <nav class="nearby-cities" id="nearby" aria-label="周边城市">
+        <p class="section-eyebrow">周边探索</p>
+        <h2 class="section-heading">科尔多瓦出发</h2>
+        <div class="nearby-cities-list">
+            <a href="granada.html" class="nearby-city-link">
+                <span>
+                    <span style="font-size:18px">🏰</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">格拉纳达</span>
+                    <span class="nearby-city-link-en">Granada · 大巴约2h30</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+            <a href="sevilla.html" class="nearby-city-link">
+                <span>
+                    <span style="font-size:18px">💃</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">塞维利亚</span>
+                    <span class="nearby-city-link-en">Sevilla · 高铁约45分钟</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span class="footer-logo">🇪🇸 西班牙旅行手册</span>
+                <span class="footer-divider"></span>
+                <span class="footer-meta">© 2026 西班牙旅行手册 · 以上数据仅供参考，出行前请以各景点官方网站为准</span>
+            </div>
+            <span class="footer-author">作者 @小红书 喜马拉雅的果酱</span>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="回到顶部">
+        <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ── Scripts ── -->
+    <script src="assets/js/lucide.min.js"></script>
+    <script src="assets/js/shared.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        /* 1 — Bottom navigation */
+        initBottomNav('cities');
+
+        /* 2 — Language toggle */
+        initLangToggle();
+
+        /* 3 — Copy buttons */
+        initCopyButtons();
+
+        /* 4 — Scroll-reveal */
+        initScrollReveal();
+
+        /* 5 — Reading progress bar */
+        initReadingProgressBar();
+
+        /* 6 — Back to top */
+        var btt = document.getElementById('back-to-top');
+        if (btt) {
+            window.addEventListener('scroll', function () {
+                btt.classList.toggle('visible', window.scrollY > 320);
+            }, { passive: true });
+            btt.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    });
+    </script>
+</body>
+</html>

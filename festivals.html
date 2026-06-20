@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="西班牙节日日历 — 圣周、奔牛节、番茄节、法亚火节，每月节庆全览与旅行路线地图">
+  <title>节日日历 · 西班牙旅行手册</title>
+
+  <!-- Baidu Tongji — única analítica (GFW-safe) -->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b9d71470cd906e999f6cbb88f009fcd1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="assets/css/shared.css">
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       FESTIVAL GRID  (WeChat fix: grid vertical 2 cols, sin slider)
+    ══════════════════════════════════════════════════════════ */
+    .festival-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .festival-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+
+    .festival-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+
+    /* Month header */
+    .festival-month {
+      background: var(--deep);
+      color: rgba(255,255,255,0.9);
+      padding: 10px 14px;
+      font-family: "Cormorant Garamond", "PingFang SC", serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .festival-month-num {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent-light);
+      line-height: 1;
+    }
+
+    /* Festival list */
+    .festival-list {
+      list-style: none;
+      padding: 12px 14px 14px;
+    }
+
+    .festival-list li {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .festival-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .festival-list li:first-child {
+      padding-top: 0;
+    }
+
+    .festival-city {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--gold-bg);
+      border: 1px solid rgba(181,149,91,0.22);
+      border-radius: 3px;
+      padding: 1px 6px;
+      margin-right: 5px;
+      letter-spacing: 0.04em;
+      vertical-align: middle;
+      white-space: nowrap;
+      line-height: 1.8;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       MAP SECTION
+    ══════════════════════════════════════════════════════════ */
+    .map-container {
+      background: var(--mist);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .map-svg-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .map-svg-wrapper svg {
+      min-width: 320px;
+    }
+
+    /* City links overlay on map */
+    .map-city-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 16px;
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .map-city-link {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: var(--mist);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 4px 12px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .map-city-link:hover, .map-city-link:active {
+      background: var(--gold-bg);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════════════ */
+    @media (max-width: 580px) {
+      .festival-grid { gap: 10px; }
+      .festival-card { border-radius: 8px; }
+      .festival-month { padding: 8px 12px; font-size: 14px; }
+      .festival-month-num { font-size: 20px; }
+      .festival-list { padding: 10px 12px 12px; }
+      .festival-list li { font-size: 12px; padding: 5px 0; }
+      .festival-city { font-size: 9px; padding: 1px 5px; }
+    }
+
+    @media (max-width: 400px) {
+      .festival-list li { font-size: 11.5px; line-height: 1.6; }
+      .festival-month-num { font-size: 18px; }
+    }
+
+    /* Wide screens: 3 columns */
+    @media (min-width: 720px) {
+      .festival-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    }
+
+    @media (min-width: 900px) {
+      .festival-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media print {
+      .festival-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Reading progress bar -->
+  <div id="progress-bar"></div>
+
+  <!-- ── TOP BAR ─────────────────────────────────────────────── -->
+  <header class="top-bar">
+    <a href="index.html" class="top-bar-back" aria-label="返回首页">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round"
+           style="width:16px;height:16px;flex-shrink:0" aria-hidden="true">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      首页
+    </a>
+    <span class="top-bar-title">节日日历</span>
+    <div class="lang-toggle" id="langToggle" aria-label="语言切换 / Language">
+      <button class="lang-btn active" id="langBtnZh">中</button>
+      <button class="lang-btn" id="langBtnEn">EN</button>
+    </div>
+  </header>
+
+  <!-- ── MAIN ───────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- ── FESTIVALS SECTION ─────────────────────────────────── -->
+    <section class="section" id="festivals" aria-label="节日月份表">
+      <div class="section-label">Festival Calendar</div>
+      <h2 class="section-title">节日月份表</h2>
+
+      <div class="festival-grid">
+
+        <!-- 1月 -->
+        <div class="festival-card reveal">
+          <div class="festival-month">
+            <span class="festival-month-num">1</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">全国</span>元旦（1月1日）— 马德里太阳门广场午夜倒计时，钟声响起随声吃葡萄，每响一声吃一颗迎新年。</li>
+            <li><span class="festival-city">全国</span>三王节（1月6日）— 东方三国王游行穿城而过，孩子们收到礼物；西班牙一年中最重要的节日之一。</li>
+            <li><span class="festival-city">圣塞巴斯蒂安</span>击鼓节（1月20日）— 147支鼓乐队彻夜游行，是巴斯克地区最盛大的传统节庆。</li>
+          </ul>
+        </div>
+
+        <!-- 2月 -->
+        <div class="festival-card reveal reveal-d1">
+          <div class="festival-month">
+            <span class="festival-month-num">2</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">加的斯</span>狂欢节（2月中）— 西班牙最盛大的狂欢节，以讽刺歌谣和奢华服装著称。</li>
+            <li><span class="festival-city">特内里费</span>圣克鲁斯狂欢节（2月下旬）— 全球第二大狂欢节；盛大游行与化装派对连续数日。</li>
+            <li><span class="festival-city">安达卢西亚</span>安达卢西亚日（2月28日）— 地区公共假日，弗拉门戈表演与传统庆典遍布全区。</li>
+          </ul>
+        </div>
+
+        <!-- 3月 -->
+        <div class="festival-card reveal">
+          <div class="festival-month">
+            <span class="festival-month-num">3</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">瓦伦西亚</span>法亚火节（3月15–19日）— 巨型纸糊雕塑在震耳欲聋的烟火声中连夜付之一炬。联合国非遗。</li>
+            <li><span class="festival-city">全国</span>圣何塞节（3月19日）— 瓦伦西亚等地区公共假日，广场庆典活动热闹非凡。</li>
+          </ul>
+        </div>
+
+        <!-- 4月 -->
+        <div class="festival-card reveal reveal-d1">
+          <div class="festival-month">
+            <span class="festival-month-num">4</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">全国</span>圣周（复活节前一周）— 宏大宗教游行；塞维利亚、马拉加和格拉纳达的仪式最为震撼。</li>
+            <li><span class="festival-city">塞维利亚</span>四月春会 — 弗拉门戈、马车与节庆彩棚，欢腾整整一周。</li>
+          </ul>
+        </div>
+
+        <!-- 5月 -->
+        <div class="festival-card reveal">
+          <div class="festival-month">
+            <span class="festival-month-num">5</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">科尔多瓦</span>庭院节（5月初）— 私家庭院竞相对外开放，摆满争奇斗艳的鲜花。联合国非遗。</li>
+            <li><span class="festival-city">格拉纳达</span>十字架节 — 广场与小巷用精美花朵摆成十字架造型装饰。</li>
+            <li><span class="festival-city">马德里</span>圣伊西多罗节（5月15日）— 马德里守护圣人节，斗牛、露天音乐会与传统游行云集。</li>
+          </ul>
+        </div>
+
+        <!-- 6月 -->
+        <div class="festival-card reveal reveal-d1">
+          <div class="festival-month">
+            <span class="festival-month-num">6</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">格拉纳达</span>基督圣体节 — 盛大宗教游行，与夏季节庆季的拉开相呼应。</li>
+            <li><span class="festival-city">巴塞罗那</span>圣约翰节（6月23日）— 烟火将城市照亮直到黎明，海滨篝火通宵燃烧。</li>
+            <li><span class="festival-city">科尔多瓦</span>国际吉他节（6月）— 古典与弗拉门戈大师在王宫花园中登台献艺。</li>
+          </ul>
+        </div>
+
+        <!-- 7月 -->
+        <div class="festival-card reveal">
+          <div class="festival-month">
+            <span class="festival-month-num">7</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">潘普洛纳</span>奔牛节（7月6–14日）— 每日公牛奔跑穿越市区街道；身着红白服装是标志性装扮。</li>
+            <li><span class="festival-city">圣地亚哥</span>圣地亚哥日（7月25日）— 加利西亚最盛大的节日，朝圣者云集大教堂广场。</li>
+          </ul>
+        </div>
+
+        <!-- 8月 -->
+        <div class="festival-card reveal reveal-d1">
+          <div class="festival-month">
+            <span class="festival-month-num">8</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">布尼奥尔/瓦伦西亚</span>番茄节（8月最后一个周三）— 100吨熟透的番茄在全球最著名的食物大战中横飞。</li>
+            <li><span class="festival-city">巴塞罗那</span>格拉西亚街区节（8月中）— 居民争相用灯光和鲜花装饰街道，社区精神展示至最高点。</li>
+            <li><span class="festival-city">毕尔巴鄂</span>毕尔巴鄂大周（8月中）— 9天音乐会、烟火与弗拉门戈；北部最盛大的城市节庆。</li>
+          </ul>
+        </div>
+
+        <!-- 9月 -->
+        <div class="festival-card reveal">
+          <div class="festival-month">
+            <span class="festival-month-num">9</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">赫雷斯</span>葡萄丰收节（9月初）— 安达卢西亚雪利酒产区的节庆，踩葡萄仪式与弗拉门戈表演。</li>
+            <li><span class="festival-city">朗达</span>哥雅式斗牛节 — 斗牛士身着18世纪哥雅画风服装登场，历史气息浓厚。</li>
+            <li><span class="festival-city">巴塞罗那</span>拉梅塞（9月24日）— 人塔、烟火与免费音乐会；加泰罗尼亚最重要的传统庆典。</li>
+          </ul>
+        </div>
+
+        <!-- 10月 -->
+        <div class="festival-card reveal reveal-d1">
+          <div class="festival-month">
+            <span class="festival-month-num">10</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">萨拉戈萨</span>皮拉尔圣母节（10月12日前后）— 百万朵鲜花献给圣母；游行、音乐与人塔同台登场。</li>
+            <li><span class="festival-city">全国</span>西班牙国庆日（10月12日）— 马德里举行阅兵式；哥伦布纪念日。</li>
+            <li><span class="festival-city">瓦伦西亚</span>瓦伦西亚自治区日（10月9日）— 游行、音乐会与地区庆典活动丰富多彩。</li>
+          </ul>
+        </div>
+
+        <!-- 11月 -->
+        <div class="festival-card reveal">
+          <div class="festival-month">
+            <span class="festival-month-num">11</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">全国</span>诸圣节（11月1日）— 亡灵节；家人祭扫墓地，全国各地花市人头攒动。</li>
+            <li><span class="festival-city">马德里</span>阿尔穆德纳圣母节（11月9日）— 马德里守护圣母节；大教堂举行盛大弥撒。</li>
+          </ul>
+        </div>
+
+        <!-- 12月 -->
+        <div class="festival-card reveal reveal-d1">
+          <div class="festival-month">
+            <span class="festival-month-num">12</span>月
+          </div>
+          <ul class="festival-list">
+            <li><span class="festival-city">全国</span>宪法日（12月6日）与圣母无染原罪节（12月8日）— 双连公共假日，节庆气氛在全国各地日渐浓厚。</li>
+            <li><span class="festival-city">全国</span>圣诞节（12月25日）— 璀璨灯饰、圣诞市集，烤乳猪与杏仁甜点是传统美食。</li>
+            <li><span class="festival-city">全国</span>跨年夜（12月31日）— 数千人在太阳门广场倒计时；每响一声钟声吃一颗葡萄迎接新年。</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── MAP SECTION ────────────────────────────────────────── -->
+    <section class="section" id="map" aria-label="城市分布与旅行路线图">
+      <div class="section-label">City Distribution</div>
+      <h2 class="section-title">城市分布图</h2>
+
+      <div class="map-container">
+        <div class="map-svg-wrapper">
+          <svg viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg"
+               style="width:100%;display:block;border-radius:12px 12px 0 0;font-family:'Cormorant Garamond',Georgia,serif;"
+               role="img" aria-label="西班牙经典旅行路线图">
+            <defs>
+              <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#F4F1EA"/>
+                <stop offset="100%" stop-color="#E8DFD0"/>
+              </linearGradient>
+              <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#B5955B" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#C9AE7A" stop-opacity="0.7"/>
+              </linearGradient>
+              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(43,41,38,0.18)"/>
+              </filter>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                <circle cx="4" cy="4" r="2.5" fill="#B5955B" opacity="0.8"/>
+              </marker>
+            </defs>
+
+            <!-- 背景 -->
+            <rect width="780" height="500" fill="url(#bgGrad)" rx="12"/>
+            <!-- 装饰边框 -->
+            <rect x="12" y="12" width="756" height="476" fill="none" stroke="#DED6C8" stroke-width="1" rx="8"/>
+
+            <!-- 标题 -->
+            <text x="390" y="42" text-anchor="middle" font-size="18" font-weight="600" fill="#2B2926" letter-spacing="3">西班牙经典旅行路线</text>
+            <text x="390" y="58" text-anchor="middle" font-size="10" fill="#B5955B" letter-spacing="4">SPAIN CLASSIC ROUTE</text>
+            <line x1="280" y1="68" x2="500" y2="68" stroke="#DED6C8" stroke-width="1"/>
+            <text x="390" y="83" text-anchor="middle" font-size="10.5" fill="#6A665F" letter-spacing="0.5" font-style="italic">从马德里出发，穿越古罗马遗迹、中世纪古城与安达卢西亚宫殿，在巴塞罗那邂逅现代艺术与地中海风情。</text>
+
+            <!-- 路线连线（虚线金色） -->
+            <path d="M 335 210 Q 310 185 295 168" fill="none" stroke="url(#routeGrad)" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+            <path d="M 338 228 Q 318 248 308 265" fill="none" stroke="url(#routeGrad)" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+            <path d="M 300 282 Q 280 310 255 342" fill="none" stroke="url(#routeGrad)" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+            <path d="M 235 352 Q 210 368 195 378" fill="none" stroke="url(#routeGrad)" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+            <path d="M 210 392 Q 268 402 315 415" fill="none" stroke="url(#routeGrad)" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+            <path d="M 365 205 Q 450 140 545 128" fill="none" stroke="url(#routeGrad)" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.6" marker-end="url(#arrow)"/>
+
+            <!-- 距离标注 -->
+            <text x="272" y="183" font-size="9" fill="#B5955B" text-anchor="middle" font-style="italic">90 km</text>
+            <text x="280" y="255" font-size="9" fill="#B5955B" text-anchor="middle" font-style="italic">78 km</text>
+            <text x="262" y="320" font-size="9" fill="#B5955B" text-anchor="middle" font-style="italic">295 km</text>
+            <text x="198" y="355" font-size="9" fill="#B5955B" text-anchor="middle" font-style="italic">143 km</text>
+            <text x="262" y="410" font-size="9" fill="#B5955B" text-anchor="middle" font-style="italic">256 km</text>
+            <text x="468" y="158" font-size="9" fill="#B5955B" text-anchor="middle" font-style="italic">504 km</text>
+
+            <!-- 城市节点 -->
+            <!-- 马德里 ★ -->
+            <a href="madrid.html">
+            <g filter="url(#shadow)" style="cursor:pointer">
+              <circle cx="350" cy="215" r="20" fill="#2B2926"/>
+              <circle cx="350" cy="215" r="17" fill="#B5955B"/>
+              <text x="350" y="220" text-anchor="middle" font-size="14" fill="#fff">★</text>
+            </g>
+            <text x="350" y="248" text-anchor="middle" font-size="14" font-weight="600" fill="#2B2926">马德里</text>
+            <text x="350" y="260" text-anchor="middle" font-size="9" fill="#6A665F" letter-spacing="1">Madrid</text>
+            <text x="350" y="272" text-anchor="middle" font-size="9" fill="#B5955B" font-style="italic">首都 · 出发地</text>
+            </a>
+
+            <!-- 塞哥维亚 -->
+            <a href="segovia.html">
+            <g filter="url(#shadow)" style="cursor:pointer">
+              <circle cx="288" cy="155" r="14" fill="#FCFAF7" stroke="#B5955B" stroke-width="2"/>
+              <text x="288" y="160" text-anchor="middle" font-size="10" fill="#B5955B" font-weight="bold">01</text>
+            </g>
+            <text x="288" y="179" text-anchor="middle" font-size="12" font-weight="600" fill="#2B2926">塞哥维亚</text>
+            <text x="288" y="191" text-anchor="middle" font-size="8.5" fill="#6A665F">Segovia</text>
+            </a>
+
+            <!-- 托莱多 -->
+            <a href="toledo.html">
+            <g filter="url(#shadow)" style="cursor:pointer">
+              <circle cx="302" cy="275" r="14" fill="#FCFAF7" stroke="#B5955B" stroke-width="2"/>
+              <text x="302" y="280" text-anchor="middle" font-size="10" fill="#B5955B" font-weight="bold">02</text>
+            </g>
+            <text x="302" y="299" text-anchor="middle" font-size="12" font-weight="600" fill="#2B2926">托莱多</text>
+            <text x="302" y="311" text-anchor="middle" font-size="8.5" fill="#6A665F">Toledo</text>
+            </a>
+
+            <!-- 科尔多瓦 -->
+            <a href="cordoba.html">
+            <g filter="url(#shadow)" style="cursor:pointer">
+              <circle cx="242" cy="350" r="14" fill="#FCFAF7" stroke="#B5955B" stroke-width="2"/>
+              <text x="242" y="355" text-anchor="middle" font-size="10" fill="#B5955B" font-weight="bold">03</text>
+            </g>
+            <text x="242" y="374" text-anchor="middle" font-size="12" font-weight="600" fill="#2B2926">科尔多瓦</text>
+            <text x="242" y="386" text-anchor="middle" font-size="8.5" fill="#6A665F">Córdoba</text>
+            </a>
+
+            <!-- 塞维利亚 -->
+            <a href="sevilla.html">
+            <g filter="url(#shadow)" style="cursor:pointer">
+              <circle cx="188" cy="388" r="16" fill="#FCFAF7" stroke="#B5955B" stroke-width="2.5"/>
+              <text x="188" y="393" text-anchor="middle" font-size="10" fill="#B5955B" font-weight="bold">04</text>
+            </g>
+            <text x="160" y="415" text-anchor="start" font-size="12" font-weight="600" fill="#2B2926">塞维利亚</text>
+            <text x="163" y="427" text-anchor="start" font-size="8.5" fill="#6A665F">Sevilla</text>
+            </a>
+
+            <!-- 格拉纳达 -->
+            <a href="granada.html">
+            <g filter="url(#shadow)" style="cursor:pointer">
+              <circle cx="328" cy="425" r="16" fill="#FCFAF7" stroke="#B5955B" stroke-width="2.5"/>
+              <text x="328" y="430" text-anchor="middle" font-size="10" fill="#B5955B" font-weight="bold">05</text>
+            </g>
+            <text x="328" y="453" text-anchor="middle" font-size="12" font-weight="600" fill="#2B2926">格拉纳达</text>
+            <text x="328" y="465" text-anchor="middle" font-size="8.5" fill="#6A665F">Granada</text>
+            </a>
+
+            <!-- 巴塞罗那 -->
+            <a href="barcelona.html">
+            <g filter="url(#shadow)" style="cursor:pointer">
+              <circle cx="558" cy="120" r="16" fill="#FCFAF7" stroke="#B5955B" stroke-width="2.5"/>
+              <text x="558" y="125" text-anchor="middle" font-size="10" fill="#B5955B" font-weight="bold">06</text>
+            </g>
+            <text x="558" y="148" text-anchor="middle" font-size="12" font-weight="600" fill="#2B2926">巴塞罗那</text>
+            <text x="558" y="160" text-anchor="middle" font-size="8.5" fill="#6A665F">Barcelona</text>
+            </a>
+
+            <!-- 图例 -->
+            <g transform="translate(570, 340)">
+              <rect x="0" y="0" width="170" height="120" rx="6" fill="rgba(252,250,247,0.9)" stroke="#DED6C8" stroke-width="1"/>
+              <text x="85" y="20" text-anchor="middle" font-size="10" fill="#2B2926" font-weight="600" letter-spacing="1">路线说明</text>
+              <line x1="12" y1="28" x2="158" y2="28" stroke="#DED6C8" stroke-width="0.8"/>
+              <line x1="16" y1="44" x2="40" y2="44" stroke="#B5955B" stroke-width="2" stroke-dasharray="5,3"/>
+              <text x="47" y="48" font-size="10" fill="#6A665F">建议行驶路线</text>
+              <circle cx="24" cy="64" r="7" fill="#B5955B"/>
+              <text x="14" y="68" font-size="8" fill="#fff" text-anchor="middle">★</text>
+              <text x="47" y="68" font-size="10" fill="#6A665F">首都 / 出发地</text>
+              <circle cx="24" cy="84" r="7" fill="#FCFAF7" stroke="#B5955B" stroke-width="1.5"/>
+              <text x="24" y="88" font-size="8" fill="#B5955B" text-anchor="middle" font-weight="bold">01</text>
+              <text x="47" y="88" font-size="10" fill="#6A665F">推荐游览城市</text>
+              <text x="16" y="108" font-size="9" fill="#B5955B" font-style="italic">数字旁标注为公路距离(km)</text>
+            </g>
+
+            <!-- 装饰性地名 -->
+            <text x="95" y="200" font-size="10" fill="#C8B880" opacity="0.5" transform="rotate(-90,95,200)">大  西  洋</text>
+            <text x="660" y="320" font-size="10" fill="#C8B880" opacity="0.5">地  中  海</text>
+            <text x="68" y="450" font-size="9" fill="#B5955B" opacity="0.6" font-style="italic">葡萄牙</text>
+            <text x="640" y="100" font-size="9" fill="#B5955B" opacity="0.6" font-style="italic">法国</text>
+
+            <!-- 版权 -->
+            <text x="762" y="488" text-anchor="end" font-size="8" fill="#C8B880" opacity="0.6">西班牙旅行手册 · Route Map</text>
+          </svg>
+        </div>
+
+        <!-- Quick city links below map -->
+        <div class="map-city-links" aria-label="快速前往城市页面">
+          <a href="madrid.html"    class="map-city-link">🏛 马德里</a>
+          <a href="barcelona.html" class="map-city-link">🎨 巴塞罗那</a>
+          <a href="granada.html"   class="map-city-link">🌹 格拉纳达</a>
+          <a href="sevilla.html"   class="map-city-link">💃 塞维利亚</a>
+          <a href="cordoba.html"   class="map-city-link">🕌 科尔多瓦</a>
+          <a href="toledo.html"    class="map-city-link">⚔️ 托莱多</a>
+          <a href="segovia.html"   class="map-city-link">🏰 塞哥维亚</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-logo">SPAIN TRAVEL</span>
+        <div class="footer-divider"></div>
+        <span class="footer-meta">© 2026 西班牙旅行手册 · 以上数据仅供参考，出行前请以各景点官方网站为准</span>
+      </div>
+      <span class="footer-author">作者 @小红书 喜马拉雅的果酱</span>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="回到顶部" title="回到顶部">
+    <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <!-- Toast notification -->
+  <div class="toast-msg" id="toastMsg" aria-live="polite"></div>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script src="./assets/js/lucide.min.js"></script>
+  <script src="./assets/js/shared.js"></script>
+
+  <script>
+    /* ── BACK TO TOP ────────────────────────────────────────── */
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    /* ── SHARED INIT ────────────────────────────────────────── */
+    initBottomNav('festivals');
+    initScrollReveal();
+    initReadingProgressBar();
+    initLangToggle();
+  </script>
+
+</body>
+</html>

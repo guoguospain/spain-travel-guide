@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="马德里旅行指南 — 皇宫、普拉多博物馆、丽池公园，西班牙首都精选景点、门票与开放时间">
+    <title>马德里 · 西班牙旅行手册</title>
+
+    <!-- Baidu Tongji — única analítica (GFW-safe) -->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b9d71470cd906e999f6cbb88f009fcd1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <style>
+        /* ── City hero (280 px fijo — evita 100vh en WeChat) ── */
+        .city-hero {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: var(--dark);
+        }
+        .city-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 60%;
+            display: block;
+            filter: brightness(0.72);
+        }
+        .city-hero-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px 24px 24px;
+            background: linear-gradient(to top, rgba(26,23,20,0.72) 0%, transparent 55%);
+        }
+        .city-hero-tag {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 6px;
+        }
+        .city-hero-title {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 600;
+            font-size: clamp(30px, 7vw, 42px);
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: 0.06em;
+            margin-bottom: 6px;
+        }
+        .city-hero-subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.03em;
+        }
+
+        /* ── Attractions section ── */
+        .attractions-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 32px 20px 16px;
+        }
+        .section-eyebrow {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .section-heading {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 400;
+            font-size: clamp(20px, 4.5vw, 28px);
+            color: var(--text-primary);
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── How to get there ── */
+        .how-to-get {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .how-to-get-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .transport-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 16px 14px;
+            text-align: center;
+        }
+        .transport-item-icon {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+        .transport-item-name {
+            font-family: "PingFang SC", sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .transport-item-detail {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .transport-item-time {
+            display: inline-block;
+            margin-top: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            background: var(--gold-bg);
+            color: var(--accent);
+            border-radius: 10px;
+            padding: 2px 9px;
+        }
+
+        /* ── Madrid tips ── */
+        .city-tips-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .city-tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .city-tip-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 14px 15px;
+        }
+        .city-tip-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        .city-tip-text {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── Nearby cities ── */
+        .nearby-cities {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px 36px;
+            border-top: 1px solid var(--border);
+        }
+        .nearby-cities-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .nearby-city-link {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 12px 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: "PingFang SC", sans-serif;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            flex: 1;
+            min-width: 140px;
+        }
+        .nearby-city-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+        }
+        .nearby-city-link-en {
+            font-size: 11px;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+        }
+        .nearby-city-arrow {
+            margin-left: auto;
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .city-hero { height: 230px; }
+            .city-hero-overlay { padding: 20px 18px 18px; }
+            .attractions-section { padding: 24px 14px 12px; }
+            .how-to-get { padding: 22px 14px; }
+            .how-to-get-grid { grid-template-columns: 1fr; gap: 8px; }
+            .transport-item { display: flex; align-items: flex-start; gap: 12px; text-align: left; }
+            .transport-item-icon { font-size: 20px; flex-shrink: 0; margin-bottom: 0; margin-top: 1px; }
+            .city-tips-section { padding: 22px 14px; }
+            .city-tips-grid { grid-template-columns: 1fr; gap: 8px; }
+            .nearby-cities { padding: 22px 14px 36px; }
+            .nearby-cities-list { flex-direction: column; }
+            .nearby-city-link { min-width: auto; }
+        }
+        @media (max-width: 380px) {
+            .city-hero { height: 200px; }
+            .city-hero-title { font-size: 26px; }
+            .attractions-section { padding: 18px 12px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reading progress bar -->
+    <div id="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- ── Top bar ── -->
+    <header class="top-bar">
+        <a href="index.html" class="top-bar-back" aria-label="返回首页">
+            ← 首页
+        </a>
+        <span class="top-bar-title">马德里</span>
+        <div class="lang-toggle" role="group" aria-label="语言切换">
+            <button class="lang-btn active" id="langBtnZh" aria-pressed="true">中</button>
+            <button class="lang-btn" id="langBtnEn" aria-pressed="false">EN</button>
+        </div>
+    </header>
+
+    <!-- ── City hero ── -->
+    <div class="city-hero">
+        <img
+            src="./assets/images/photo-1658922184330-001b78430070.jpg"
+            alt="马德里皇宫 — 马德里"
+            loading="eager"
+            decoding="async"
+        >
+        <div class="city-hero-overlay">
+            <p class="city-hero-tag">Spain · 01</p>
+            <h1 class="city-hero-title">马德里</h1>
+            <p class="city-hero-subtitle">The Heart of Spain · 欧洲海拔最高的首都</p>
+        </div>
+    </div>
+
+    <!-- ── Attractions ── -->
+    <section class="attractions-section" id="attractions">
+        <p class="section-eyebrow">精选景点</p>
+        <h2 class="section-heading">必游之地</h2>
+
+        <!-- 1. 马德里皇宫 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1658922184330-001b78430070.jpg"
+                        alt="马德里皇宫"
+                        class="attraction-image img-pos-60"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">马德里皇宫</h3>
+                    <p class="attraction-title-en">Palacio Real de Madrid</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1.5-2小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前一周</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">欧洲规模最大的皇宫之一，18世纪波旁王朝巴洛克杰作，拥有3418个房间。腓力五世下令重建，外立面多利克与爱奥尼亚柱式层叠，王座厅天鹅绒与镀金令人叹为观止。皇家军械库珍藏中世纪武器，皇家药房保存17世纪药瓶。宫前东方广场与阿尔穆德纳大教堂相呼应，构成马德里最庄重的历史轴线。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Calle de Bailén, s/n, 28071 Madrid<button class="copy-btn" data-copy="Calle de Bailén, s/n, 28071 Madrid">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">10-3月：10:00-18:00　　4-9月：10:00-20:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">24</span></span> 成人（Palacio + Galería）；优惠票（5-16岁/65岁以上/学生）<span class="price-display"><span class="price-symbol">€</span><span class="price-value">12</span></span>；欧盟公民周一至周四闭馆前2小时免费</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.patrimonionacional.es/" target="_blank" rel="noopener">patrimonionacional.es</a><button class="copy-btn" data-copy="https://www.patrimonionacional.es">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">国事活动期间临时关闭，出发前官网确认；内部多处不可拍照；强烈建议租借含中文的官方语音导览器</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 普拉多国家博物馆 -->
+        <div class="attraction-card reveal reveal-d1">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1570794155462-374865de09b3.jpg"
+                        alt="普拉多国家博物馆"
+                        class="attraction-image img-pos-center"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">普拉多国家博物馆</h3>
+                    <p class="attraction-title-en">Museo Nacional del Prado</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">2.5-4小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前一周</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">世界三大博物馆之一，西班牙艺术的最高殿堂。馆藏逾35000件，委拉斯开兹《宫娥》、戈雅《1808年5月3日》与《黑色绘画》系列、博斯《人间乐园》等旷世名作云集于此。建筑本身是18世纪新古典主义杰作。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Paseo del Prado, s/n, 28014 Madrid<button class="copy-btn" data-copy="Paseo del Prado, s/n, 28014 Madrid">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">周一至周六：10:00-20:00　　周日及节假日：10:00-19:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">15</span></span> 成人；周一至周六18:00起、周日17:00起免费（需排队领票）；多媒体语音导览（含中文）+<span class="price-display"><span class="price-symbol">€</span><span class="price-value">5</span></span></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.museodelprado.es/" target="_blank" rel="noopener">museodelprado.es</a><button class="copy-btn" data-copy="https://www.museodelprado.es">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">大包须寄存入口处；馆内全程禁止拍照；免费时段排队时间较长；强烈建议租中文语音导览器</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 索菲亚王后艺术中心 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1778472822309-0d14d6b4c9f5.jpg"
+                        alt="索菲亚王后艺术中心"
+                        class="attraction-image img-pos-upper"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">索菲亚王后艺术中心</h3>
+                    <p class="attraction-title-en">Museo Reina Sofía</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1.5-2.5小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前一周</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">西班牙现代与当代艺术最重要的殿堂，毕加索《格尔尼卡》是镇馆之宝。这幅11米宽的反战巨作令无数观者驻足沉默。达利、米罗的大型装置作品同样必看。由旧圣卡洛斯医院改建，现代玻璃电梯与18世纪砖石外墙形成强烈对比。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Calle de Santa Isabel, 52, 28012 Madrid<button class="copy-btn" data-copy="Calle de Santa Isabel, 52, 28012 Madrid">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">周一及周三至周六：10:00-21:00　　周日：10:00-14:30　　周二闭馆</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">12</span></span> 普通票；含移动端音频导览<span class="price-display"><span class="price-symbol">€</span><span class="price-value">18</span></span>；周一及周三至周六19:00起、周日12:30-14:30免费</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.museoreinasofia.es/" target="_blank" rel="noopener">museoreinasofia.es</a><button class="copy-btn" data-copy="https://www.museoreinasofia.es">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">《格尔尼卡》禁止拍照；与普拉多步行约5分钟，可安排同日参观；建议留2小时以上</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 丽池公园 -->
+        <div class="attraction-card reveal reveal-d1">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1708205750515-afdbd5378c13.jpg"
+                        alt="丽池公园"
+                        class="attraction-image img-pos-center"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">丽池公园</h3>
+                    <p class="attraction-title-en">Parque del Retiro</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1-2小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">无官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">不需要预约</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">UNESCO世界遗产，马德里的城市绿肺，曾是波旁王室的私人园林。130公顷，15000株植物，人工湖可租划船，水晶宫举办免费当代艺术展，阿方索十二世纪念碑是最佳拍摄点。每周末有街头艺人，是感受马德里人日常生活节奏的最佳窗口。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Plaza de la Independencia, 7, 28001 Madrid<button class="copy-btn" data-copy="Plaza de la Independencia, 7, 28001 Madrid">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">4-9月：06:00-24:00　　10-3月：06:00-22:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value">免费入园；人工湖划船约 <span class="price-display"><span class="price-symbol">€</span><span class="price-value">6</span></span>/45分钟；水晶宫免费参观</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.esmadrid.com/parque-del-retiro" target="_blank" rel="noopener">esmadrid.com</a><button class="copy-btn" data-copy="https://www.esmadrid.com/parque-del-retiro">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">水晶宫免费入内，可查询展期；清晨和傍晚光线最美；避免正午阳光暴晒</p>
+                        <p class="ticket-info">入场方式：免费入园，无需门票</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 如何抵达马德里 ── -->
+    <section class="how-to-get" id="how-to-get">
+        <p class="section-eyebrow">交通指南</p>
+        <h2 class="section-heading">如何抵达马德里</h2>
+        <div class="how-to-get-grid">
+            <div class="transport-item">
+                <div class="transport-item-icon">🚄</div>
+                <div>
+                    <div class="transport-item-name">高铁 AVE</div>
+                    <p class="transport-item-detail">西班牙高铁网络枢纽，阿托查站发车直达塞维利亚、巴塞罗那、瓦伦西亚等主要城市。越早购票越便宜。</p>
+                    <span class="transport-item-time">塞维利亚 ~2h30 · 巴塞罗那 ~2h30</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">✈️</div>
+                <div>
+                    <div class="transport-item-name">飞机</div>
+                    <p class="transport-item-detail">马德里-巴拉哈斯机场（MAD）为欧洲主要枢纽，多条国际直飞航线。地铁8号线直达市中心约30分钟。</p>
+                    <span class="transport-item-time">市区 ~30分钟（地铁）</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">🚌</div>
+                <div>
+                    <div class="transport-item-name">大巴 ALSA</div>
+                    <p class="transport-item-detail">南大巴站（Estación Sur）连接全国各地，票价实惠，班次密集。从格拉纳达、科尔多瓦等地出发是高性价比选择。</p>
+                    <span class="transport-item-time">格拉纳达 ~5h · 科尔多瓦 ~4h</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 马德里旅行小贴士 ── -->
+    <section class="city-tips-section" id="madrid-tips">
+        <p class="section-eyebrow">旅行贴士</p>
+        <h2 class="section-heading">马德里实用提示</h2>
+        <div class="city-tips-grid">
+            <div class="city-tip-item">
+                <div class="city-tip-label">博物馆三角</div>
+                <p class="city-tip-text">普拉多、王后索菲亚、提森博物馆三者相距步行10分钟内，建议安排两天分开参观，避免视觉疲劳。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">地铁出行</div>
+                <p class="city-tip-text">马德里地铁覆盖全面，单程票约€1.5-2，10次票更划算。推荐购买Tarjeta de Transporte充值使用。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">用餐节奏</div>
+                <p class="city-tip-text">午餐14:00-16:00，晚餐从21:00才开始热闹。太阳门广场周边有大量平价Tapas小吃，是探索当地饮食文化的好起点。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">最佳季节</div>
+                <p class="city-tip-text">5月（圣伊西德罗节）和9-10月天气最舒适。7-8月酷热，但博物馆内部清凉，是避暑好去处。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">免费时段</div>
+                <p class="city-tip-text">普拉多周一至六18:00后免费，王后索菲亚周一及周三至六19:00后免费。免费时段需排队，建议提早到场。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">太阳门广场</div>
+                <p class="city-tip-text">西班牙地理中心"零公里"标志所在地，是各地铁线交汇点，也是观察马德里市井生活的绝佳位置。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 附近城市 ── -->
+    <nav class="nearby-cities" id="nearby" aria-label="周边城市">
+        <p class="section-eyebrow">周边探索</p>
+        <h2 class="section-heading">马德里周边一日游</h2>
+        <div class="nearby-cities-list">
+            <a href="toledo.html" class="nearby-city-link">
+                <span>
+                    <span style="font-size:18px">🏰</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">托莱多</span>
+                    <span class="nearby-city-link-en">Toledo · 高铁约30分钟</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+            <a href="segovia.html" class="nearby-city-link">
+                <span>
+                    <span style="font-size:18px">🏯</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">塞哥维亚</span>
+                    <span class="nearby-city-link-en">Segovia · 高铁约30分钟</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span class="footer-logo">🇪🇸 西班牙旅行手册</span>
+                <span class="footer-divider"></span>
+                <span class="footer-meta">© 2026 西班牙旅行手册 · 以上数据仅供参考，出行前请以各景点官方网站为准</span>
+            </div>
+            <span class="footer-author">作者 @小红书 喜马拉雅的果酱</span>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="回到顶部">
+        <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ── Scripts ── -->
+    <script src="assets/js/lucide.min.js"></script>
+    <script src="assets/js/shared.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        /* 1 — Bottom navigation */
+        initBottomNav('cities');
+
+        /* 2 — Language toggle */
+        initLangToggle();
+
+        /* 3 — Copy buttons */
+        initCopyButtons();
+
+        /* 4 — Scroll-reveal */
+        initScrollReveal();
+
+        /* 5 — Reading progress bar */
+        initReadingProgressBar();
+
+        /* 6 — Back to top */
+        var btt = document.getElementById('back-to-top');
+        if (btt) {
+            window.addEventListener('scroll', function () {
+                btt.classList.toggle('visible', window.scrollY > 320);
+            }, { passive: true });
+            btt.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        /* 7 — i18n: Madrid-specific overrides for setLang
+           setLang ya maneja attraction-desc y attraction-tips vía shared.js.
+           La ciudad intro de madrid no existe en esta página como .city-intro
+           dentro de #madrid, así que no hace falta override. */
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,767 @@
+/*
+ * Spain Travel Handbook — shared.css
+ * WeChat-first · Mobile-first · GFW-safe (sin Google Fonts)
+ *
+ * Contenido:
+ *   1. Design tokens
+ *   2. Reset mínimo (sin @import Google Fonts)
+ *   3. Bottom navigation
+ *   4. Top bar minimalista
+ *   5. Lang toggle
+ *   6. Reading progress bar
+ *   7. Section structure
+ *   8. City section header
+ *   9. Attraction cards
+ *  10. Toast notification
+ *  11. Scroll-reveal animation
+ *  12. Back to top
+ *  13. Footer
+ *  14. Responsive breakpoints
+ *  15. Print styles
+ */
+
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+:root {
+    --bg: #F4F1EA;
+    --text-primary: #2B2926;
+    --text-secondary: #6A665F;
+    --accent: #B5955B;
+    --accent-light: #C9AE7A;
+    --border: #DED6C8;
+    --card-bg: #FCFAF7;
+    --dark: #1A1714;
+    --deep: #2B2926;
+    --mist: #EDE8DF;
+    --gold: #B5955B;
+    --gold-bg: rgba(181,149,91,0.08);
+    --warm-white: #FCFAF7;
+    --bottom-nav-height: 60px;
+}
+
+/* ============================================================
+   2. RESET MÍNIMO — sin @import Google Fonts (GFW fix #1)
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* PingFang SC es el font del sistema en iOS/macOS chino.
+       Noto Serif SC como fallback para Android.
+       Microsoft YaHei para Windows. */
+    font-family: "PingFang SC", "Noto Serif SC", "Microsoft YaHei", serif;
+    font-weight: 400;
+    line-height: 1.9;
+    color: var(--text-primary);
+    background: var(--bg);
+    /* Espacio para bottom nav */
+    padding-bottom: 70px;
+}
+
+/* ============================================================
+   3. BOTTOM NAVIGATION — patrón estándar apps chinas/WeChat
+   ============================================================ */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    /* Safe area para iPhone con notch */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: var(--warm-white);
+    border-top: 1px solid var(--border);
+    display: flex;
+    z-index: 1000;
+    box-shadow: 0 -2px 12px rgba(43,41,38,0.06);
+}
+
+.bottom-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    /* Área táctil mínima 44×44px */
+    min-height: 44px;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-item.active {
+    color: var(--accent);
+}
+
+.bottom-nav-item svg {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 2px;
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ============================================================
+   4. TOP BAR MINIMALISTA
+      position: sticky (no fixed) — evita bugs en TBS Android
+   ============================================================ */
+.top-bar {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.top-bar-logo {
+    font-family: "PingFang SC", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+}
+
+.top-bar-back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+    font-size: 14px;
+    color: var(--accent);
+    text-decoration: none;
+    /* Área táctil mínima */
+    padding: 8px 0;
+    min-height: 44px;
+}
+
+.top-bar-title {
+    font-family: "PingFang SC", "Noto Serif SC", serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   5. LANG TOGGLE
+   ============================================================ */
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    background: var(--mist);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px;
+    gap: 1px;
+    flex-shrink: 0;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.lang-btn {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 3px 9px;
+    border: none;
+    background: none;
+    color: var(--text-secondary);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    line-height: 1.4;
+    min-height: 28px;
+}
+
+.lang-btn.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.lang-btn:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+/* ============================================================
+   6. READING PROGRESS BAR
+   ============================================================ */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+    z-index: 2001;
+    border-radius: 0 2px 2px 0;
+    pointer-events: none;
+    transition: width 0.08s linear;
+}
+
+/* ============================================================
+   7. SECTION STRUCTURE
+   ============================================================ */
+.main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section {
+    padding: 36px 0;
+}
+
+.section.compact-after { padding-bottom: 20px; }
+.section.compact-before { padding-top: 20px; }
+
+.section-label {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: "PingFang SC", "Noto Serif SC", serif;
+    font-weight: 400;
+    font-size: clamp(28px, 5vw, 42px);
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+/* ============================================================
+   8. CITY SECTION HEADER
+   ============================================================ */
+.city-section {
+    margin-bottom: 40px;
+}
+
+.city-header {
+    position: relative;
+    margin-bottom: 48px;
+    padding-left: 80px;
+    padding-right: 180px;
+}
+
+.city-number {
+    position: absolute;
+    left: 0;
+    top: -20px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 80px;
+    color: var(--border);
+    line-height: 1;
+}
+
+.city-name {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: 0.15em;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.city-name-en {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.city-line {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+}
+
+.city-intro {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 520px;
+}
+
+/* City section separator */
+.city-separator {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--border) 25%, var(--border) 75%, transparent 100%);
+    margin: 4px 0 40px;
+    position: relative;
+}
+
+.city-separator::after {
+    content: '✦';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg);
+    padding: 0 14px;
+    color: var(--accent);
+    font-size: 10px;
+    opacity: 0.55;
+}
+
+/* ============================================================
+   9. ATTRACTION CARDS
+   ============================================================ */
+.attraction-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.attraction-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.attraction-number { display: none; }
+
+.attraction-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.attraction-gallery {
+    width: 100%;
+    background: var(--mist);
+    line-height: 0;
+}
+
+.attraction-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+}
+
+/* Per-attraction focus points */
+.img-pos-top     { object-position: center 18% !important; }
+.img-pos-25      { object-position: center 25% !important; }
+.img-pos-upper   { object-position: center 30% !important; }
+.img-pos-center  { object-position: center center !important; }
+.img-pos-lower   { object-position: center 65% !important; }
+.img-pos-bottom  { object-position: center 78% !important; }
+.img-pos-55      { object-position: center 55% !important; }
+.img-pos-60      { object-position: center 60% !important; }
+.img-pos-70      { object-position: center 70% !important; }
+.img-pos-75      { object-position: center 75% !important; }
+.img-pos-40      { object-position: center 40% !important; }
+.img-pos-alhambra { object-position: center 55% !important; }
+.img-pos-nicolas  { object-position: center 55% !important; }
+
+.attraction-body {
+    padding: 24px;
+    flex: 1;
+}
+
+.attraction-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.attraction-title-en {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.attraction-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.attraction-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.meta-chip {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 9px 10px;
+    background: rgba(250,250,248,0.75);
+}
+
+.meta-chip-label {
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 10px;
+    color: var(--accent);
+    margin-bottom: 2px;
+}
+
+.meta-chip-value {
+    display: block;
+    font-size: 12px;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.attraction-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.info-label {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.info-value {
+    font-size: 13px;
+    color: var(--text-primary);
+    word-break: break-word;
+}
+
+.attraction-info a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(181,149,91,0.3);
+    transition: border-color 0.2s;
+}
+
+.attraction-info a:hover { border-bottom-color: var(--accent); }
+
+.copy-btn {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 3px 8px;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: all 0.3s ease-out;
+    vertical-align: middle;
+    min-height: 22px;
+}
+
+.copy-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.copy-btn.copied {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.attraction-tips {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.tips-label {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.tips-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.ticket-info {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Price display */
+.price-display {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 1px;
+}
+.price-symbol,
+.price-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* ============================================================
+   10. TOAST NOTIFICATION
+   ============================================================ */
+.toast-msg {
+    position: fixed;
+    /* Por encima del bottom nav */
+    bottom: calc(var(--bottom-nav-height) + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: var(--deep);
+    color: rgba(255,255,255,0.9);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.28s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+}
+
+.toast-msg.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   11. SCROLL-REVEAL ANIMATION
+   ============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+
+/* ============================================================
+   12. BACK TO TOP
+   ============================================================ */
+#back-to-top {
+    position: fixed;
+    bottom: calc(var(--bottom-nav-height) + 16px);
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 900;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all 0.35s ease;
+    box-shadow: 0 4px 18px rgba(181,149,91,0.45);
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#back-to-top:hover {
+    background: #a97826;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 26px rgba(181,149,91,0.55);
+}
+
+#back-to-top svg { width: 20px; height: 20px; stroke: #fff; fill: none; }
+
+/* ============================================================
+   13. FOOTER
+   ============================================================ */
+.footer {
+    background: var(--deep);
+    padding: 20px 32px;
+    border-top: 1px solid rgba(181,149,91,0.25);
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+}
+
+.footer-divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+}
+
+.footer-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+}
+
+.footer-author {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    opacity: 0.85;
+}
+
+/* ============================================================
+   14. RESPONSIVE BREAKPOINTS
+   ============================================================ */
+@media (max-width: 768px) {
+    .main { padding: 0 16px; }
+    .section { padding: 36px 0; }
+    .section-label { font-size: 9px; margin-bottom: 4px; }
+    .section-title { font-size: clamp(22px, 5vw, 30px); }
+
+    .city-header {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+    .city-number {
+        position: static;
+        font-size: 40px;
+        margin-bottom: -8px;
+    }
+    .city-line { margin: 0 auto; }
+    .city-name { font-size: 22px; }
+    .city-name-en { margin-bottom: 10px; }
+    .city-intro { font-size: 12px; margin-top: 10px; line-height: 1.7; }
+
+    .attraction-card { margin-bottom: 12px; }
+    .attraction-body { padding: 16px 18px; }
+    .attraction-image { height: 165px; }
+    .attraction-title { font-size: 17px; }
+    .attraction-title-en { margin-bottom: 10px; }
+    .attraction-desc { font-size: 13px; margin-bottom: 14px; line-height: 1.7; }
+    .attraction-info { grid-template-columns: 1fr; }
+    .attraction-meta { grid-template-columns: repeat(2, 1fr); }
+    .meta-chip { padding: 7px 9px; }
+    .info-label { font-size: 12px; }
+    .info-value { font-size: 12px; }
+
+    .footer-content { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .footer-left { flex-wrap: wrap; gap: 10px; }
+}
+
+@media (max-width: 480px) {
+    .main { padding: 0 14px; }
+    .section { padding: 28px 0; }
+    .city-header { margin-bottom: 18px; }
+    .city-number { font-size: 34px; }
+    .city-name { font-size: 19px; letter-spacing: 0.08em; }
+    .city-name-en { font-size: 12px; }
+    .city-intro { font-size: 12.5px; line-height: 1.65; }
+    .attraction-body { padding: 12px 14px; }
+    .attraction-image { height: 155px; }
+    .attraction-title { font-size: 15px; }
+    .attraction-title-en { font-size: 12px; margin-bottom: 8px; }
+    .attraction-desc { font-size: 12.5px; margin-bottom: 10px; line-height: 1.6; }
+    .meta-chip { padding: 6px 7px; }
+    .meta-chip-value { font-size: 11px; }
+    .info-label { font-size: 11.5px; }
+    .info-value { font-size: 11.5px; }
+}
+
+/* Android pequeño */
+@media (max-width: 380px) {
+    .main { padding: 0 12px; }
+    .section { padding: 24px 0; }
+    .city-number { font-size: 30px; }
+    .attraction-body { padding: 11px 12px; }
+}
+
+/* ============================================================
+   15. PRINT STYLES
+   ============================================================ */
+@media print {
+    .bottom-nav,
+    .top-bar .lang-toggle,
+    .copy-btn,
+    #back-to-top,
+    #progress-bar,
+    .toast-msg { display: none !important; }
+
+    .attraction-card { break-inside: avoid; }
+    .city-section:not(:first-child) { page-break-before: always; }
+}

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="巴塞罗那旅行指南 — 圣家堂、桂尔公园、巴特罗之家，高迪建筑奇迹精选景点、门票与开放时间">
+    <title>巴塞罗那 · 西班牙旅行手册</title>
+
+    <!-- Baidu Tongji — única analítica (GFW-safe) -->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b9d71470cd906e999f6cbb88f009fcd1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <style>
+        /* ── City hero (280 px fijo — evita 100vh en WeChat) ── */
+        .city-hero {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: var(--dark);
+        }
+        .city-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+            display: block;
+            filter: brightness(0.68);
+        }
+        .city-hero-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px 24px 24px;
+            background: linear-gradient(to top, rgba(26,23,20,0.72) 0%, transparent 55%);
+        }
+        .city-hero-tag {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 6px;
+        }
+        .city-hero-title {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 600;
+            font-size: clamp(30px, 7vw, 42px);
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: 0.06em;
+            margin-bottom: 6px;
+        }
+        .city-hero-subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.03em;
+        }
+
+        /* ── Attractions section ── */
+        .attractions-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 32px 20px 16px;
+        }
+        .section-eyebrow {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .section-heading {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 400;
+            font-size: clamp(20px, 4.5vw, 28px);
+            color: var(--text-primary);
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── How to get there ── */
+        .how-to-get {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .how-to-get-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .transport-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 16px 14px;
+            text-align: center;
+        }
+        .transport-item-icon {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+        .transport-item-name {
+            font-family: "PingFang SC", sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .transport-item-detail {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .transport-item-time {
+            display: inline-block;
+            margin-top: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            background: var(--gold-bg);
+            color: var(--accent);
+            border-radius: 10px;
+            padding: 2px 9px;
+        }
+
+        /* ── Barcelona tips ── */
+        .city-tips-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .city-tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .city-tip-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 14px 15px;
+        }
+        .city-tip-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        .city-tip-text {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── Nearby cities ── */
+        .nearby-cities {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px 36px;
+            border-top: 1px solid var(--border);
+        }
+        .nearby-cities-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .nearby-city-link {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 12px 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: "PingFang SC", sans-serif;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            flex: 1;
+            min-width: 140px;
+        }
+        .nearby-city-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+        }
+        .nearby-city-link-en {
+            font-size: 11px;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+        }
+        .nearby-city-arrow {
+            margin-left: auto;
+            color: var(--accent);
+            font-size: 16px;
+        }
+        .nearby-city-link.coming-soon {
+            opacity: 0.52;
+            cursor: default;
+            pointer-events: none;
+        }
+        .coming-soon-badge {
+            font-size: 9px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: var(--gold-bg);
+            color: var(--accent);
+            border-radius: 8px;
+            padding: 1px 7px;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .city-hero { height: 230px; }
+            .city-hero-overlay { padding: 20px 18px 18px; }
+            .attractions-section { padding: 24px 14px 12px; }
+            .how-to-get { padding: 22px 14px; }
+            .how-to-get-grid { grid-template-columns: 1fr; gap: 8px; }
+            .transport-item { display: flex; align-items: flex-start; gap: 12px; text-align: left; }
+            .transport-item-icon { font-size: 20px; flex-shrink: 0; margin-bottom: 0; margin-top: 1px; }
+            .city-tips-section { padding: 22px 14px; }
+            .city-tips-grid { grid-template-columns: 1fr; gap: 8px; }
+            .nearby-cities { padding: 22px 14px 36px; }
+            .nearby-cities-list { flex-direction: column; }
+            .nearby-city-link { min-width: auto; }
+        }
+        @media (max-width: 380px) {
+            .city-hero { height: 200px; }
+            .city-hero-title { font-size: 26px; }
+            .attractions-section { padding: 18px 12px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reading progress bar -->
+    <div id="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- ── Top bar ── -->
+    <header class="top-bar">
+        <a href="index.html" class="top-bar-back" aria-label="返回首页">
+            ← 首页
+        </a>
+        <span class="top-bar-title">巴塞罗那</span>
+        <div class="lang-toggle" role="group" aria-label="语言切换">
+            <button class="lang-btn active" id="langBtnZh" aria-pressed="true">中</button>
+            <button class="lang-btn" id="langBtnEn" aria-pressed="false">EN</button>
+        </div>
+    </header>
+
+    <!-- ── City hero ── -->
+    <div class="city-hero">
+        <img
+            src="./assets/images/photo-1650964827770-421afa7960ac.jpg"
+            alt="圣家堂 — 巴塞罗那"
+            loading="eager"
+            decoding="async"
+        >
+        <div class="city-hero-overlay">
+            <p class="city-hero-tag">Spain · 02</p>
+            <h1 class="city-hero-title">巴塞罗那</h1>
+            <p class="city-hero-subtitle">Gaudí's Masterpiece · 地中海的艺术之城</p>
+        </div>
+    </div>
+
+    <!-- ── Attractions ── -->
+    <section class="attractions-section" id="attractions">
+        <p class="section-eyebrow">精选景点</p>
+        <h2 class="section-heading">必游之地</h2>
+
+        <!-- 1. 圣家堂 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1650964827770-421afa7960ac.jpg"
+                        alt="圣家堂"
+                        class="attraction-image img-pos-top"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">圣家堂</h3>
+                    <p class="attraction-title-en">Sagrada Família</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1.5-2小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前2个月以上</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">UNESCO世界遗产，高迪倾注43年心血的未竟杰作，全球唯一尚未完工便列为世遗的建筑。诞生立面的石雕精细入微，受难立面简洁震撼，内部彩色玻璃将阳光化为魔幻光海，树形石柱支撑起轻盈的穹顶。预计2026年高迪逝世百年之际完工，届时将成为世界最高教堂。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Carrer de Mallorca, 401, 08013 Barcelona<button class="copy-btn" data-copy="Carrer de Mallorca, 401, 08013 Barcelona">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">11-2月：09:00-18:00　　3月及10月：09:00-19:00　　4-9月：09:00-20:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">26</span></span> 基础票（含官方语音导览，中文可选）；<span class="price-display"><span class="price-symbol">€</span><span class="price-value">36</span></span> 含塔楼；必须提前官网购票</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.sagradafamilia.org/" target="_blank" rel="noopener">sagradafamilia.org</a><button class="copy-btn" data-copy="https://www.sagradafamilia.org">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">旺季至少提前2周购票，含塔楼票更早售罄；内部为宗教场所请保持肃静；导览器支持中文</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 桂尔公园 -->
+        <div class="attraction-card reveal reveal-d1">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1630219694734-fe47ab76b15e.jpg"
+                        alt="桂尔公园"
+                        class="attraction-image img-pos-lower"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">桂尔公园</h3>
+                    <p class="attraction-title-en">Park Güell</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1.5-2小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前1个月</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">高迪与友人桂尔共同打造的彩色马赛克王国，UNESCO世界遗产。希腊神庙式广场的镶嵌彩椅是最具代表性的打卡地，龙形喷泉守护着台阶入口，百柱厅的多立克石柱气势磅礴。公园最高处是俯瞰巴塞罗那全城与地中海的绝佳观景台。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Carrer d'Olot, 08024 Barcelona<button class="copy-btn" data-copy="Carrer d'Olot, 08024 Barcelona">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">冬季（11月至次年3月）：09:30-18:30　　夏季（4-9月）：09:30-19:30</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">18</span></span> 成人；7-12岁<span class="price-display"><span class="price-symbol">€</span><span class="price-value">13.50</span></span>；6岁以下免费；65岁以上<span class="price-display"><span class="price-symbol">€</span><span class="price-value">13.50</span></span>；分时入场，必须提前官网购票</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://parkguell.barcelona/" target="_blank" rel="noopener">parkguell.barcelona</a><button class="copy-btn" data-copy="https://parkguell.barcelona">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">必须提前官网分时购票，现场常售罄；建议开园后第一场人少；需步行上坡，穿舒适的鞋</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 巴特罗之家 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1651940774004-c1b6e2f6de6a.jpg"
+                        alt="巴特罗之家"
+                        class="attraction-image img-pos-center"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">巴特罗之家</h3>
+                    <p class="attraction-title-en">Casa Batlló</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1-1.5小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前1个月</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">高迪的海洋梦境，被誉为"世界最美建筑"之一。外立面覆盖蓝绿色瓷砖碎片，在阳光下如鱼鳞般闪烁；阳台形似骨骼，屋顶龙脊蜿蜒。内部展示高迪将自然形态融入建筑的天才——没有直角，所有空间流动如海浪。夜间灯光版体验尤为震撼。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Passeig de Gràcia, 43, 08007 Barcelona<button class="copy-btn" data-copy="Passeig de Gràcia, 43, 08007 Barcelona">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">09:00-21:00（最后入场20:30）</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">37</span></span> Blue票（含音频导览+Gaudí Cube）；<span class="price-display"><span class="price-symbol">€</span><span class="price-value">42</span></span> Silver（+屋顶露台）；<span class="price-display"><span class="price-symbol">€</span><span class="price-value">47</span></span> Gold；<span class="price-display"><span class="price-symbol">€</span><span class="price-value">57</span></span> Platinum；0-12岁免费</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.casabatllo.es/" target="_blank" rel="noopener">casabatllo.es</a><button class="copy-btn" data-copy="https://www.casabatllo.es">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">AR导览体验生动，强烈推荐；夜间版灯光效果震撼；与米拉之家同在感恩大道，可串联参观</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 米拉之家 -->
+        <div class="attraction-card reveal reveal-d1">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1638969535357-01e525eb00bd.jpg"
+                        alt="米拉之家"
+                        class="attraction-image img-pos-75"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">米拉之家</h3>
+                    <p class="attraction-title-en">Casa Milà (La Pedrera)</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1-1.5小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前一周</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">高迪最后的民用建筑作品，别名"石头矿场"（La Pedrera）。没有一条直线，外立面的石灰岩波浪与铸铁阳台如同海浪翻腾。屋顶露台是整栋建筑的高潮——造型各异的烟囱"武士"矗立其中，可俯瞰整个扩展区街景。顶层展示高迪建筑原理，阁楼的抛物线拱廊精美绝伦。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Passeig de Gràcia, 92, 08008 Barcelona<button class="copy-btn" data-copy="Passeig de Gràcia, 92, 08008 Barcelona">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">09:00-21:00（最后入场20:30）；夜间版周四至周六21:00-23:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">25</span></span> 标准票（含官方语音导览，多语言）；夜间版 <span class="price-display"><span class="price-symbol">€</span><span class="price-value">39</span></span>；语音导览含中文</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.lapedrera.com/" target="_blank" rel="noopener">lapedrera.com</a><button class="copy-btn" data-copy="https://www.lapedrera.com">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">屋顶露台是最大亮点，雨天可能关闭；语音导览支持中文；与巴特罗之家步行约5分钟</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 毕加索博物馆 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1595613483603-de2c1c19322c.jpg"
+                        alt="毕加索博物馆"
+                        class="attraction-image img-pos-center"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">毕加索博物馆</h3>
+                    <p class="attraction-title-en">Museu Picasso</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1.5-2小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前一周</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">全球最重要的毕加索博物馆之一，位于巴塞罗那老城哥特区。五座13至15世纪中世纪贵族宫殿串联而成，庭院幽静，建筑本身已是珍宝。馆藏4000余件，以毕加索早年习作和《宫娥》系列临摹55幅为核心，展示了天才艺术家从神童到革命者的成长轨迹。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Carrer de Montcada, 15-23, 08003 Barcelona<button class="copy-btn" data-copy="Carrer de Montcada, 15-23, 08003 Barcelona">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">周二至周日：10:00-20:00　　周一及部分节日闭馆</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">14</span></span> 普通票；含官方语音导览（含中文）<span class="price-display"><span class="price-symbol">€</span><span class="price-value">19</span></span>；18岁以下免费；每月第一个周日全日免费</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://museupicassobcn.cat/" target="_blank" rel="noopener">museupicassobcn.cat</a><button class="copy-btn" data-copy="https://museupicassobcn.cat/">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">每月第一个周日免费需提前线上预约；周四17:00-20:00优惠场；位于哥特区，步行可达</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. 巴塞罗那主教座堂 -->
+        <div class="attraction-card reveal reveal-d1">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1583670827188-74440de10cc7.jpg"
+                        alt="巴塞罗那主教座堂"
+                        class="attraction-image img-pos-upper"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">巴塞罗那主教座堂</h3>
+                    <p class="attraction-title-en">Catedral de Barcelona</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">45-75分钟</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">部分票型含导览</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">可现场买票</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">哥特区的精神核心，一座从13世纪延续修建至20世纪初的哥特式大教堂，花了近600年完成。中庭的白鹅庭院（13只白鹅象征圣埃乌拉利亚殉道时的年龄）是全欧洲最独特的教堂景观之一。屋顶平台可眺望巴塞罗那全城，地下室珍藏守护圣人圣埃乌拉利亚的石棺。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Pla de la Seu, s/n, 08002 Barcelona<button class="copy-btn" data-copy="Pla de la Seu, s/n, 08002 Barcelona">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">周一至周六：09:30-18:30　　周日及节假日：14:00-17:00（弥撒时段不接受游客）</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">16</span></span>「Visita Catedral」（含合唱厅+屋顶+章节室+虚拟音频+博物馆+现实增强）；<span class="price-display"><span class="price-symbol">€</span><span class="price-value">32</span></span>「Catedral + Gaudí」联票；夜游 <span class="price-display"><span class="price-symbol">€</span><span class="price-value">28</span></span></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.catedralbcn.org/" target="_blank" rel="noopener">catedralbcn.org</a><button class="copy-btn" data-copy="https://www.catedralbcn.org">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">官网分时购票；Visita Catedral含屋顶和音频导览体验；夜游限额需提前预订；弥撒期间不开放游览（周日上午）</p>
+                        <p class="ticket-info">入场方式：现场购票或电子票均可，无需护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 如何抵达巴塞罗那 ── -->
+    <section class="how-to-get" id="how-to-get">
+        <p class="section-eyebrow">交通指南</p>
+        <h2 class="section-heading">如何抵达巴塞罗那</h2>
+        <div class="how-to-get-grid">
+            <div class="transport-item">
+                <div class="transport-item-icon">✈️</div>
+                <div>
+                    <div class="transport-item-name">飞机</div>
+                    <p class="transport-item-detail">巴塞罗那-埃尔普拉特机场（BCN）是西班牙第二大机场。Aerobus直达市区约35分钟，地铁L9南线约40分钟，价格更优惠。</p>
+                    <span class="transport-item-time">市区 ~35-40分钟</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">🚄</div>
+                <div>
+                    <div class="transport-item-name">高铁 AVE</div>
+                    <p class="transport-item-detail">圣亚站（Sants）是主要高铁枢纽，直达马德里约2h30，瓦伦西亚约1h40。越早购票越便宜，高峰节假日需提前数周预定。</p>
+                    <span class="transport-item-time">马德里 ~2h30 · 瓦伦西亚 ~1h40</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">🚌</div>
+                <div>
+                    <div class="transport-item-name">大巴 ALSA</div>
+                    <p class="transport-item-detail">北站（Estació del Nord）连接南部城市，前往安达卢西亚各城市通常比飞机更经济，适合行程宽裕的旅行者。</p>
+                    <span class="transport-item-time">格拉纳达 ~12h · 塞维利亚 ~14h</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 巴塞罗那旅行小贴士 ── -->
+    <section class="city-tips-section" id="barcelona-tips">
+        <p class="section-eyebrow">旅行贴士</p>
+        <h2 class="section-heading">巴塞罗那实用提示</h2>
+        <div class="city-tips-grid">
+            <div class="city-tip-item">
+                <div class="city-tip-label">高迪路线</div>
+                <p class="city-tip-text">圣家堂→桂尔公园→巴特罗之家→米拉之家是经典高迪路线，建议分两天参观。所有景点必须提前官网购票，现场通常无票。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">感恩大道</div>
+                <p class="city-tip-text">巴特罗之家与米拉之家均在感恩大道（Passeig de Gràcia），步行约10分钟，沿途还有众多奢侈品牌与精致建筑，适合串联参观。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">哥特区漫步</div>
+                <p class="city-tip-text">毕加索博物馆与巴塞罗那大教堂均在哥特区，步行可串联。午后光线柔和，是探索石板小巷与古罗马遗迹的最佳时段。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">交通卡</div>
+                <p class="city-tip-text">推荐购买T-Casual 10次票，覆盖地铁、公交、FGC铁路和部分近郊线路，比单程票省约40%，多人可共用。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">最佳季节</div>
+                <p class="city-tip-text">5月和9-10月最宜游览，气候舒适且游客相对少。7-8月高温游客爆满，但海滩与夜生活最热闹，晚间兰布拉斯大道人声鼎沸。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">防扒窃</div>
+                <p class="city-tip-text">兰布拉斯大道、哥特区和地铁站扒手活跃。背包置于身前，手机不要放在餐桌上，贵重物品使用酒店保险箱存放。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 附近城市 ── -->
+    <nav class="nearby-cities" id="nearby" aria-label="周边城市">
+        <p class="section-eyebrow">周边探索</p>
+        <h2 class="section-heading">巴塞罗那出发</h2>
+        <div class="nearby-cities-list">
+            <a href="#" class="nearby-city-link coming-soon">
+                <span>
+                    <span style="font-size:18px">🏺</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">塔拉戈纳 <span class="coming-soon-badge">即将上线</span></span>
+                    <span class="nearby-city-link-en">Tarragona · 高铁约35分钟</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+            <a href="#" class="nearby-city-link coming-soon">
+                <span>
+                    <span style="font-size:18px">🍊</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">瓦伦西亚 <span class="coming-soon-badge">即将上线</span></span>
+                    <span class="nearby-city-link-en">Valencia · 高铁约1h40</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span class="footer-logo">🇪🇸 西班牙旅行手册</span>
+                <span class="footer-divider"></span>
+                <span class="footer-meta">© 2026 西班牙旅行手册 · 以上数据仅供参考，出行前请以各景点官方网站为准</span>
+            </div>
+            <span class="footer-author">作者 @小红书 喜马拉雅的果酱</span>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="回到顶部">
+        <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ── Scripts ── -->
+    <script src="assets/js/lucide.min.js"></script>
+    <script src="assets/js/shared.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        /* 1 — Bottom navigation */
+        initBottomNav('cities');
+
+        /* 2 — Language toggle */
+        initLangToggle();
+
+        /* 3 — Copy buttons */
+        initCopyButtons();
+
+        /* 4 — Scroll-reveal */
+        initScrollReveal();
+
+        /* 5 — Reading progress bar */
+        initReadingProgressBar();
+
+        /* 6 — Back to top */
+        var btt = document.getElementById('back-to-top');
+        if (btt) {
+            window.addEventListener('scroll', function () {
+                btt.classList.toggle('visible', window.scrollY > 320);
+            }, { passive: true });
+            btt.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    });
+    </script>
+</body>
+</html>

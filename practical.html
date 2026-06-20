@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="西班牙旅行实用信息 — 城际交通、旅行贴士、货币语言、防盗防晒全攻略">
+  <title>实用信息 · 西班牙旅行手册</title>
+
+  <!-- Baidu Tongji — única analítica (GFW-safe) -->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b9d71470cd906e999f6cbb88f009fcd1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="assets/css/shared.css">
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       TRANSPORT CARDS
+    ══════════════════════════════════════════════════════════ */
+    .transport-intro {
+      margin-bottom: 22px;
+    }
+    .transport-intro p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+
+    .transport-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .transport-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px 14px 18px;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .transport-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    }
+
+    .transport-icon {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .transport-name {
+      font-family: "PingFang SC", "Noto Serif SC", serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .transport-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       BOOKING TIP BLOCK
+    ══════════════════════════════════════════════════════════ */
+    .booking-tip {
+      background: var(--gold-bg);
+      border: 1px solid rgba(181,149,91,0.22);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 22px;
+    }
+
+    .booking-tip-title {
+      font-family: "PingFang SC", sans-serif;
+      font-weight: 600;
+      font-size: 12.5px;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .booking-tip-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 7px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .booking-tip-row:last-child { margin-bottom: 0; }
+
+    .booking-tip-label {
+      font-weight: 600;
+      color: var(--text-primary);
+      flex-shrink: 0;
+      min-width: 28px;
+    }
+
+    .booking-tip-link {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(181,149,91,0.3);
+      transition: border-color 0.2s;
+    }
+    .booking-tip-link:hover { border-color: var(--accent); }
+
+    /* ══════════════════════════════════════════════════════════
+       ROUTES TABLE
+    ══════════════════════════════════════════════════════════ */
+    .routes-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 10px;
+    }
+
+    .routes-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      min-width: 380px;
+    }
+
+    .routes-table th {
+      text-align: left;
+      padding: 9px 12px;
+      background: var(--mist);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .routes-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    .routes-table tbody tr:last-child td { border-bottom: none; }
+
+    .rt-badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 9px;
+      border-radius: 10px;
+      background: var(--gold-bg);
+      color: var(--accent);
+      border: 1px solid rgba(181,149,91,0.3);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    #routesExtra { display: none; }
+    #routesExtra.expanded { display: table-row-group; }
+
+    .routes-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      font-size: 12px;
+      border-radius: 20px;
+      padding: 7px 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: border-color 0.2s, color 0.2s;
+      min-height: 36px;
+    }
+
+    .routes-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .routes-toggle svg {
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       TIPS GRID  (WeChat fix: grid vertical, sin drag horizontal)
+    ══════════════════════════════════════════════════════════ */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .tip-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 15px 14px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .tip-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+    }
+
+    .tip-header {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 7px;
+    }
+
+    .tip-emoji {
+      font-size: 17px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .tip-label {
+      font-family: "PingFang SC", "Noto Serif SC", serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .tip-content {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.72;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .transport-cards { grid-template-columns: 1fr; gap: 10px; }
+      .transport-card { padding: 16px 14px; }
+      .tips-grid { gap: 10px; }
+    }
+
+    @media (max-width: 480px) {
+      .tips-grid { gap: 8px; }
+      .tip-item { padding: 13px 12px; }
+      .tip-label { font-size: 12.5px; }
+      .tip-content { font-size: 12px; }
+      .booking-tip { padding: 13px 16px; }
+    }
+
+    @media (max-width: 380px) {
+      .tip-item { padding: 11px 11px; }
+      .tip-emoji { font-size: 15px; }
+      .tip-label { font-size: 12px; }
+      .tip-content { font-size: 11.5px; }
+    }
+
+    @media print {
+      .tip-item, .transport-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Reading progress bar -->
+  <div id="progress-bar"></div>
+
+  <!-- ── TOP BAR ─────────────────────────────────────────────── -->
+  <header class="top-bar">
+    <a href="index.html" class="top-bar-back" aria-label="返回首页">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round"
+           style="width:16px;height:16px;flex-shrink:0" aria-hidden="true">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      首页
+    </a>
+    <span class="top-bar-title">实用信息</span>
+    <div class="lang-toggle" id="langToggle" aria-label="语言切换 / Language">
+      <button class="lang-btn active" id="langBtnZh">中</button>
+      <button class="lang-btn" id="langBtnEn">EN</button>
+    </div>
+  </header>
+
+  <!-- ── MAIN ───────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- ── TRANSPORT SECTION ─────────────────────────────────── -->
+    <section class="section" id="transport" aria-label="城市交通">
+      <div class="section-label">Getting Around</div>
+      <h2 class="section-title">城市交通</h2>
+
+      <div class="transport-intro">
+        <p>西班牙城际交通选择丰富，城市间往来便捷。机票价格浮动大，最好提前规划买票；火车价格也会浮动，需提前购买；大巴价格固定、班次多，可提前1周买。</p>
+      </div>
+
+      <!-- 三种交通方式 -->
+      <div class="transport-cards">
+        <div class="transport-card reveal">
+          <span class="transport-icon">🚄</span>
+          <div class="transport-name">火车 AVE</div>
+          <div class="transport-desc">快速便捷，<br>但经常延误</div>
+        </div>
+        <div class="transport-card reveal reveal-d1">
+          <span class="transport-icon">🚌</span>
+          <div class="transport-name">大巴 ALSA</div>
+          <div class="transport-desc">便宜班次多，<br>时间略久</div>
+        </div>
+        <div class="transport-card reveal reveal-d2">
+          <span class="transport-icon">✈️</span>
+          <div class="transport-name">飞机</div>
+          <div class="transport-desc">远途适用，<br>机场耗时</div>
+        </div>
+      </div>
+
+      <!-- 订票建议 -->
+      <div class="booking-tip">
+        <div class="booking-tip-title">订票建议</div>
+        <div class="booking-tip-row">
+          <span class="booking-tip-label">火车</span>
+          <span>—&nbsp;<a href="https://www.renfe.com" target="_blank" rel="noopener" class="booking-tip-link">Renfe.com</a>、<a href="https://www.ouigo.com/es" target="_blank" rel="noopener" class="booking-tip-link">Ouigo</a>、<a href="https://www.iryo.eu" target="_blank" rel="noopener" class="booking-tip-link">Iryo</a>（越早越便宜）</span>
+        </div>
+        <div class="booking-tip-row">
+          <span class="booking-tip-label">大巴</span>
+          <span>—&nbsp;<a href="https://www.alsa.com" target="_blank" rel="noopener" class="booking-tip-link">ALSA.com</a>（提前1周，价格稳定）</span>
+        </div>
+        <div class="booking-tip-row">
+          <span class="booking-tip-label">飞机</span>
+          <span>—&nbsp;<a href="https://www.vueling.com" target="_blank" rel="noopener" class="booking-tip-link">Vueling</a>、<a href="https://www.iberia.com" target="_blank" rel="noopener" class="booking-tip-link">Iberia</a>、<a href="https://www.ryanair.com" target="_blank" rel="noopener" class="booking-tip-link">Ryanair</a>（提前2–4周）</span>
+        </div>
+      </div>
+
+      <!-- 路线时间表 -->
+      <div class="routes-table-wrap">
+        <table class="routes-table" aria-label="主要城市间路线推荐">
+          <thead>
+            <tr>
+              <th>路线</th>
+              <th>🚄 火车</th>
+              <th>🚌 大巴</th>
+              <th>✈️ 飞机</th>
+              <th>推荐</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>马德里 → 巴塞罗那</td>
+              <td>2h30</td>
+              <td>8h</td>
+              <td>1h15</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="火车">火车</span></span></td>
+            </tr>
+            <tr>
+              <td>马德里 → 塞维利亚</td>
+              <td>2h20</td>
+              <td>6h</td>
+              <td>1h10</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="火车">火车</span></span></td>
+            </tr>
+            <tr>
+              <td>马德里 → 格拉纳达</td>
+              <td>3h</td>
+              <td>5h</td>
+              <td>1h20</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="火车">火车</span></span></td>
+            </tr>
+            <tr>
+              <td>马德里 → 科尔多瓦</td>
+              <td>1h45</td>
+              <td>4h30</td>
+              <td>—</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="火车">火车</span></span></td>
+            </tr>
+            <tr>
+              <td>马德里 → 托莱多</td>
+              <td>30min</td>
+              <td>1h</td>
+              <td>—</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="火车">火车</span></span></td>
+            </tr>
+          </tbody>
+          <tbody id="routesExtra">
+            <tr>
+              <td>马德里 → 塞哥维亚</td>
+              <td>30min</td>
+              <td>1h15</td>
+              <td>—</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="火车">火车</span></span></td>
+            </tr>
+            <tr>
+              <td>塞维利亚 → 格拉纳达</td>
+              <td>—</td>
+              <td>3h</td>
+              <td>—</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="大巴">大巴</span></span></td>
+            </tr>
+            <tr>
+              <td>塞维利亚 → 科尔多瓦</td>
+              <td>45min</td>
+              <td>2h</td>
+              <td>—</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="火车">火车</span></span></td>
+            </tr>
+            <tr>
+              <td>格拉纳达 → 科尔多瓦</td>
+              <td>—</td>
+              <td>2h45</td>
+              <td>—</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="大巴">大巴</span></span></td>
+            </tr>
+            <tr>
+              <td>巴塞罗那 → 格拉纳达</td>
+              <td>—</td>
+              <td>14h（夜巴）</td>
+              <td>1h30</td>
+              <td><span class="rt-badge"><span class="rt-text" data-zh="飞机">飞机</span></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="routes-toggle" id="routesToggleBtn" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round"
+             style="width:14px;height:14px" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+        <span id="routesToggleLabel">查看剩余 5 条路线</span>
+      </button>
+    </section>
+
+    <!-- ── TIPS SECTION ───────────────────────────────────────── -->
+    <section class="section" id="tips" aria-label="旅行贴士">
+      <div class="section-label">Travel Tips</div>
+      <h2 class="section-title">旅行贴士</h2>
+
+      <div class="tips-grid" id="tipsGrid">
+
+        <!-- 1. 最佳旅行季节 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">☀️</span>
+            <span class="tip-label">最佳旅行季节</span>
+          </div>
+          <p class="tip-content">4–6月、9–10月最舒适，天气宜人，适合城市观光和徒步。7–8月安达卢西亚（塞维利亚、科尔多瓦、格拉纳达）常超过40℃，冬季南部温和、北部较冷。</p>
+        </div>
+
+        <!-- 2. 货币 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">💶</span>
+            <span class="tip-label">货币</span>
+          </div>
+          <p class="tip-content">欧元（€）。绝大多数地方可刷卡，但小商店、部分酒吧、市场摊位和个别出租车仍偏好现金，建议随身带20–50欧现金。</p>
+        </div>
+
+        <!-- 3. 语言 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">🗣️</span>
+            <span class="tip-label">语言</span>
+          </div>
+          <p class="tip-content">官方语言为西班牙语。马德里、巴塞罗那等旅游城市英语基本够用，但南部小城和乡村英语普及率较低，学几句基础西语会方便很多。</p>
+        </div>
+
+        <!-- 4. 紧急电话 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">🚨</span>
+            <span class="tip-label">紧急电话</span>
+          </div>
+          <p class="tip-content">112（警察、消防、救护车，全欧盟通用）。</p>
+        </div>
+
+        <!-- 5. 防盗 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">🔒</span>
+            <span class="tip-label">防盗</span>
+          </div>
+          <p class="tip-content">马德里、巴塞罗那等热门旅游城市扒手较多。背包尽量背前面，手机不要放桌边，贵重物品不放外套口袋，地铁和景区需特别注意。</p>
+        </div>
+
+        <!-- 6. 用餐时间 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">🍽️</span>
+            <span class="tip-label">用餐时间</span>
+          </div>
+          <p class="tip-content">早餐较简单。午餐通常14:00–16:00。晚餐通常20:30–22:30开始。很多餐厅下午歇业，太早去可能不开门。</p>
+        </div>
+
+        <!-- 7. 午休 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">😴</span>
+            <span class="tip-label">午休</span>
+          </div>
+          <p class="tip-content">部分小店、中小城市商铺会在13:30–17:00左右关门休息。大型商场、连锁超市和旅游区一般正常营业。</p>
+        </div>
+
+        <!-- 8. 着装 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">👔</span>
+            <span class="tip-label">着装</span>
+          </div>
+          <p class="tip-content">日常穿着较随意，但进入教堂、修道院等宗教场所建议遮盖肩膀和膝盖，部分场所会严格执行。</p>
+        </div>
+
+        <!-- 9. 省钱 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">💰</span>
+            <span class="tip-label">省钱</span>
+          </div>
+          <p class="tip-content">很多博物馆和景点设有免费开放时段，热门景点提前网上购票通常更便宜，也能避免现场排队。</p>
+        </div>
+
+        <!-- 10. 交通 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">🚇</span>
+            <span class="tip-label">交通</span>
+          </div>
+          <p class="tip-content">城市内优先选择地铁、公交和步行。城市间优先选择高铁（AVE、Avlo、Ouigo、Iryo），越早买越便宜。历史城区停车困难，自驾并非最佳选择。</p>
+        </div>
+
+        <!-- 11. 小费 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">💁</span>
+            <span class="tip-label">小费</span>
+          </div>
+          <p class="tip-content">西班牙没有强制小费文化。咖啡馆和酒吧通常不用给。餐厅满意可留1–2欧或凑整，特别满意可留5%–10%。</p>
+        </div>
+
+        <!-- 12. 防晒 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">🌞</span>
+            <span class="tip-label">防晒</span>
+          </div>
+          <p class="tip-content">西班牙日照强烈。夏季安达卢西亚地区可超过40℃，防晒霜、太阳镜、帽子和水壶基本属于必备品。</p>
+        </div>
+
+        <!-- 13. 门票 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">🎟️</span>
+            <span class="tip-label">门票</span>
+          </div>
+          <p class="tip-content">阿尔罕布拉宫、圣家堂、塞维利亚王宫等热门景点旺季常提前数周售罄，确定行程后尽早预订。</p>
+        </div>
+
+        <!-- 14. 饮水 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">💧</span>
+            <span class="tip-label">饮水</span>
+          </div>
+          <p class="tip-content">西班牙自来水普遍可直接饮用。餐厅提供的瓶装水通常收费，不像部分国家免费续水。</p>
+        </div>
+
+        <!-- 15. 购物 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">🛍️</span>
+            <span class="tip-label">购物</span>
+          </div>
+          <p class="tip-content">周日大部分商店关门。公共假期很多商铺也会缩短营业时间或停业。</p>
+        </div>
+
+        <!-- 16. 网络 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">📶</span>
+            <span class="tip-label">网络</span>
+          </div>
+          <p class="tip-content">机场、火车站、酒店和多数餐厅提供免费WiFi。中国游客常用Vodafone、Orange、Movistar或DIGI电话卡。</p>
+        </div>
+
+        <!-- 17. 插座 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">🔌</span>
+            <span class="tip-label">插座</span>
+          </div>
+          <p class="tip-content">230V电压。欧洲标准双圆孔插头（Type C / F），国内设备通常需要转换插头。</p>
+        </div>
+
+        <!-- 18. 住宿 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">🏨</span>
+            <span class="tip-label">住宿</span>
+          </div>
+          <p class="tip-content">老城区酒店位置方便但可能较吵。许多历史建筑改造的民宿没有电梯，大件行李入住前最好确认。</p>
+        </div>
+
+        <!-- 19. 节假日 -->
+        <div class="tip-item reveal">
+          <div class="tip-header">
+            <span class="tip-emoji">📅</span>
+            <span class="tip-label">节假日</span>
+          </div>
+          <p class="tip-content">圣周（Semana Santa）、圣诞节、复活节和各地大型节庆期间，住宿价格上涨明显，热门景点需提前预订。</p>
+        </div>
+
+        <!-- 20. 退税 -->
+        <div class="tip-item reveal reveal-d1">
+          <div class="tip-header">
+            <span class="tip-emoji">🧾</span>
+            <span class="tip-label">退税</span>
+          </div>
+          <p class="tip-content">非欧盟游客购物满额可办理退税。离境前记得在机场完成退税手续并保留购物小票。</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-logo">SPAIN TRAVEL</span>
+        <div class="footer-divider"></div>
+        <span class="footer-meta">© 2026 西班牙旅行手册 · 以上数据仅供参考，出行前请以各景点官方网站为准</span>
+      </div>
+      <span class="footer-author">作者 @小红书 喜马拉雅的果酱</span>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="回到顶部" title="回到顶部">
+    <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <!-- Toast notification -->
+  <div class="toast-msg" id="toastMsg" aria-live="polite"></div>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script src="./assets/js/lucide.min.js"></script>
+  <script src="./assets/js/shared.js"></script>
+
+  <script>
+    /* ── ROUTES TOGGLE ──────────────────────────────────────── */
+    (function() {
+      var btn   = document.getElementById('routesToggleBtn');
+      var extra = document.getElementById('routesExtra');
+      var label = document.getElementById('routesToggleLabel');
+      if (!btn || !extra || !label) return;
+
+      btn.addEventListener('click', function() {
+        var expanded = extra.classList.toggle('expanded');
+        btn.setAttribute('aria-expanded', String(expanded));
+        var arrow = btn.querySelector('svg');
+        if (arrow) arrow.style.transform = expanded ? 'rotate(180deg)' : '';
+
+        var t = (typeof i18n !== 'undefined' && typeof currentLang !== 'undefined')
+            ? i18n[currentLang] : null;
+        label.textContent = expanded
+            ? (t ? t.routesToggleCollapse : '收起路线')
+            : (t ? t.routesToggleExpand   : '查看剩余 5 条路线');
+      });
+    })();
+
+    /* ── BACK TO TOP ────────────────────────────────────────── */
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    /* ── SHARED INIT ────────────────────────────────────────── */
+    initBottomNav('practical');
+    initScrollReveal();
+    initReadingProgressBar();
+    initLangToggle();
+  </script>
+
+</body>
+</html>

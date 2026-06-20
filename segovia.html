@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="塞哥维亚旅行指南 — 罗马渡槽、迪士尼城堡原型、哥特大教堂，从马德里高铁30分钟精选景点、门票与开放时间">
+    <title>塞哥维亚 · 西班牙旅行手册</title>
+
+    <!-- Baidu Tongji — única analítica (GFW-safe) -->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b9d71470cd906e999f6cbb88f009fcd1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <style>
+        /* ── City hero (280 px fijo — evita 100vh en WeChat) ── */
+        .city-hero {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: var(--dark);
+        }
+        .city-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+            display: block;
+            filter: brightness(0.65);
+        }
+        .city-hero-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px 24px 24px;
+            background: linear-gradient(to top, rgba(26,23,20,0.76) 0%, transparent 55%);
+        }
+        .city-hero-tag {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 6px;
+        }
+        .city-hero-title {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 600;
+            font-size: clamp(30px, 7vw, 42px);
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: 0.06em;
+            margin-bottom: 6px;
+        }
+        .city-hero-subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.03em;
+        }
+
+        /* ── Attractions section ── */
+        .attractions-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 32px 20px 16px;
+        }
+        .section-eyebrow {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .section-heading {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 400;
+            font-size: clamp(20px, 4.5vw, 28px);
+            color: var(--text-primary);
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── How to get there ── */
+        .how-to-get {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .how-to-get-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .transport-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 16px 14px;
+            text-align: center;
+        }
+        .transport-item-icon {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+        .transport-item-name {
+            font-family: "PingFang SC", sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .transport-item-detail {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .transport-item-time {
+            display: inline-block;
+            margin-top: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            background: var(--gold-bg);
+            color: var(--accent);
+            border-radius: 10px;
+            padding: 2px 9px;
+        }
+
+        /* ── City tips ── */
+        .city-tips-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .city-tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .city-tip-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 14px 15px;
+        }
+        .city-tip-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        .city-tip-text {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── Nearby cities ── */
+        .nearby-cities {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px 36px;
+            border-top: 1px solid var(--border);
+        }
+        .nearby-cities-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .nearby-city-link {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 12px 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: "PingFang SC", sans-serif;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            flex: 1;
+            min-width: 140px;
+        }
+        .nearby-city-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+        }
+        .nearby-city-link-en {
+            font-size: 11px;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+        }
+        .nearby-city-arrow {
+            margin-left: auto;
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .city-hero { height: 230px; }
+            .city-hero-overlay { padding: 20px 18px 18px; }
+            .attractions-section { padding: 24px 14px 12px; }
+            .how-to-get { padding: 22px 14px; }
+            .how-to-get-grid { grid-template-columns: 1fr; gap: 8px; }
+            .transport-item { display: flex; align-items: flex-start; gap: 12px; text-align: left; }
+            .transport-item-icon { font-size: 20px; flex-shrink: 0; margin-bottom: 0; margin-top: 1px; }
+            .city-tips-section { padding: 22px 14px; }
+            .city-tips-grid { grid-template-columns: 1fr; gap: 8px; }
+            .nearby-cities { padding: 22px 14px 36px; }
+            .nearby-cities-list { flex-direction: column; }
+            .nearby-city-link { min-width: auto; }
+        }
+        @media (max-width: 380px) {
+            .city-hero { height: 200px; }
+            .city-hero-title { font-size: 26px; }
+            .attractions-section { padding: 18px 12px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reading progress bar -->
+    <div id="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- ── Top bar ── -->
+    <header class="top-bar">
+        <a href="index.html" class="top-bar-back" aria-label="返回首页">
+            ← 首页
+        </a>
+        <span class="top-bar-title">塞哥维亚</span>
+        <div class="lang-toggle" role="group" aria-label="语言切换">
+            <button class="lang-btn active" id="langBtnZh" aria-pressed="true">中</button>
+            <button class="lang-btn" id="langBtnEn" aria-pressed="false">EN</button>
+        </div>
+    </header>
+
+    <!-- ── City hero ── -->
+    <div class="city-hero">
+        <img
+            src="./assets/images/hasmik-ghazaryan-olson-jUGqWReweQw-unsplash.jpg"
+            alt="塞哥维亚城堡 — 迪士尼白雪公主城堡原型"
+            loading="eager"
+            decoding="async"
+        >
+        <div class="city-hero-overlay">
+            <p class="city-hero-tag">Spain · 07</p>
+            <h1 class="city-hero-title">塞哥维亚</h1>
+            <p class="city-hero-subtitle">Roman Legacy · 迪士尼城堡的原型之城</p>
+        </div>
+    </div>
+
+    <!-- ── Attractions ── -->
+    <section class="attractions-section" id="attractions">
+        <p class="section-eyebrow">精选景点</p>
+        <h2 class="section-heading">必游之地</h2>
+
+        <!-- 1. 塞哥维亚古罗马渡槽 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1698223632628-fb28ccb63280.jpg"
+                        alt="塞哥维亚古罗马渡槽"
+                        class="attraction-image img-pos-upper"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">塞哥维亚古罗马渡槽</h3>
+                    <p class="attraction-title-en">Acueducto de Segovia</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">30-45分钟</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">无官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">不需要预约</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">两千年不倒的罗马工程奇迹，UNESCO世界遗产。渡槽建于公元1世纪，由20400块花岗岩堆砌而成——没有使用任何砂浆或粘合剂，纯靠石块之间的重力与精密切割咬合。双层拱廊最高处达28米，167道拱门横跨阿索格霍广场，从城市中心直入山间，全长约15公里。它见证了罗马帝国在伊比利亚半岛的辉煌，至今仍是塞哥维亚最骄傲的标志。黄昏时分花岗岩被夕阳染成金色。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Plaza del Azoguejo, 1, 40001 Segovia<button class="copy-btn" data-copy="Plaza del Azoguejo, 1, 40001 Segovia">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">全天开放</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value">免费（户外公共纪念碑，全天开放）；无官方语音讲解</span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">日出和日落时分光线最美，从台阶高处俯拍最佳角度；夜晚有灯光照明，傍晚散步必经之地</p>
+                        <p class="ticket-info">入场方式：免费入场，无需门票</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 塞哥维亚城堡 -->
+        <div class="attraction-card reveal reveal-d1">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/hasmik-ghazaryan-olson-jUGqWReweQw-unsplash.jpg"
+                        alt="塞哥维亚城堡"
+                        class="attraction-image img-pos-center"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">塞哥维亚城堡</h3>
+                    <p class="attraction-title-en">Alcázar de Segovia</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1-1.5小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前一周</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">迪士尼白雪公主城堡的原型，悬崖之上的童话宫殿。城堡始建于12世纪，临崖而建，最初为军事要塞，后经特拉斯塔马拉王朝改建为王族行宫。蓝色板岩屋顶在阳光下闪烁金属光泽，是城堡最独特的标志。内部松果厅、国王起居室和御座厅各具特色，军械库展示中世纪武器。登顶152级台阶的塔楼，可以360度俯瞰埃雷斯马河谷、韦拉克鲁斯教堂和远处连绵的卡斯蒂利亚平原。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Plaza Reina Victoria Eugenia, s/n, 40003 Segovia<button class="copy-btn" data-copy="Plaza Reina Victoria Eugenia, s/n, 40003 Segovia">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">4-10月：10:00-19:30　　11-3月：10:00-18:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">10.50</span></span> 标准参观（含宫殿+博物馆+语音导览，不含塔楼）；<span class="price-display"><span class="price-symbol">€</span><span class="price-value">13.50</span></span> 完整体验（+胡安二世塔楼）；语音导览12语言</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.alcazardesegovia.com/" target="_blank" rel="noopener">alcazardesegovia.com</a><button class="copy-btn" data-copy="https://www.alcazardesegovia.com/">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">含塔楼票每日限量，建议线上提前购买；塔楼152级台阶较窄；语音导览暂不含中文</p>
+                        <p class="ticket-info">入场方式：电子票或现场购票均可，无需护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 塞哥维亚大教堂 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1601668364652-8767ac7a7b90.jpg"
+                        alt="塞哥维亚大教堂"
+                        class="attraction-image img-pos-upper"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">塞哥维亚大教堂</h3>
+                    <p class="attraction-title-en">Catedral de Segovia</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">45-75分钟</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">可现场买票</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">西班牙最后一座哥特式大教堂，被誉为"哥特教堂中的女王"。始建于1525年，历时近两百年完工，伊莎贝拉一世曾在此加冕为卡斯蒂利亚女王。88米高的钟楼是城市天际线的核心，登上可饱览古城全景与远处的瓜达拉马山脉。教堂内部彩窗精美，博物馆藏有珍贵的宗教艺术品。主广场对面即是著名的烤乳猪百年老店Mesón de Cándido，厨师用瓷盘切乳猪的仪式是塞哥维亚不可错过的体验。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Calle Marques del Arco, 1, 40001 Segovia<button class="copy-btn" data-copy="Calle Marqués del Arco, 1, 40001 Segovia">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">周一至周日：09:30-21:30</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">4</span></span> 普通票（成人）；<span class="price-display"><span class="price-symbol">€</span><span class="price-value">3</span></span> 优惠票（学生/老人/残障/失业者）；含大教堂+主教宫参观</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://catedralsegovia.es/" target="_blank" rel="noopener">catedralsegovia.es</a><button class="copy-btn" data-copy="https://catedralsegovia.es/">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">与城堡和渡槽构成完美步行路线，建议连同参观；参观后可在主广场品尝百年老店Mesón de Cándido的烤乳猪</p>
+                        <p class="ticket-info">入场方式：现场购票，无需护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 如何抵达塞哥维亚 ── -->
+    <section class="how-to-get" id="how-to-get">
+        <p class="section-eyebrow">交通指南</p>
+        <h2 class="section-heading">如何抵达塞哥维亚</h2>
+        <div class="how-to-get-grid">
+            <div class="transport-item">
+                <div class="transport-item-icon">🚄</div>
+                <div>
+                    <div class="transport-item-name">高铁 AVE</div>
+                    <p class="transport-item-detail">马德里查马丁站（Chamartín）直达塞哥维亚-瓜达拉马站，全程约30分钟。注意：高铁站在古城郊区，需乘接驳巴士进入古城约15分钟。</p>
+                    <span class="transport-item-time">马德里Chamartín ~30分钟</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">🚌</div>
+                <div>
+                    <div class="transport-item-name">大巴 La Sepulvedana</div>
+                    <p class="transport-item-detail">马德里蒙克洛亚站（Moncloa）出发约1h15，终点站在古城渡槽脚下，无需换乘直达景区，比高铁更方便进城。班次约每30分钟一班，价格约€8。</p>
+                    <span class="transport-item-time">马德里Moncloa ~1h15（直达古城）</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">🚘</div>
+                <div>
+                    <div class="transport-item-name">自驾</div>
+                    <p class="transport-item-detail">从马德里沿A-6高速转CL-601，约90km，1小时抵达。古城内禁止部分车辆进入，建议停在渡槽广场附近的公共停车场，步行游览全城。</p>
+                    <span class="transport-item-time">马德里 ~90km，约1小时</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 塞哥维亚旅行小贴士 ── -->
+    <section class="city-tips-section" id="segovia-tips">
+        <p class="section-eyebrow">旅行贴士</p>
+        <h2 class="section-heading">塞哥维亚实用提示</h2>
+        <div class="city-tips-grid">
+            <div class="city-tip-item">
+                <div class="city-tip-label">黄金三角路线</div>
+                <p class="city-tip-text">渡槽→大教堂→城堡，三点步行路线约2km，2-3小时轻松串联全部主景点。从渡槽广场出发沿坡路而上，依次经过大教堂，最终抵达悬崖城堡。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">烤乳猪仪式</div>
+                <p class="city-tip-text">Mesón de Cándido是塞哥维亚百年烤乳猪老店，主厨用瓷盘边缘切开整只乳猪的仪式举世闻名。价格约€25-30/人，需提前预约，是一次不可错过的美食体验。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">清晨光线</div>
+                <p class="city-tip-text">清晨渡槽花岗岩被朝阳染成金色，是一天中最美的拍摄时机，游客也最少。如果住宿在古城，建议7-8点出门拍摄空无一人的渡槽，下午则拍夕阳版本。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">高铁直达</div>
+                <p class="city-tip-text">从马德里查马丁站出发仅30分钟，早出晚归轻松一日游。注意高铁站在郊区，下车后需乘坐11号接驳巴士约15分钟进城，到渡槽广场下车。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">城堡票提前</div>
+                <p class="city-tip-text">含胡安二世塔楼的完整票每日限量，建议官网提前购买。塔楼152级台阶较窄，不建议携带大件行李。从塔顶360度俯瞰是全城最壮观的视角。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">深夜渡槽</div>
+                <p class="city-tip-text">渡槽夜晚有灯光照明，夜游古城氛围绝佳。晚餐后从大教堂广场散步至渡槽约10分钟，灯光下的罗马拱廊与白日大不相同，是住宿古城者的专属体验。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 附近城市 ── -->
+    <nav class="nearby-cities" id="nearby" aria-label="周边城市">
+        <p class="section-eyebrow">周边探索</p>
+        <h2 class="section-heading">塞哥维亚出发</h2>
+        <div class="nearby-cities-list">
+            <a href="madrid.html" class="nearby-city-link">
+                <span>
+                    <span style="font-size:18px">🏛️</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">马德里</span>
+                    <span class="nearby-city-link-en">Madrid · 高铁约30分钟</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+            <a href="toledo.html" class="nearby-city-link">
+                <span>
+                    <span style="font-size:18px">🏰</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">托莱多</span>
+                    <span class="nearby-city-link-en">Toledo · 经马德里换乘</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span class="footer-logo">🇪🇸 西班牙旅行手册</span>
+                <span class="footer-divider"></span>
+                <span class="footer-meta">© 2026 西班牙旅行手册 · 以上数据仅供参考，出行前请以各景点官方网站为准</span>
+            </div>
+            <span class="footer-author">作者 @小红书 喜马拉雅的果酱</span>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="回到顶部">
+        <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ── Scripts ── -->
+    <script src="assets/js/lucide.min.js"></script>
+    <script src="assets/js/shared.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        /* 1 — Bottom navigation */
+        initBottomNav('cities');
+
+        /* 2 — Language toggle */
+        initLangToggle();
+
+        /* 3 — Copy buttons */
+        initCopyButtons();
+
+        /* 4 — Scroll-reveal */
+        initScrollReveal();
+
+        /* 5 — Reading progress bar */
+        initReadingProgressBar();
+
+        /* 6 — Back to top */
+        var btt = document.getElementById('back-to-top');
+        if (btt) {
+            window.addEventListener('scroll', function () {
+                btt.classList.toggle('visible', window.scrollY > 320);
+            }, { passive: true });
+            btt.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="塞维利亚旅行指南 — 大教堂与希拉尔达塔、王宫、西班牙广场，弗拉门戈之城精选景点、门票与开放时间">
+    <title>塞维利亚 · 西班牙旅行手册</title>
+
+    <!-- Baidu Tongji — única analítica (GFW-safe) -->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b9d71470cd906e999f6cbb88f009fcd1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <style>
+        /* ── City hero (280 px fijo — evita 100vh en WeChat) ── */
+        .city-hero {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: var(--dark);
+        }
+        .city-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 55%;
+            display: block;
+            filter: brightness(0.65);
+        }
+        .city-hero-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px 24px 24px;
+            background: linear-gradient(to top, rgba(26,23,20,0.78) 0%, transparent 55%);
+        }
+        .city-hero-tag {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 6px;
+        }
+        .city-hero-title {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 600;
+            font-size: clamp(30px, 7vw, 42px);
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: 0.06em;
+            margin-bottom: 6px;
+        }
+        .city-hero-subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.03em;
+        }
+
+        /* ── Attractions section ── */
+        .attractions-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 32px 20px 16px;
+        }
+        .section-eyebrow {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .section-heading {
+            font-family: "Cormorant Garamond", "PingFang SC", serif;
+            font-weight: 400;
+            font-size: clamp(20px, 4.5vw, 28px);
+            color: var(--text-primary);
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── How to get there ── */
+        .how-to-get {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .how-to-get-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .transport-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 16px 14px;
+            text-align: center;
+        }
+        .transport-item-icon {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+        .transport-item-name {
+            font-family: "PingFang SC", sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .transport-item-detail {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .transport-item-time {
+            display: inline-block;
+            margin-top: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            background: var(--gold-bg);
+            color: var(--accent);
+            border-radius: 10px;
+            padding: 2px 9px;
+        }
+
+        /* ── City tips ── */
+        .city-tips-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .city-tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .city-tip-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 14px 15px;
+        }
+        .city-tip-label {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        .city-tip-text {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── Nearby cities ── */
+        .nearby-cities {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px 36px;
+            border-top: 1px solid var(--border);
+        }
+        .nearby-cities-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .nearby-city-link {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 12px 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: "PingFang SC", sans-serif;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            flex: 1;
+            min-width: 140px;
+        }
+        .nearby-city-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+        }
+        .nearby-city-link-en {
+            font-size: 11px;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+        }
+        .nearby-city-arrow {
+            margin-left: auto;
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .city-hero { height: 230px; }
+            .city-hero-overlay { padding: 20px 18px 18px; }
+            .attractions-section { padding: 24px 14px 12px; }
+            .how-to-get { padding: 22px 14px; }
+            .how-to-get-grid { grid-template-columns: 1fr; gap: 8px; }
+            .transport-item { display: flex; align-items: flex-start; gap: 12px; text-align: left; }
+            .transport-item-icon { font-size: 20px; flex-shrink: 0; margin-bottom: 0; margin-top: 1px; }
+            .city-tips-section { padding: 22px 14px; }
+            .city-tips-grid { grid-template-columns: 1fr; gap: 8px; }
+            .nearby-cities { padding: 22px 14px 36px; }
+            .nearby-cities-list { flex-direction: column; }
+            .nearby-city-link { min-width: auto; }
+        }
+        @media (max-width: 380px) {
+            .city-hero { height: 200px; }
+            .city-hero-title { font-size: 26px; }
+            .attractions-section { padding: 18px 12px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reading progress bar -->
+    <div id="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- ── Top bar ── -->
+    <header class="top-bar">
+        <a href="index.html" class="top-bar-back" aria-label="返回首页">
+            ← 首页
+        </a>
+        <span class="top-bar-title">塞维利亚</span>
+        <div class="lang-toggle" role="group" aria-label="语言切换">
+            <button class="lang-btn active" id="langBtnZh" aria-pressed="true">中</button>
+            <button class="lang-btn" id="langBtnEn" aria-pressed="false">EN</button>
+        </div>
+    </header>
+
+    <!-- ── City hero ── -->
+    <div class="city-hero">
+        <img
+            src="./assets/images/photo-1509840841025-9088ba78a826.jpg"
+            alt="塞维利亚大教堂与希拉尔达塔"
+            loading="eager"
+            decoding="async"
+        >
+        <div class="city-hero-overlay">
+            <p class="city-hero-tag">Spain · 04</p>
+            <h1 class="city-hero-title">塞维利亚</h1>
+            <p class="city-hero-subtitle">Flamenco's Soul · 安达卢西亚的热情心脏</p>
+        </div>
+    </div>
+
+    <!-- ── Attractions ── -->
+    <section class="attractions-section" id="attractions">
+        <p class="section-eyebrow">精选景点</p>
+        <h2 class="section-heading">必游之地</h2>
+
+        <!-- 1. 塞维利亚大教堂与希拉尔达塔 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1509840841025-9088ba78a826.jpg"
+                        alt="塞维利亚大教堂与希拉尔达塔"
+                        class="attraction-image img-pos-60"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">塞维利亚大教堂与希拉尔达塔</h3>
+                    <p class="attraction-title-en">Catedral de Sevilla y La Giralda</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">1.5-2小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前1个月</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">UNESCO世界遗产，全球最大的哥特式教堂，也是世界第三大教堂。1401年在旧清真寺的基础上开始修建，主祭坛镀金雕刻高达28米。哥伦布之墓安放于此，四位国王雕像托举着他的棺柩。希拉尔达塔原为清真寺宣礼塔，34段坡道无台阶设计供骑马登顶，如今俯瞰塞维利亚全城，是安达卢西亚最上镜的天际线。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Av. de la Constitución, s/n, 41004 Sevilla<button class="copy-btn" data-copy="Av. de la Constitución, s/n, 41004 Sevilla">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">周一：11:00-15:30　　周二至周六：11:00-17:00　　周日：14:30-18:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">13</span></span> 成人（含希拉尔达塔）；<span class="price-display"><span class="price-symbol">€</span><span class="price-value">18</span></span> 含语音导览；可现场排队购票，但排队时间较久</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.catedraldesevilla.es/" target="_blank" rel="noopener">catedraldesevilla.es</a><button class="copy-btn" data-copy="https://www.catedraldesevilla.es">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">线上购票省€1且可跳过长队；周日免费场限额极少需排队；登塔后可继续参观教堂本身</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 塞维利亚王宫 -->
+        <div class="attraction-card reveal reveal-d1">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1764695490073-97f1efd5130a.jpg"
+                        alt="塞维利亚王宫"
+                        class="attraction-image img-pos-70"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">塞维利亚王宫</h3>
+                    <p class="attraction-title-en">Real Alcázar de Sevilla</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">2-3小时</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">有官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">提前1个月</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">UNESCO世界遗产，欧洲现存最古老的仍在使用的皇家宫殿。摩尔人城堡基础上叠加了穆德哈尔、哥特、文艺复兴多种风格，是西班牙文化融合的最佳建筑缩影。少女庭院柱廊倒影、大使厅镶嵌彩砖穹顶令人叹为观止。英剧《权力的游戏》多恩王国场景在此取景。皇家花园层层叠叠，迷宫与喷泉是绝佳避暑去处。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Patio de Banderas, s/n, 41004 Sevilla<button class="copy-btn" data-copy="Patio de Banderas, s/n, 41004 Sevilla">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">11-3月：09:30-17:00　　4-9月：09:30-19:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value"><span class="price-display"><span class="price-symbol">€</span><span class="price-value">15.5</span></span> 成人；周一开放时段欧盟公民免费（名额极有限）；官方App语音导览（多语言，含中文）免费下载</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">官网</span>
+                            <span class="info-value"><a href="https://www.alcazarsevilla.org/" target="_blank" rel="noopener">alcazarsevilla.org</a><button class="copy-btn" data-copy="https://www.alcazarsevilla.org">复制</button></span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">旺季提前至少1周线上购票；官方App有免费中文语音导览；《权力的游戏》拍摄地，建议告知同行者</p>
+                        <p class="ticket-info">入场方式：电子票二维码入场，无需携带护照</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 西班牙广场 -->
+        <div class="attraction-card reveal">
+            <div class="attraction-content">
+                <div class="attraction-gallery">
+                    <img
+                        src="./assets/images/photo-1688404808661-92f72f2ea258.jpg"
+                        alt="西班牙广场"
+                        class="attraction-image img-pos-center"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <div class="attraction-body">
+                    <h3 class="attraction-title">西班牙广场</h3>
+                    <p class="attraction-title-en">Plaza de España</p>
+                    <div class="attraction-meta">
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">游览时间</span>
+                            <span class="meta-chip-value">45-75分钟</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">语音讲解</span>
+                            <span class="meta-chip-value">无官方语音讲解</span>
+                        </div>
+                        <div class="meta-chip">
+                            <span class="meta-chip-label">预约建议</span>
+                            <span class="meta-chip-value">不需要预约</span>
+                        </div>
+                    </div>
+                    <p class="attraction-desc">塞维利亚最宏伟的城市舞台，1929年伊比利亚-美洲博览会的主展馆。半圆形宫殿长500米，赭红色砖砌外墙配以蓝白彩砖，环绕广场的运河可租划船。广场周边58个壁龛分别用彩色马赛克展示西班牙各省历史故事，是当地新婚照最热门拍摄地。《星球大战》与《阿拉伯的劳伦斯》曾在此取景。</p>
+                    <div class="attraction-info">
+                        <div class="info-item">
+                            <span class="info-label">地址</span>
+                            <span class="info-value">Av. de Isabel la Católica, 41013 Sevilla<button class="copy-btn" data-copy="Av. de Isabel la Católica, 41013 Sevilla">复制</button></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">时间</span>
+                            <span class="info-value">全天开放（宫殿内部08:00-22:00）</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">门票</span>
+                            <span class="info-value">广场免费；运河划船 <span class="price-display"><span class="price-symbol">€</span><span class="price-value">6</span></span>/35分钟；宫殿内部免费开放</span>
+                        </div>
+                    </div>
+                    <div class="attraction-tips">
+                        <div class="tips-label">提示</div>
+                        <p class="tips-text">早晨和黄昏光线最美，中午阳光强烈；逢弗拉明戈表演可免费观看，时间不定</p>
+                        <p class="ticket-info">入场方式：免费入场，无需门票</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 如何抵达塞维利亚 ── -->
+    <section class="how-to-get" id="how-to-get">
+        <p class="section-eyebrow">交通指南</p>
+        <h2 class="section-heading">如何抵达塞维利亚</h2>
+        <div class="how-to-get-grid">
+            <div class="transport-item">
+                <div class="transport-item-icon">🚄</div>
+                <div>
+                    <div class="transport-item-name">高铁 AVE</div>
+                    <p class="transport-item-detail">西班牙第一条高铁线路（1992年）连接马德里与塞维利亚。马德里阿托查站出发约2h30抵达圣胡斯塔站，科尔多瓦约45分钟。越早购票越便宜。</p>
+                    <span class="transport-item-time">马德里 ~2h30 · 科尔多瓦 ~45分钟</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">🚌</div>
+                <div>
+                    <div class="transport-item-name">大巴 ALSA</div>
+                    <p class="transport-item-detail">普拉多圣塞巴斯蒂安大巴站连接安达卢西亚各城市。格拉纳达约3小时，加的斯约1h45，是大部分近距离城市间移动的经济选择。</p>
+                    <span class="transport-item-time">格拉纳达 ~3h · 加的斯 ~1h45</span>
+                </div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-item-icon">✈️</div>
+                <div>
+                    <div class="transport-item-name">飞机</div>
+                    <p class="transport-item-detail">塞维利亚圣巴勃罗机场（SVQ）约10km外，有直飞欧洲主要城市的航班。出租车约20分钟，EA巴士约35分钟直达市中心。</p>
+                    <span class="transport-item-time">市区 ~20-35分钟</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 塞维利亚旅行小贴士 ── -->
+    <section class="city-tips-section" id="sevilla-tips">
+        <p class="section-eyebrow">旅行贴士</p>
+        <h2 class="section-heading">塞维利亚实用提示</h2>
+        <div class="city-tips-grid">
+            <div class="city-tip-item">
+                <div class="city-tip-label">高温预警</div>
+                <p class="city-tip-text">塞维利亚是欧洲最热城市之一，夏季最高可达48°C。建议全程户外活动安排在上午11点前或傍晚6点后，中午务必在室内避暑。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">弗拉门戈</div>
+                <p class="city-tip-text">特里亚纳区（Triana）和圣克鲁斯区是观看弗拉门戈秀的最佳地点。推荐Casa de la Memoria等专业场馆，比广场即兴演出品质更高。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">圣周四月节</div>
+                <p class="city-tip-text">圣周（Semana Santa，复活节前一周）和四月节（Feria de Abril，复活节后两周）是塞维利亚最热闹的时期。提前半年订酒店，价格翻倍，但体验无与伦比。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">骑行出行</div>
+                <p class="city-tip-text">SEVICI公共单车系统覆盖全城，日票€5。市区地势平坦，骑行从大教堂到西班牙广场约10分钟，是最舒适的游览方式，尤其适合早晨和傍晚。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">最佳季节</div>
+                <p class="city-tip-text">3-4月或10-11月气候最宜人，气温20-25°C，游客相对少。4月弗拉门戈节和节日氛围最浓，是最受推荐的到访时间。</p>
+            </div>
+            <div class="city-tip-item">
+                <div class="city-tip-label">步行路线</div>
+                <p class="city-tip-text">大教堂→王宫→圣十字街区（Barrio Santa Cruz）→特里亚纳桥，步行半日可串联主要景点。下午在圣十字区的石板小巷里迷路是一种享受。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 附近城市 ── -->
+    <nav class="nearby-cities" id="nearby" aria-label="周边城市">
+        <p class="section-eyebrow">周边探索</p>
+        <h2 class="section-heading">塞维利亚出发</h2>
+        <div class="nearby-cities-list">
+            <a href="granada.html" class="nearby-city-link">
+                <span>
+                    <span style="font-size:18px">🏰</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">格拉纳达</span>
+                    <span class="nearby-city-link-en">Granada · 大巴约3小时</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+            <a href="cordoba.html" class="nearby-city-link">
+                <span>
+                    <span style="font-size:18px">🕌</span>
+                </span>
+                <span>
+                    <span style="display:block;font-weight:600">科尔多瓦</span>
+                    <span class="nearby-city-link-en">Córdoba · 高铁约45分钟</span>
+                </span>
+                <span class="nearby-city-arrow">›</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span class="footer-logo">🇪🇸 西班牙旅行手册</span>
+                <span class="footer-divider"></span>
+                <span class="footer-meta">© 2026 西班牙旅行手册 · 以上数据仅供参考，出行前请以各景点官方网站为准</span>
+            </div>
+            <span class="footer-author">作者 @小红书 喜马拉雅的果酱</span>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="回到顶部">
+        <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ── Scripts ── -->
+    <script src="assets/js/lucide.min.js"></script>
+    <script src="assets/js/shared.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        /* 1 — Bottom navigation */
+        initBottomNav('cities');
+
+        /* 2 — Language toggle */
+        initLangToggle();
+
+        /* 3 — Copy buttons */
+        initCopyButtons();
+
+        /* 4 — Scroll-reveal */
+        initScrollReveal();
+
+        /* 5 — Reading progress bar */
+        initReadingProgressBar();
+
+        /* 6 — Back to top */
+        var btt = document.getElementById('back-to-top');
+        if (btt) {
+            window.addEventListener('scroll', function () {
+                btt.classList.toggle('visible', window.scrollY > 320);
+            }, { passive: true });
+            btt.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    });
+    </script>
+</body>
+</html>
