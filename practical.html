@@ -46,6 +46,9 @@
       padding: 22px 14px 18px;
       text-align: center;
       transition: border-color 0.25s, transform 0.25s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .transport-card:hover {
@@ -73,6 +76,35 @@
       font-size: 12.5px;
       color: var(--text-secondary);
       line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .transport-price {
+      font-family: "PingFang SC", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--accent);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .transport-link {
+      display: inline-block;
+      margin-top: auto;
+      padding: 5px 14px;
+      border: 1px solid rgba(181,149,91,0.45);
+      border-radius: 20px;
+      font-size: 11.5px;
+      color: var(--accent);
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .transport-link:hover {
+      background: var(--gold-bg);
+      border-color: var(--accent);
     }
 
     /* ══════════════════════════════════════════════════════════
@@ -98,21 +130,46 @@
 
     .booking-tip-row {
       display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 7px;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
       font-size: 13px;
       color: var(--text-secondary);
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     .booking-tip-row:last-child { margin-bottom: 0; }
 
     .booking-tip-label {
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 13.5px;
       color: var(--text-primary);
       flex-shrink: 0;
       min-width: 28px;
+      padding-top: 1px;
+    }
+
+    .booking-tip-content {
+      flex: 1;
+    }
+
+    .booking-tip-body {
+      margin: 0 0 6px 0;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .booking-tip-body:last-child { margin-bottom: 0; }
+
+    .booking-tip-note {
+      margin: 8px 0 0 0;
+      padding: 8px 12px;
+      background: rgba(181,149,91,0.08);
+      border-left: 2px solid rgba(181,149,91,0.5);
+      border-radius: 0 4px 4px 0;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.7;
     }
 
     .booking-tip-link {
@@ -258,8 +315,12 @@
        RESPONSIVE
     ══════════════════════════════════════════════════════════ */
     @media (max-width: 600px) {
-      .transport-cards { grid-template-columns: 1fr; gap: 10px; }
-      .transport-card { padding: 16px 14px; }
+      .transport-cards { gap: 8px; }
+      .transport-card { padding: 16px 10px 14px; }
+      .transport-price { font-size: 13px; }
+      .transport-name { font-size: 12.5px; }
+      .transport-desc { font-size: 11.5px; }
+      .transport-link { font-size: 10.5px; padding: 4px 10px; }
       .tips-grid { gap: 10px; }
     }
 
@@ -322,17 +383,23 @@
         <div class="transport-card reveal">
           <span class="transport-icon">🚄</span>
           <div class="transport-name">火车 AVE</div>
+          <div class="transport-price">€20–60</div>
           <div class="transport-desc">快速便捷，<br>但经常延误</div>
+          <a href="https://www.omio.com" target="_blank" rel="noopener" class="transport-link">omio 官网</a>
         </div>
         <div class="transport-card reveal reveal-d1">
           <span class="transport-icon">🚌</span>
           <div class="transport-name">大巴 ALSA</div>
+          <div class="transport-price">€10–30</div>
           <div class="transport-desc">便宜班次多，<br>时间略久</div>
+          <a href="https://www.alsa.com" target="_blank" rel="noopener" class="transport-link">ALSA 官网</a>
         </div>
         <div class="transport-card reveal reveal-d2">
           <span class="transport-icon">✈️</span>
           <div class="transport-name">飞机</div>
+          <div class="transport-price">€30–80</div>
           <div class="transport-desc">远途适用，<br>机场耗时</div>
+          <a href="https://www.vueling.com" target="_blank" rel="noopener" class="transport-link">Vueling 官网</a>
         </div>
       </div>
 
@@ -341,15 +408,28 @@
         <div class="booking-tip-title">订票建议</div>
         <div class="booking-tip-row">
           <span class="booking-tip-label">火车</span>
-          <span>—&nbsp;<a href="https://www.renfe.com" target="_blank" rel="noopener" class="booking-tip-link">Renfe.com</a>、<a href="https://www.ouigo.com/es" target="_blank" rel="noopener" class="booking-tip-link">Ouigo</a>、<a href="https://www.iryo.eu" target="_blank" rel="noopener" class="booking-tip-link">Iryo</a>（越早越便宜）</span>
+          <div class="booking-tip-content">
+            <p class="booking-tip-body">
+              <a href="https://www.renfe.com" target="_blank" rel="noopener" class="booking-tip-link">Renfe (AVE/Avlo)</a> 最官方，线路最全；<a href="https://www.iryo.eu" target="_blank" rel="noopener" class="booking-tip-link">Iryo</a> 舒适度高且经常价格不错；<a href="https://www.ouigo.com/es" target="_blank" rel="noopener" class="booking-tip-link">Ouigo</a> 价格最低；Avlo 适合预算有限的旅客。建议先用 <a href="https://www.omio.com" target="_blank" rel="noopener" class="booking-tip-link">Omio</a>、<a href="https://www.thetrainline.com" target="_blank" rel="noopener" class="booking-tip-link">Trainline</a>、携程或智行比价，不同平台和运营商价格可能差异很大。
+            </p>
+            <p class="booking-tip-note">注意：Ouigo 和 Avlo 携带 28 寸大行李箱需提前购买行李额度，现场购买更贵；国内平台偶尔有优惠券，价格甚至比官网更划算。</p>
+          </div>
         </div>
         <div class="booking-tip-row">
           <span class="booking-tip-label">大巴</span>
-          <span>—&nbsp;<a href="https://www.alsa.com" target="_blank" rel="noopener" class="booking-tip-link">ALSA.com</a>（提前1周，价格稳定）</span>
+          <div class="booking-tip-content">
+            <p class="booking-tip-body">
+              <a href="https://www.alsa.com" target="_blank" rel="noopener" class="booking-tip-link">ALSA</a> 是西班牙最大的长途巴士公司，覆盖大量没有火车直达的城市。价格通常比火车便宜，但耗时更长。旺季建议提前购买热门线路车票。
+            </p>
+          </div>
         </div>
         <div class="booking-tip-row">
           <span class="booking-tip-label">飞机</span>
-          <span>—&nbsp;<a href="https://www.vueling.com" target="_blank" rel="noopener" class="booking-tip-link">Vueling</a>、<a href="https://www.iberia.com" target="_blank" rel="noopener" class="booking-tip-link">Iberia</a>、<a href="https://www.ryanair.com" target="_blank" rel="noopener" class="booking-tip-link">Ryanair</a>（提前2–4周）</span>
+          <div class="booking-tip-content">
+            <p class="booking-tip-body">
+              巴塞罗那、马德里、塞维利亚、格拉纳达等城市之间均有航班。若总行程超过 5 小时，飞机通常比火车更节省时间，但需额外考虑往返机场和安检时间。可用智行或携程比价，有优惠券时可能比官网更便宜。注意廉航一般不含行李额度。
+            </p>
+          </div>
         </div>
       </div>
 

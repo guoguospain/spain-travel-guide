@@ -51,6 +51,8 @@
 
 html {
     scroll-behavior: smooth;
+    /* Previene scroll horizontal en cualquier página */
+    overflow-x: hidden;
 }
 
 body {
@@ -64,6 +66,8 @@ body {
     background: var(--bg);
     /* Espacio para bottom nav */
     padding-bottom: 70px;
+    /* Segunda barrera — por si algún elemento desborda body */
+    overflow-x: hidden;
 }
 
 /* ============================================================
