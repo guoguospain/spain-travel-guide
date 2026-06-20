@@ -153,6 +153,82 @@
     }
     .hero-search-btn:active { opacity: 0.75; }
 
+    /* ── Autocomplete dropdown ─────────────────────────────── */
+    .search-suggestions {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: rgba(12, 8, 6, 0.94);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      list-style: none;
+      padding: 6px 0;
+      margin: 0;
+      z-index: 300;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.3);
+      display: none;
+      overflow: hidden;
+      max-height: 340px;
+      overflow-y: auto;
+    }
+    .search-suggestions.open { display: block; }
+
+    .suggest-item {
+      display: flex;
+      align-items: center;
+      padding: 9px 14px;
+      cursor: pointer;
+      gap: 10px;
+      transition: background 0.13s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .suggest-item:hover,
+    .suggest-item.ac-active { background: rgba(255,255,255,0.09); }
+
+    .suggest-icon {
+      font-size: 15px;
+      width: 20px;
+      text-align: center;
+      flex-shrink: 0;
+      opacity: 0.88;
+    }
+    .suggest-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .suggest-name {
+      font-family: "PingFang SC","Noto Serif SC",serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.93);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .suggest-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.42);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .suggest-city {
+      font-size: 10.5px;
+      color: var(--accent);
+      background: rgba(181,149,91,0.16);
+      padding: 2px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+
     /* City quick-links below search */
     .hero-city-links {
       display: flex;
@@ -544,6 +620,7 @@
       <input type="text" class="hero-search-input" id="citySearch"
              placeholder="搜索城市或景点，如：阿尔罕布拉宫、Alhambra…" autocomplete="off" inputmode="search">
       <button class="hero-search-btn" id="citySearchBtn" aria-label="搜索">前往</button>
+      <ul id="searchSuggestions" class="search-suggestions" role="listbox" aria-label="搜索建议"></ul>
     </div>
 
     <!-- 快速城市链接 -->
@@ -934,163 +1011,282 @@
   <script src="./assets/js/shared.js"></script>
 
   <script>
-    /* ── CITY & ATTRACTION SEARCH ────────────────────────── */
+    /* ── CITY & ATTRACTION SEARCH + AUTOCOMPLETE ─────────── */
     (function() {
-      // Índice completo: ciudades + atracciones en 中文 / English / Español
+
+      /* ── 1. Índice de búsqueda: ciudades → URL, atracciones → URL#anchor */
       var searchIndex = {
-        // ── Ciudades ──────────────────────────────────────
-        '马德里': 'madrid.html', 'madrid': 'madrid.html',
-        '巴塞罗那': 'barcelona.html', 'barcelona': 'barcelona.html',
-        '格拉纳达': 'granada.html', 'granada': 'granada.html',
-        '塞维利亚': 'sevilla.html', 'sevilla': 'sevilla.html', 'seville': 'sevilla.html',
-        '科尔多瓦': 'cordoba.html', 'cordoba': 'cordoba.html', 'córdoba': 'cordoba.html',
-        '托莱多': 'toledo.html', 'toledo': 'toledo.html',
-        '塞哥维亚': 'segovia.html', 'segovia': 'segovia.html',
+        // Ciudades
+        '马德里':'madrid.html', 'madrid':'madrid.html',
+        '巴塞罗那':'barcelona.html', 'barcelona':'barcelona.html',
+        '格拉纳达':'granada.html', 'granada':'granada.html',
+        '塞维利亚':'sevilla.html', 'sevilla':'sevilla.html', 'seville':'sevilla.html',
+        '科尔多瓦':'cordoba.html', 'cordoba':'cordoba.html', 'córdoba':'cordoba.html',
+        '托莱多':'toledo.html', 'toledo':'toledo.html',
+        '塞哥维亚':'segovia.html', 'segovia':'segovia.html',
 
-        // ── Madrid ────────────────────────────────────────
-        '马德里皇宫': 'madrid.html', '皇宫': 'madrid.html',
-        'palacio real': 'madrid.html', 'palacio real de madrid': 'madrid.html',
-        'royal palace': 'madrid.html', 'royal palace madrid': 'madrid.html',
+        // Madrid
+        '马德里皇宫':'madrid.html#palacio-real', '皇宫':'madrid.html#palacio-real',
+        'palacio real':'madrid.html#palacio-real', 'palacio real de madrid':'madrid.html#palacio-real',
+        'royal palace':'madrid.html#palacio-real', 'royal palace madrid':'madrid.html#palacio-real',
 
-        '普拉多国家博物馆': 'madrid.html', '普拉多': 'madrid.html',
-        'prado': 'madrid.html', 'museo del prado': 'madrid.html',
-        'museo nacional del prado': 'madrid.html', 'prado museum': 'madrid.html',
+        '普拉多国家博物馆':'madrid.html#prado', '普拉多':'madrid.html#prado',
+        'prado':'madrid.html#prado', 'museo del prado':'madrid.html#prado',
+        'museo nacional del prado':'madrid.html#prado', 'prado museum':'madrid.html#prado',
 
-        '索菲亚王后艺术中心': 'madrid.html', '索菲亚': 'madrid.html',
-        'reina sofia': 'madrid.html', 'reina sofía': 'madrid.html',
-        'museo reina sofia': 'madrid.html', 'museo reina sofía': 'madrid.html',
+        '索菲亚王后艺术中心':'madrid.html#reina-sofia', '索菲亚':'madrid.html#reina-sofia',
+        'reina sofia':'madrid.html#reina-sofia', 'reina sofía':'madrid.html#reina-sofia',
+        'museo reina sofia':'madrid.html#reina-sofia', 'museo reina sofía':'madrid.html#reina-sofia',
 
-        '丽池公园': 'madrid.html', '丽池': 'madrid.html',
-        'retiro': 'madrid.html', 'parque del retiro': 'madrid.html',
-        'el retiro': 'madrid.html', 'buen retiro': 'madrid.html',
+        '丽池公园':'madrid.html#retiro', '丽池':'madrid.html#retiro',
+        'retiro':'madrid.html#retiro', 'parque del retiro':'madrid.html#retiro',
+        'el retiro':'madrid.html#retiro', 'buen retiro':'madrid.html#retiro',
 
-        // ── Barcelona ─────────────────────────────────────
-        '圣家堂': 'barcelona.html',
-        'sagrada familia': 'barcelona.html', 'sagrada família': 'barcelona.html',
-        'la sagrada familia': 'barcelona.html', 'sagrada': 'barcelona.html',
+        // Barcelona
+        '圣家堂':'barcelona.html#sagrada-familia',
+        'sagrada familia':'barcelona.html#sagrada-familia', 'sagrada família':'barcelona.html#sagrada-familia',
+        'la sagrada familia':'barcelona.html#sagrada-familia', 'sagrada':'barcelona.html#sagrada-familia',
 
-        '桂尔公园': 'barcelona.html', '高迪公园': 'barcelona.html',
-        'park guell': 'barcelona.html', 'park güell': 'barcelona.html',
-        'güell': 'barcelona.html', 'guell': 'barcelona.html',
+        '桂尔公园':'barcelona.html#park-guell', '高迪公园':'barcelona.html#park-guell',
+        'park guell':'barcelona.html#park-guell', 'park güell':'barcelona.html#park-guell',
+        'güell':'barcelona.html#park-guell', 'guell':'barcelona.html#park-guell',
 
-        '巴特罗之家': 'barcelona.html', '巴特略之家': 'barcelona.html',
-        'casa batllo': 'barcelona.html', 'casa batlló': 'barcelona.html',
-        'batllo': 'barcelona.html', 'batlló': 'barcelona.html',
+        '巴特罗之家':'barcelona.html#casa-batllo', '巴特略之家':'barcelona.html#casa-batllo',
+        'casa batllo':'barcelona.html#casa-batllo', 'casa batlló':'barcelona.html#casa-batllo',
+        'batllo':'barcelona.html#casa-batllo', 'batlló':'barcelona.html#casa-batllo',
 
-        '米拉之家': 'barcelona.html',
-        'casa mila': 'barcelona.html', 'casa milà': 'barcelona.html',
-        'la pedrera': 'barcelona.html', 'pedrera': 'barcelona.html',
+        '米拉之家':'barcelona.html#casa-mila',
+        'casa mila':'barcelona.html#casa-mila', 'casa milà':'barcelona.html#casa-mila',
+        'la pedrera':'barcelona.html#casa-mila', 'pedrera':'barcelona.html#casa-mila',
 
-        '毕加索博物馆': 'barcelona.html', '毕加索': 'barcelona.html',
-        'picasso': 'barcelona.html', 'museu picasso': 'barcelona.html',
-        'museo picasso': 'barcelona.html', 'picasso museum': 'barcelona.html',
+        '毕加索博物馆':'barcelona.html#picasso', '毕加索':'barcelona.html#picasso',
+        'picasso':'barcelona.html#picasso', 'museu picasso':'barcelona.html#picasso',
+        'museo picasso':'barcelona.html#picasso', 'picasso museum':'barcelona.html#picasso',
 
-        '巴塞罗那主教座堂': 'barcelona.html', '巴塞罗那大教堂': 'barcelona.html',
-        'catedral de barcelona': 'barcelona.html', 'barcelona cathedral': 'barcelona.html',
+        '巴塞罗那主教座堂':'barcelona.html#catedral-barcelona', '巴塞罗那大教堂':'barcelona.html#catedral-barcelona',
+        'catedral de barcelona':'barcelona.html#catedral-barcelona', 'barcelona cathedral':'barcelona.html#catedral-barcelona',
 
-        '高迪': 'barcelona.html', 'gaudi': 'barcelona.html', 'gaudí': 'barcelona.html',
+        '高迪':'barcelona.html', 'gaudi':'barcelona.html', 'gaudí':'barcelona.html',
 
-        // ── Granada ───────────────────────────────────────
-        '阿尔罕布拉宫': 'granada.html', '阿尔汉布拉': 'granada.html',
-        'alhambra': 'granada.html', 'la alhambra': 'granada.html',
+        // Granada
+        '阿尔罕布拉宫':'granada.html#alhambra', '阿尔汉布拉':'granada.html#alhambra',
+        'alhambra':'granada.html#alhambra', 'la alhambra':'granada.html#alhambra',
 
-        '格拉纳达主教座堂': 'granada.html', '格拉纳达大教堂': 'granada.html',
-        'catedral de granada': 'granada.html', 'granada cathedral': 'granada.html',
+        '格拉纳达主教座堂':'granada.html#catedral-granada', '格拉纳达大教堂':'granada.html#catedral-granada',
+        'catedral de granada':'granada.html#catedral-granada', 'granada cathedral':'granada.html#catedral-granada',
 
-        '圣尼古拉斯观景台': 'granada.html',
-        'mirador san nicolas': 'granada.html', 'mirador de san nicolás': 'granada.html',
-        'san nicolas': 'granada.html', 'san nicolás': 'granada.html',
+        '圣尼古拉斯观景台':'granada.html#mirador-san-nicolas',
+        'mirador san nicolas':'granada.html#mirador-san-nicolas', 'mirador de san nicolás':'granada.html#mirador-san-nicolas',
+        'san nicolas':'granada.html#mirador-san-nicolas', 'san nicolás':'granada.html#mirador-san-nicolas',
 
-        '圣胡安迪奥斯大教堂': 'granada.html',
-        'basilica san juan de dios': 'granada.html', 'san juan de dios': 'granada.html',
-        'basílica de san juan de dios': 'granada.html',
+        '圣胡安迪奥斯大教堂':'granada.html#san-juan-de-dios',
+        'basilica san juan de dios':'granada.html#san-juan-de-dios', 'san juan de dios':'granada.html#san-juan-de-dios',
+        'basílica de san juan de dios':'granada.html#san-juan-de-dios',
 
-        '阿尔拜辛': 'granada.html', 'albaicin': 'granada.html',
-        'albayzín': 'granada.html', 'albaicín': 'granada.html',
+        '阿尔拜辛':'granada.html', 'albaicin':'granada.html',
+        'albayzín':'granada.html', 'albaicín':'granada.html',
 
-        // ── Sevilla ───────────────────────────────────────
-        '塞维利亚大教堂': 'sevilla.html', '希拉尔达塔': 'sevilla.html',
-        'catedral de sevilla': 'sevilla.html', 'sevilla cathedral': 'sevilla.html',
-        'giralda': 'sevilla.html', 'la giralda': 'sevilla.html',
-        'seville cathedral': 'sevilla.html',
+        // Sevilla
+        '塞维利亚大教堂':'sevilla.html#catedral-sevilla', '希拉尔达塔':'sevilla.html#catedral-sevilla',
+        'catedral de sevilla':'sevilla.html#catedral-sevilla', 'sevilla cathedral':'sevilla.html#catedral-sevilla',
+        'giralda':'sevilla.html#catedral-sevilla', 'la giralda':'sevilla.html#catedral-sevilla',
+        'seville cathedral':'sevilla.html#catedral-sevilla',
 
-        '塞维利亚王宫': 'sevilla.html',
-        'real alcazar de sevilla': 'sevilla.html', 'alcazar sevilla': 'sevilla.html',
-        'real alcázar de sevilla': 'sevilla.html', 'real alcazar': 'sevilla.html',
-        'real alcázar': 'sevilla.html',
+        '塞维利亚王宫':'sevilla.html#alcazar-sevilla',
+        'real alcazar de sevilla':'sevilla.html#alcazar-sevilla', 'alcazar sevilla':'sevilla.html#alcazar-sevilla',
+        'real alcázar de sevilla':'sevilla.html#alcazar-sevilla', 'real alcazar':'sevilla.html#alcazar-sevilla',
+        'real alcázar':'sevilla.html#alcazar-sevilla',
 
-        '西班牙广场': 'sevilla.html',
-        'plaza de espana': 'sevilla.html', 'plaza de españa': 'sevilla.html',
-        'plaza espana': 'sevilla.html', 'spain square': 'sevilla.html',
-        'plaza españa': 'sevilla.html',
+        '西班牙广场':'sevilla.html#plaza-espana',
+        'plaza de espana':'sevilla.html#plaza-espana', 'plaza de españa':'sevilla.html#plaza-espana',
+        'plaza espana':'sevilla.html#plaza-espana', 'spain square':'sevilla.html#plaza-espana',
+        'plaza españa':'sevilla.html#plaza-espana',
 
-        // ── Córdoba ───────────────────────────────────────
-        '科尔多瓦大清真寺': 'cordoba.html', '清真寺': 'cordoba.html',
-        'mezquita': 'cordoba.html', 'la mezquita': 'cordoba.html',
-        'mezquita-catedral': 'cordoba.html', 'mezquita catedral': 'cordoba.html',
-        'mezquita de cordoba': 'cordoba.html', 'mezquita de córdoba': 'cordoba.html',
-        'great mosque': 'cordoba.html', 'mosque cordoba': 'cordoba.html',
+        // Córdoba
+        '科尔多瓦大清真寺':'cordoba.html#mezquita', '清真寺':'cordoba.html#mezquita',
+        'mezquita':'cordoba.html#mezquita', 'la mezquita':'cordoba.html#mezquita',
+        'mezquita-catedral':'cordoba.html#mezquita', 'mezquita catedral':'cordoba.html#mezquita',
+        'mezquita de cordoba':'cordoba.html#mezquita', 'mezquita de córdoba':'cordoba.html#mezquita',
+        'great mosque':'cordoba.html#mezquita', 'mosque cordoba':'cordoba.html#mezquita',
 
-        // ── Toledo ────────────────────────────────────────
-        '托莱多大教堂': 'toledo.html',
-        'catedral de toledo': 'toledo.html', 'toledo cathedral': 'toledo.html',
-        'catedral primada': 'toledo.html', 'catedral primada de toledo': 'toledo.html',
+        // Toledo
+        '托莱多大教堂':'toledo.html#catedral-toledo',
+        'catedral de toledo':'toledo.html#catedral-toledo', 'toledo cathedral':'toledo.html#catedral-toledo',
+        'catedral primada':'toledo.html#catedral-toledo', 'catedral primada de toledo':'toledo.html#catedral-toledo',
 
-        // ── Segovia ───────────────────────────────────────
-        '塞哥维亚古罗马渡槽': 'segovia.html', '古罗马渡槽': 'segovia.html', '渡槽': 'segovia.html',
-        'acueducto': 'segovia.html', 'acueducto de segovia': 'segovia.html',
-        'segovia aqueduct': 'segovia.html', 'roman aqueduct': 'segovia.html',
-        'aqueduct': 'segovia.html',
+        // Segovia
+        '塞哥维亚古罗马渡槽':'segovia.html#acueducto', '古罗马渡槽':'segovia.html#acueducto', '渡槽':'segovia.html#acueducto',
+        'acueducto':'segovia.html#acueducto', 'acueducto de segovia':'segovia.html#acueducto',
+        'segovia aqueduct':'segovia.html#acueducto', 'roman aqueduct':'segovia.html#acueducto',
+        'aqueduct':'segovia.html#acueducto',
 
-        '塞哥维亚城堡': 'segovia.html',
-        'alcazar de segovia': 'segovia.html', 'alcázar de segovia': 'segovia.html',
-        'segovia castle': 'segovia.html', 'alcazar segovia': 'segovia.html',
+        '塞哥维亚城堡':'segovia.html#alcazar-segovia',
+        'alcazar de segovia':'segovia.html#alcazar-segovia', 'alcázar de segovia':'segovia.html#alcazar-segovia',
+        'segovia castle':'segovia.html#alcazar-segovia', 'alcazar segovia':'segovia.html#alcazar-segovia',
 
-        '塞哥维亚大教堂': 'segovia.html',
-        'catedral de segovia': 'segovia.html', 'segovia cathedral': 'segovia.html'
+        '塞哥维亚大教堂':'segovia.html#catedral-segovia',
+        'catedral de segovia':'segovia.html#catedral-segovia', 'segovia cathedral':'segovia.html#catedral-segovia'
       };
 
-      // Normaliza: minúsculas + quita acentos para comparación flexible
+      /* ── 2. Datos de autocompletado ─────────────────────── */
+      var acData = [
+        // Ciudades
+        {zh:'马德里',en:'Madrid',url:'madrid.html',type:'city'},
+        {zh:'巴塞罗那',en:'Barcelona',url:'barcelona.html',type:'city'},
+        {zh:'格拉纳达',en:'Granada',url:'granada.html',type:'city'},
+        {zh:'塞维利亚',en:'Sevilla',url:'sevilla.html',type:'city'},
+        {zh:'科尔多瓦',en:'Córdoba',url:'cordoba.html',type:'city'},
+        {zh:'托莱多',en:'Toledo',url:'toledo.html',type:'city'},
+        {zh:'塞哥维亚',en:'Segovia',url:'segovia.html',type:'city'},
+        // Madrid
+        {zh:'马德里皇宫',en:'Palacio Real',url:'madrid.html#palacio-real',type:'attraction',city:'马德里'},
+        {zh:'普拉多国家博物馆',en:'Museo del Prado',url:'madrid.html#prado',type:'attraction',city:'马德里'},
+        {zh:'索菲亚王后艺术中心',en:'Museo Reina Sofía',url:'madrid.html#reina-sofia',type:'attraction',city:'马德里'},
+        {zh:'丽池公园',en:'Parque del Retiro',url:'madrid.html#retiro',type:'attraction',city:'马德里'},
+        // Barcelona
+        {zh:'圣家堂',en:'Sagrada Família',url:'barcelona.html#sagrada-familia',type:'attraction',city:'巴塞罗那'},
+        {zh:'桂尔公园',en:'Park Güell',url:'barcelona.html#park-guell',type:'attraction',city:'巴塞罗那'},
+        {zh:'巴特罗之家',en:'Casa Batlló',url:'barcelona.html#casa-batllo',type:'attraction',city:'巴塞罗那'},
+        {zh:'米拉之家',en:'Casa Milà',url:'barcelona.html#casa-mila',type:'attraction',city:'巴塞罗那'},
+        {zh:'毕加索博物馆',en:'Museu Picasso',url:'barcelona.html#picasso',type:'attraction',city:'巴塞罗那'},
+        {zh:'巴塞罗那主教座堂',en:'Catedral de Barcelona',url:'barcelona.html#catedral-barcelona',type:'attraction',city:'巴塞罗那'},
+        // Granada
+        {zh:'阿尔罕布拉宫',en:'La Alhambra',url:'granada.html#alhambra',type:'attraction',city:'格拉纳达'},
+        {zh:'格拉纳达主教座堂',en:'Catedral de Granada',url:'granada.html#catedral-granada',type:'attraction',city:'格拉纳达'},
+        {zh:'圣尼古拉斯观景台',en:'Mirador de San Nicolás',url:'granada.html#mirador-san-nicolas',type:'attraction',city:'格拉纳达'},
+        {zh:'圣胡安迪奥斯大教堂',en:'Basílica de San Juan de Dios',url:'granada.html#san-juan-de-dios',type:'attraction',city:'格拉纳达'},
+        // Sevilla
+        {zh:'塞维利亚大教堂',en:'Catedral de Sevilla',url:'sevilla.html#catedral-sevilla',type:'attraction',city:'塞维利亚'},
+        {zh:'塞维利亚王宫',en:'Real Alcázar',url:'sevilla.html#alcazar-sevilla',type:'attraction',city:'塞维利亚'},
+        {zh:'西班牙广场',en:'Plaza de España',url:'sevilla.html#plaza-espana',type:'attraction',city:'塞维利亚'},
+        // Córdoba
+        {zh:'科尔多瓦大清真寺',en:'Mezquita-Catedral',url:'cordoba.html#mezquita',type:'attraction',city:'科尔多瓦'},
+        // Toledo
+        {zh:'托莱多大教堂',en:'Catedral de Toledo',url:'toledo.html#catedral-toledo',type:'attraction',city:'托莱多'},
+        // Segovia
+        {zh:'塞哥维亚古罗马渡槽',en:'Acueducto Romano',url:'segovia.html#acueducto',type:'attraction',city:'塞哥维亚'},
+        {zh:'塞哥维亚城堡',en:'Alcázar de Segovia',url:'segovia.html#alcazar-segovia',type:'attraction',city:'塞哥维亚'},
+        {zh:'塞哥维亚大教堂',en:'Catedral de Segovia',url:'segovia.html#catedral-segovia',type:'attraction',city:'塞哥维亚'}
+      ];
+
+      /* ── 3. Normalizador ─────────────────────────────────── */
       function normalize(s) {
         return s.toLowerCase()
-          .normalize('NFD').replace(/[̀-ͯ]/g, '') // quita tildes
+          .normalize('NFD').replace(/[̀-ͯ]/g, '')
           .replace(/\s+/g, ' ').trim();
       }
 
-      // Construye índice normalizado una sola vez
+      /* ── 4. Índice normalizado ───────────────────────────── */
       var normIndex = {};
       Object.keys(searchIndex).forEach(function(k) {
         normIndex[normalize(k)] = searchIndex[k];
       });
 
+      /* ── 5. Lógica de búsqueda ───────────────────────────── */
+      var suggestEl   = document.getElementById('searchSuggestions');
+      var searchInput = document.getElementById('citySearch');
+      var acActive    = -1;
+
+      function closeAC() {
+        suggestEl.classList.remove('open');
+        suggestEl.innerHTML = '';
+        acActive = -1;
+      }
+
       function doSearch() {
-        var raw = document.getElementById('citySearch').value.trim();
+        closeAC();
+        var raw = searchInput.value.trim();
         if (!raw) return;
         var q = normalize(raw);
 
-        // 1) Coincidencia exacta (normalizada)
         if (normIndex[q]) { window.location.href = normIndex[q]; return; }
 
-        // 2) La query contiene alguna clave del índice
         var found = Object.keys(normIndex).find(function(k) { return q.indexOf(k) !== -1; });
         if (found) { window.location.href = normIndex[found]; return; }
 
-        // 3) Alguna clave del índice contiene la query
         found = Object.keys(normIndex).find(function(k) { return k.indexOf(q) !== -1; });
         if (found) { window.location.href = normIndex[found]; return; }
 
-        // 4) Sin resultado → scroll a la sección de ciudades
         document.getElementById('cities').scrollIntoView({ behavior: 'smooth' });
-        // Feedback visual
-        var input = document.getElementById('citySearch');
-        input.style.borderColor = 'rgba(255,100,100,0.7)';
-        setTimeout(function() { input.style.borderColor = ''; }, 1200);
+        searchInput.style.borderColor = 'rgba(255,100,100,0.7)';
+        setTimeout(function() { searchInput.style.borderColor = ''; }, 1200);
       }
 
-      document.getElementById('citySearchBtn').addEventListener('click', doSearch);
-      document.getElementById('citySearch').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') doSearch();
+      /* ── 6. Autocompletado ───────────────────────────────── */
+      function getMatches(q) {
+        var nq = normalize(q);
+        if (!nq) return [];
+        return acData.filter(function(item) {
+          return normalize(item.zh).indexOf(nq) !== -1 ||
+                 normalize(item.en).indexOf(nq) !== -1;
+        }).slice(0, 8);
+      }
+
+      function renderAC(items) {
+        suggestEl.innerHTML = '';
+        acActive = -1;
+        if (!items.length) { closeAC(); return; }
+        items.forEach(function(item) {
+          var li = document.createElement('li');
+          li.className = 'suggest-item';
+          li.setAttribute('role', 'option');
+          li.setAttribute('data-url', item.url);
+          var icon  = item.type === 'city' ? '🗺️' : '🏛️';
+          var badge = item.city ? '<span class="suggest-city">' + item.city + '</span>' : '';
+          li.innerHTML =
+            '<span class="suggest-icon">' + icon + '</span>' +
+            '<span class="suggest-body">' +
+              '<span class="suggest-name">' + item.zh + '</span>' +
+              '<span class="suggest-sub">'  + item.en + '</span>' +
+            '</span>' + badge;
+          li.addEventListener('mousedown', function(e) {
+            e.preventDefault(); // evita que blur cierre el panel antes del click
+            window.location.href = item.url;
+          });
+          suggestEl.appendChild(li);
+        });
+        suggestEl.classList.add('open');
+      }
+
+      function setACActive(idx) {
+        var items = suggestEl.querySelectorAll('.suggest-item');
+        items.forEach(function(el, i) { el.classList.toggle('ac-active', i === idx); });
+        acActive = idx;
+      }
+
+      searchInput.addEventListener('input', function() {
+        renderAC(getMatches(searchInput.value.trim()));
       });
+
+      searchInput.addEventListener('keydown', function(e) {
+        var items = suggestEl.querySelectorAll('.suggest-item');
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          setACActive(Math.min(acActive + 1, items.length - 1));
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          setACActive(Math.max(acActive - 1, 0));
+        } else if (e.key === 'Escape') {
+          closeAC();
+        } else if (e.key === 'Enter') {
+          if (acActive >= 0 && items[acActive]) {
+            e.preventDefault();
+            window.location.href = items[acActive].getAttribute('data-url');
+          } else {
+            doSearch();
+          }
+        }
+      });
+
+      searchInput.addEventListener('blur', function() {
+        setTimeout(closeAC, 160);
+      });
+
+      searchInput.addEventListener('focus', function() {
+        if (searchInput.value.trim()) renderAC(getMatches(searchInput.value.trim()));
+      });
+
+      document.getElementById('citySearchBtn').addEventListener('click', doSearch);
     })();
 
     /* ── BACK TO TOP ─────────────────────────────────────── */

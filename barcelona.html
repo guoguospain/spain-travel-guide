@@ -291,7 +291,7 @@
         <h2 class="section-heading">必游之地</h2>
 
         <!-- 1. 圣家堂 -->
-        <div class="attraction-card reveal">
+        <div id="sagrada-familia" class="attraction-card reveal">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -348,7 +348,7 @@
         </div>
 
         <!-- 2. 桂尔公园 -->
-        <div class="attraction-card reveal reveal-d1">
+        <div id="park-guell" class="attraction-card reveal reveal-d1">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -405,7 +405,7 @@
         </div>
 
         <!-- 3. 巴特罗之家 -->
-        <div class="attraction-card reveal">
+        <div id="casa-batllo" class="attraction-card reveal">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -462,7 +462,7 @@
         </div>
 
         <!-- 4. 米拉之家 -->
-        <div class="attraction-card reveal reveal-d1">
+        <div id="casa-mila" class="attraction-card reveal reveal-d1">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -519,7 +519,7 @@
         </div>
 
         <!-- 5. 毕加索博物馆 -->
-        <div class="attraction-card reveal">
+        <div id="picasso" class="attraction-card reveal">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -576,7 +576,7 @@
         </div>
 
         <!-- 6. 巴塞罗那主教座堂 -->
-        <div class="attraction-card reveal reveal-d1">
+        <div id="catedral-barcelona" class="attraction-card reveal reveal-d1">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -759,6 +759,9 @@
 
         /* 4 — Scroll-reveal */
         initScrollReveal();
+
+        /* 4b — Deep-link: scroll hasta el monumento buscado */
+        initAttractionDeepLink();
 
         /* 5 — Reading progress bar */
         initReadingProgressBar();

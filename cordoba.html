@@ -275,7 +275,7 @@
         <h2 class="section-heading">必游之地</h2>
 
         <!-- 1. 科尔多瓦大清真寺-主教座堂 -->
-        <div class="attraction-card reveal">
+        <div id="mezquita" class="attraction-card reveal">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -458,6 +458,9 @@
 
         /* 4 — Scroll-reveal */
         initScrollReveal();
+
+        /* 4b — Deep-link: scroll hasta el monumento buscado */
+        initAttractionDeepLink();
 
         /* 5 — Reading progress bar */
         initReadingProgressBar();

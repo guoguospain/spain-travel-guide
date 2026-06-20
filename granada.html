@@ -275,7 +275,7 @@
         <h2 class="section-heading">必游之地</h2>
 
         <!-- 1. 阿尔罕布拉宫 -->
-        <div class="attraction-card reveal">
+        <div id="alhambra" class="attraction-card reveal">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -332,7 +332,7 @@
         </div>
 
         <!-- 2. 格拉纳达主教座堂 -->
-        <div class="attraction-card reveal reveal-d1">
+        <div id="catedral-granada" class="attraction-card reveal reveal-d1">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -389,7 +389,7 @@
         </div>
 
         <!-- 3. 圣尼古拉斯观景台 -->
-        <div class="attraction-card reveal">
+        <div id="mirador-san-nicolas" class="attraction-card reveal">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -442,7 +442,7 @@
         </div>
 
         <!-- 4. 圣胡安迪奥斯大教堂 -->
-        <div class="attraction-card reveal reveal-d1">
+        <div id="san-juan-de-dios" class="attraction-card reveal reveal-d1">
             <div class="attraction-content">
                 <div class="attraction-gallery">
                     <img
@@ -621,6 +621,9 @@
 
         /* 4 — Scroll-reveal */
         initScrollReveal();
+
+        /* 4b — Deep-link: scroll hasta el monumento buscado */
+        initAttractionDeepLink();
 
         /* 5 — Reading progress bar */
         initReadingProgressBar();

@@ -854,6 +854,52 @@ function initLangToggle() {
 }
 
 /* ============================================================
+   ATTRACTION DEEP-LINK
+   Lee el hash de la URL al cargar la página y hace scroll suave
+   hasta la attraction-card correspondiente, añadiendo un pulso
+   dorado para que el usuario la identifique de inmediato.
+   Llámalo dentro de DOMContentLoaded, después de initScrollReveal().
+   ============================================================ */
+function initAttractionDeepLink() {
+    var hash = window.location.hash;
+    if (!hash) return;
+    var id  = hash.slice(1);
+    var el  = document.getElementById(id);
+    if (!el) return;
+
+    /* Inyectar keyframe una sola vez */
+    if (!document.getElementById('dl-style')) {
+        var s = document.createElement('style');
+        s.id  = 'dl-style';
+        s.textContent =
+            '@keyframes dlPulse{' +
+            '0%{box-shadow:0 0 0 0 rgba(181,149,91,0)}' +
+            '45%{box-shadow:0 0 0 10px rgba(181,149,91,.42)}' +
+            '100%{box-shadow:0 0 0 22px rgba(181,149,91,0)}}' +
+            '.dl-highlight{animation:dlPulse 1.1s ease 2;' +
+            'outline:2px solid rgba(181,149,91,.55);outline-offset:3px;border-radius:inherit}';
+        document.head.appendChild(s);
+    }
+
+    /* Evitar el scroll nativo del browser (que ocurre antes de DOMContentLoaded) */
+    if (history.replaceState) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+
+    /* Forzar visibilidad (scroll-reveal puede tener el elemento oculto) */
+    el.classList.add('visible');
+
+    /* Scroll suave → highlight */
+    setTimeout(function() {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(function() {
+            el.classList.add('dl-highlight');
+            setTimeout(function() { el.classList.remove('dl-highlight'); }, 2300);
+        }, 500);
+    }, 120);
+}
+
+/* ============================================================
    LUCIDE ICONS INIT
    Debe estar al final del script para que el DOM esté listo.
    ============================================================ */
